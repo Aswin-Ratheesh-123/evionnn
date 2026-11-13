@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #ffffff;
+    --foreground: #111111;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    overflow-x: hidden;
+    letter-spacing: -0.015em;
+  }
+}
+
+/* Custom Clean Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00d26a;
+}
+
+/* Smooth transitions */
+.transition-smooth {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Subtle Ather Glows */
+.glow-ather {
+  box-shadow: 0 10px 30px -10px rgba(0, 210, 106, 0.25);
+}
+
+.glow-subtle {
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* One-Shot Electric Green Sweep & Stop (Charges Up and Stays Green) */
+@keyframes greenSweepStop {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0% 0;
+  }
+}
+
+.animate-green-sweep-stop {
+  background: linear-gradient(
+    90deg,
+    #00d26a 0%,
+    #00d26a 45%,
+    #34d399 55%,
+    #ffffff 75%,
+    #ffffff 100%
+  );
+  background-size: 250% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: greenSweepStop 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards;
+}
+
+/* One-Shot Green Sweep & Stop for Light Backgrounds (Sweeps from dark text to electric green) */
+.animate-green-sweep-dark {
+  background: linear-gradient(
+    90deg,
+    #009e4f 0%,
+    #00a854 45%,
+    #10b981 55%,
+    #171717 75%,
+    #171717 100%
+  );
+  background-size: 250% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: greenSweepStop 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards;
+}
+
+/* Atmospheric Ambient Glow Pulsing */
+@keyframes pulseAura {
+  0%, 100% {
+    opacity: 0.07;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.14;
+    transform: scale(1.12);
+  }
+}
+
+.animate-aura-pulse {
+  animation: pulseAura 7s ease-in-out infinite;
+}
