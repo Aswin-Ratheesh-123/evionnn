@@ -38,23 +38,23 @@ export default function StatementSection() {
         {/* Mobile View (< md): Dedicated 9:16 Portrait Fast Charging Station Shot */}
         <div className="block md:hidden absolute inset-0">
           <Image
-            src="/images/hero-slide-mobile.jpg"
-            alt="Evion Fast EV Charging Network Mobile Portrait"
+            src="/images/statement-station-charger-mobile-v2.jpg"
+            alt="Evion Fast EV Charging Network in Kerala - Tata Nexon EV charging at Evion DC fast charger with Kerala coconut palms"
             fill
             priority
             quality={95}
             sizes="100vw"
-            className="object-cover object-bottom brightness-[0.85] contrast-[1.05]"
+            className="object-cover object-bottom brightness-[0.88] contrast-[1.05]"
           />
           {/* Mobile Light Gradient Overlay for Top Text Readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#121212]/65 via-black/25 to-[#121212]/75" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#121212]/55 via-black/20 to-[#121212]/70" />
         </div>
 
-        {/* Desktop & Tablet View (>= md): 16:9 Landscape Evion Hyperbolt Station */}
+        {/* Desktop & Tablet View (>= md): 16:9 Landscape EV Charging Station Hub */}
         <div className="hidden md:block absolute inset-0">
           <Image
-            src="/images/hero-slide-hyperbolt.jpg"
-            alt="Evion Hyperbolt 240kW Fast EV Charging Network in Kerala"
+            src="/images/statement-station-charger-desktop-v2.jpg"
+            alt="Evion Multi-Charger Fast EV Charging Station Superhub in Kerala under modern architectural canopy"
             fill
             priority
             quality={95}

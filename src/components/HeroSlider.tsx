@@ -16,11 +16,11 @@ export default function HeroSlider({ onOpenFranchiseModal, selectedCity }: HeroP
     >
       {/* 1. Clean Background Image (Full Viewport, Zero Navigation Overlays, No White Strips) */}
       <div className="absolute inset-0 z-0">
-        {/* Mobile View: Dedicated 9:16 Portrait Multi-Charger Future-Realistic Station Hero Shot */}
+        {/* Mobile View: Dedicated Portrait EV Fast Charger Station Hero Shot */}
         <div className="block md:hidden absolute inset-0">
           <Image
-            src="/images/evion-charging-station-kerala-hub.jpg"
-            alt="Evion Multi-Charger EV Fast Charging Hub in Kerala - Ultra-fast DC dispensers and solar canopy with electric cars charging amidst Kerala coconut palms"
+            src="/images/hero-station-charger-mobile-v3.jpg"
+            alt="Evion EV Fast Charger Station in Kerala - Sunset golden hour charging under illuminated canopy with coconut palms"
             fill
             priority
             quality={95}
