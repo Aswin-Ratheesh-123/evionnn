@@ -120,6 +120,7 @@ export default function NetworkShowcase({ onOpenCallbackModal }: NetworkShowcase
             <button
               key={tab.id}
               onClick={() => scrollToCard(tab.id)}
+              suppressHydrationWarning
               className={`px-3 py-1 rounded-full text-[11px] font-bold tracking-wide transition-all duration-200 ${
                 activeCardIndex === tab.id
                   ? "bg-[#00d26a] text-black shadow-[0_0_12px_rgba(0,210,106,0.4)] scale-105"
@@ -341,6 +342,7 @@ export default function NetworkShowcase({ onOpenCallbackModal }: NetworkShowcase
                 key={i}
                 aria-label={`Go to slide ${i + 1}`}
                 onClick={() => scrollToCard(i)}
+                suppressHydrationWarning
                 className={`h-1.5 rounded-full transition-all duration-300 ${
                   activeCardIndex === i
                     ? "w-6 bg-[#00d26a]"

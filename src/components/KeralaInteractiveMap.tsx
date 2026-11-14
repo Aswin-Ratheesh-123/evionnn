@@ -220,6 +220,7 @@ export default function KeralaInteractiveMap({
                 const match = KERALA_STATIONS.find((s) => s.city.toLowerCase() === e.target.value.toLowerCase());
                 if (match) setActiveStation(match);
               }}
+              suppressHydrationWarning
               className="px-4 py-2.5 rounded-full border border-neutral-300 bg-[#f7f7f8] text-xs font-semibold text-black focus:outline-none shadow-xs"
             >
               <option value="Kochi">Kochi</option>
@@ -266,6 +267,7 @@ export default function KeralaInteractiveMap({
                 <button
                   key={station.id}
                   onClick={() => setActiveStation(station)}
+                  suppressHydrationWarning
                   style={{ left: `${station.coords.x}%`, top: `${station.coords.y}%` }}
                   className="absolute transform -translate-x-1/2 -translate-y-1/2 group z-20 focus:outline-none"
                 >
@@ -353,6 +355,7 @@ export default function KeralaInteractiveMap({
 
               <button
                 onClick={onOpenCallbackModal}
+                suppressHydrationWarning
                 className="py-3 px-4 rounded-full border border-neutral-300 hover:border-black text-black text-xs font-bold bg-white transition-colors"
               >
                 Host an EV Hub

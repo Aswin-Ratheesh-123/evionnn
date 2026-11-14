@@ -30,6 +30,11 @@ export default function CurvedNavbar({ onOpenCallbackModal }: CurvedNavbarProps)
   const pathname = usePathname();
   const [activeTab, setActiveTab] = useState("home");
   const [isVisible, setIsVisible] = useState(true);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // Sync active tab with current page route
   useEffect(() => {
@@ -44,56 +49,71 @@ export default function CurvedNavbar({ onOpenCallbackModal }: CurvedNavbarProps)
   // - Scroll down -> navbar slides UP into view
   // - Scroll up -> navbar slides DOWN off-screen
   useEffect(() => {
-    let lastY = typeof window !== "undefined" ? (window.pageYOffset || document.documentElement.scrollTop || 0) : 0;
+    let lastY = typeof window !== "undefined" ? window.scrollY : 0;
     let touchStartY = 0;
+    let ticking = false;
 
-    // 1. Mouse Wheel / Trackpad (Immediate instant response)
+    const setVisibility = (visible: boolean) => {
+      setIsVisible((prev) => (prev !== visible ? visible : prev));
+    };
+
+    // 1. Mouse Wheel / Trackpad (RAF-throttled to avoid redundant React renders)
     const handleWheel = (e: WheelEvent) => {
-      // deltaY > 0 -> scrolling down the page -> slide navbar UP (come up)
-      if (e.deltaY > 5) {
-        setIsVisible(true);
-      }
-      // deltaY < 0 -> scrolling up the page -> slide navbar DOWN (go down)
-      else if (e.deltaY < -5) {
-        setIsVisible(false);
+      if (Math.abs(e.deltaY) < 6) return;
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => {
+          if (e.deltaY > 6) {
+            setVisibility(true);
+          } else if (e.deltaY < -6) {
+            setVisibility(false);
+          }
+          ticking = false;
+        });
       }
     };
 
     // 2. Touch Swipes (Mobile and tablet gesture response)
     const handleTouchStart = (e: TouchEvent) => {
-      touchStartY = e.touches[0].clientY;
+      touchStartY = e.touches[0]?.clientY || 0;
     };
 
     const handleTouchMove = (e: TouchEvent) => {
-      const touchY = e.touches[0].clientY;
+      const touchY = e.touches[0]?.clientY || 0;
       const diff = touchStartY - touchY;
-      // Finger swiping UP (scrolling page down) -> come up
-      if (diff > 8) {
-        setIsVisible(true);
-        touchStartY = touchY;
-      }
-      // Finger swiping DOWN (scrolling page up) -> go down
-      else if (diff < -8) {
-        setIsVisible(false);
-        touchStartY = touchY;
+      if (Math.abs(diff) > 12) {
+        if (!ticking) {
+          ticking = true;
+          requestAnimationFrame(() => {
+            if (diff > 12) {
+              setVisibility(true);
+            } else if (diff < -12) {
+              setVisibility(false);
+            }
+            touchStartY = touchY;
+            ticking = false;
+          });
+        }
       }
     };
 
-    // 3. Scroll Events (Universal fallback for momentum, keyboard arrows, scrollbar)
+    // 3. Scroll Events (Universal fallback)
     const handleScroll = () => {
-      const currentY = window.pageYOffset || document.documentElement.scrollTop || window.scrollY || 0;
-      const diff = currentY - lastY;
-
-      if (currentY < 0) return;
-
-      if (diff > 6) {
-        // Scrolling down -> come up
-        setIsVisible(true);
-        lastY = currentY;
-      } else if (diff < -6) {
-        // Scrolling up -> go down
-        setIsVisible(false);
-        lastY = currentY;
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => {
+          const currentY = window.scrollY;
+          const diff = currentY - lastY;
+          if (Math.abs(diff) > 8) {
+            if (diff > 8) {
+              setVisibility(true);
+            } else if (diff < -8) {
+              setVisibility(false);
+            }
+            lastY = currentY;
+          }
+          ticking = false;
+        });
       }
     };
 
@@ -136,19 +156,23 @@ export default function CurvedNavbar({ onOpenCallbackModal }: CurvedNavbarProps)
         window.scrollTo({ top: 0, behavior: "smooth" });
       } else {
         const el = document.getElementById(item.targetId);
-        if (el) el.scrollIntoView({ behavior: "smooth" });
+        if (el) {
+          const targetOffset = el.getBoundingClientRect().top + window.scrollY;
+          window.scrollTo({ top: Math.max(0, targetOffset), behavior: "smooth" });
+        }
       }
     }
   };
 
+  if (!isMounted) return null;
+
   return (
     <nav
       aria-label="Main Navigation"
-      className={`fixed bottom-5 sm:bottom-6 left-1/2 -translate-x-1/2 z-[60] w-[94%] sm:w-auto sm:min-w-[420px] max-w-[450px] select-none transition-all duration-300 ease-out ${
-        isVisible
-          ? "translate-y-0 opacity-100"
-          : "translate-y-44 opacity-0 pointer-events-none"
-      }`}
+      className={`fixed bottom-5 sm:bottom-6 left-1/2 -translate-x-1/2 z-[60] w-[94%] sm:w-auto sm:min-w-[420px] max-w-[450px] select-none transition-all duration-300 ease-out ${isVisible
+        ? "translate-y-0 opacity-100"
+        : "translate-y-44 opacity-0 pointer-events-none"
+        }`}
     >
       {/* Reference Curved Pill Container */}
       <div className="relative bg-white rounded-[32px] shadow-[0_12px_40px_rgba(0,0,0,0.15)] border border-neutral-200/90 px-3 py-2 flex items-center justify-between">
@@ -190,25 +214,24 @@ export default function CurvedNavbar({ onOpenCallbackModal }: CurvedNavbarProps)
             <button
               key={item.id}
               onClick={() => handleTabClick(item)}
+              suppressHydrationWarning
               className="relative flex-1 flex flex-col items-center justify-end py-1 group focus:outline-none z-30"
               aria-label={item.label}
             >
               {/* Inactive Icon Slot (Fades out when active tab bubble slides over) */}
               <div
-                className={`w-6 h-6 flex items-center justify-center mb-0.5 transition-all duration-200 ${
-                  isActive ? "opacity-0 scale-75" : "opacity-100 scale-100 group-hover:scale-110"
-                }`}
+                className={`w-6 h-6 flex items-center justify-center mb-0.5 transition-all duration-200 ${isActive ? "opacity-0 scale-75" : "opacity-100 scale-100 group-hover:scale-110"
+                  }`}
               >
                 <Icon className="w-5 h-5 text-neutral-400 stroke-[1.8] group-hover:text-neutral-700 transition-colors" />
               </div>
 
               {/* Label: Bold dark when active, light gray when inactive */}
               <span
-                className={`text-[11px] tracking-tight transition-all duration-200 ${
-                  isActive
-                    ? "font-bold text-neutral-900 pt-1"
-                    : "font-medium text-neutral-400 group-hover:text-neutral-700"
-                }`}
+                className={`text-[11px] tracking-tight transition-all duration-200 ${isActive
+                  ? "font-bold text-neutral-900 pt-1"
+                  : "font-medium text-neutral-400 group-hover:text-neutral-700"
+                  }`}
               >
                 {item.label}
               </span>

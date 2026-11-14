@@ -43,12 +43,14 @@ export default function CallbackBanner() {
                     placeholder="Enter phone number"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value.replace(/\D/g, ""))}
+                    suppressHydrationWarning
                     className="w-full sm:w-64 pl-12 pr-4 py-3 bg-[#2c2c2e] border border-neutral-700 rounded-full text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-white transition-colors"
                   />
                 </div>
 
                 <button
                   type="submit"
+                  suppressHydrationWarning
                   className="px-6 py-3 rounded-full bg-white text-black hover:bg-neutral-200 font-bold text-xs sm:text-sm whitespace-nowrap transition-transform hover:scale-105 active:scale-95"
                 >
                   Get a callback

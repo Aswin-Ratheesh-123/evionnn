@@ -34,8 +34,32 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth antialiased">
-      <body className="min-h-screen bg-white text-neutral-900 flex flex-col font-sans selection:bg-[#00d26a] selection:text-black">
+    <html lang="en" className="antialiased" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  const strip = () => {
+                    document.querySelectorAll('[fdprocessedid]').forEach(el => el.removeAttribute('fdprocessedid'));
+                  };
+                  strip();
+                  if (typeof MutationObserver !== 'undefined') {
+                    const observer = new MutationObserver(strip);
+                    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['fdprocessedid'], subtree: true });
+                    setTimeout(() => observer.disconnect(), 2500);
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
+      <body
+        className="min-h-screen bg-white text-neutral-900 flex flex-col font-sans selection:bg-[#00d26a] selection:text-black"
+        suppressHydrationWarning
+      >
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>

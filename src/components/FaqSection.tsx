@@ -60,6 +60,7 @@ export default function FaqSection() {
                 <div key={idx} className="py-5 sm:py-6">
                   <button
                     onClick={() => toggle(idx)}
+                    suppressHydrationWarning
                     className="w-full text-left flex items-start justify-between gap-4 group focus:outline-none"
                   >
                     <span className="text-sm sm:text-base font-semibold text-neutral-900 group-hover:text-black transition-colors">

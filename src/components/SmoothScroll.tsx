@@ -18,22 +18,39 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
     let currentY = window.scrollY;
     let animationFrameId: number;
 
-    // Damping factor: 0.085 provides that signature silky, luxurious momentum glide
-    const ease = 0.085;
+    // Damping factor: 0.09 provides an ultra-responsive, silky-smooth momentum glide
+    const ease = 0.09;
+
+    const stopScrollAnimation = () => {
+      if (isRunning) {
+        isRunning = false;
+        cancelAnimationFrame(animationFrameId);
+        currentY = window.scrollY;
+        targetY = window.scrollY;
+      }
+    };
 
     const updateScroll = () => {
       const diff = targetY - currentY;
 
-      // Snap to target and stop loop once close enough
+      // Snap to target and stop loop once close enough (sub-0.5px)
       if (Math.abs(diff) < 0.5) {
         currentY = targetY;
-        window.scrollTo(0, currentY);
+        window.scrollTo({
+          top: Math.round(currentY),
+          left: 0,
+          behavior: "instant" as ScrollBehavior,
+        });
         isRunning = false;
         return;
       }
 
       currentY += diff * ease;
-      window.scrollTo(0, currentY);
+      window.scrollTo({
+        top: Math.round(currentY),
+        left: 0,
+        behavior: "instant" as ScrollBehavior,
+      });
 
       if (isRunning) {
         animationFrameId = requestAnimationFrame(updateScroll);
@@ -41,7 +58,7 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
     };
 
     const handleWheel = (e: WheelEvent) => {
-      // Allow native scrolling inside modals, scrollable menus, or dropdowns
+      // Allow native scrolling inside scrollable modals, menus, or nested containers
       let target = e.target as HTMLElement | null;
       while (target && target !== document.body) {
         const style = window.getComputedStyle(target);
@@ -59,20 +76,23 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
         target = target.parentElement;
       }
 
-      // Detect precision trackpad vs stepped mouse wheel:
-      // Trackpads emit small, continuous float values with deltaMode === 0
-      const isTrackpad = Math.abs(e.deltaY) < 36 && e.deltaMode === 0;
+      // Detect precision trackpads / touchpads vs discrete notched mouse wheels:
+      // Trackpads emit continuous float numbers (e.deltaY % 1 !== 0) with deltaMode === 0.
+      // Notched mouse wheels emit discrete integer steps (deltaMode === 1 lines, or 100/120 increments).
+      const isTrackpad =
+        e.deltaMode === 0 &&
+        (Math.abs(e.deltaY) % 1 !== 0 || Math.abs(e.deltaY) < 32);
+
       if (isTrackpad) {
-        // Let native smooth trackpad physics take over directly
-        targetY = window.scrollY;
-        currentY = window.scrollY;
+        // Let native OS / browser trackpad inertia take over with zero interference
+        stopScrollAnimation();
         return;
       }
 
-      // Stepped mouse wheel on Windows/macOS: smoothly interpolate momentum
+      // Discrete notched mouse wheel: intercept to provide butter-smooth momentum
       e.preventDefault();
 
-      // Ensure target starts from current position if not currently in flight
+      // Ensure target starts from current position if not currently running
       if (!isRunning) {
         currentY = window.scrollY;
         targetY = window.scrollY;
@@ -92,7 +112,7 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
         document.documentElement.scrollHeight - window.innerHeight
       );
 
-      // Multiplier gives responsive distance per notch
+      // Multiplier gives responsive distance per wheel click
       targetY = Math.max(0, Math.min(maxScroll, targetY + delta * 1.15));
 
       if (!isRunning) {
@@ -101,11 +121,25 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
       }
     };
 
-    // Synchronize coordinates if user drags scrollbar or presses PageDown/Up
+    // Synchronize coordinates if user drags scrollbar or page moves externally
     const handleScroll = () => {
-      if (!isRunning) {
+      // If native scroll moved far away from current lerp (e.g. user dragged scrollbar thumb), sync immediately
+      if (Math.abs(window.scrollY - currentY) > 50 && isRunning) {
+        stopScrollAnimation();
+      } else if (!isRunning) {
         targetY = window.scrollY;
         currentY = window.scrollY;
+      }
+    };
+
+    // Immediate cancellation on touch gesture or keyboard scroll
+    const handleTouchStart = () => {
+      stopScrollAnimation();
+    };
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (["ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End", " "].includes(e.key)) {
+        stopScrollAnimation();
       }
     };
 
@@ -136,11 +170,15 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
 
     window.addEventListener("wheel", handleWheel, { passive: false });
     window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("touchstart", handleTouchStart, { passive: true });
+    window.addEventListener("keydown", handleKeyDown, { passive: true });
     document.addEventListener("click", handleAnchorClick);
 
     return () => {
       window.removeEventListener("wheel", handleWheel);
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("keydown", handleKeyDown);
       document.removeEventListener("click", handleAnchorClick);
       cancelAnimationFrame(animationFrameId);
     };
