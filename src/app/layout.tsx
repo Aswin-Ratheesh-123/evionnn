@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "https://evioncharging.com"
+  ),
   title: "Evion Charging | Fast EV Charging Network & Franchise in Kerala",
   description:
     "A day's charge in 10 minutes. Kerala's premier electric vehicle charging station network and turnkey franchise partner.",

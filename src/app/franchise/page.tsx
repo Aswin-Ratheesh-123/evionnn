@@ -358,8 +358,18 @@ export default function FranchisePage() {
         </section>
 
         {/* 5. Minimal Footer */}
-        <footer className="pt-8 pb-12 text-center text-xs text-neutral-500 border-t border-white/[0.08]">
-          <p>© 2026 Evion Power Solutions Pvt. Ltd. • franchise@evion.in</p>
+        <footer className="pt-8 pb-12 text-center text-xs text-neutral-400 border-t border-white/[0.08] space-y-1">
+          <p>© 2026 Evion Power Solutions Pvt. Ltd.</p>
+          <p>
+            Customer Support:{" "}
+            <a href="tel:+916238887611" className="text-[#00d26a] hover:underline">
+              +91 6238-887611
+            </a>{" "}
+            •{" "}
+            <a href="mailto:Info@evioncharging.com" className="text-white hover:underline">
+              Info@evioncharging.com
+            </a>
+          </p>
         </footer>
       </main>
     </div>

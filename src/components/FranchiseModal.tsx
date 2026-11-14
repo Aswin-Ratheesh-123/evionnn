@@ -65,7 +65,7 @@ export default function FranchiseModal({ isOpen, onClose, selectedCity }: Franch
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-[70] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
       <div className="relative w-full max-w-2xl bg-white border border-neutral-200 rounded-3xl shadow-2xl overflow-hidden text-neutral-900">
         {/* Header Bar */}
         <div className="flex items-center justify-between px-6 py-5 border-b border-neutral-200 bg-[#f7f7f8]">
@@ -329,7 +329,7 @@ export default function FranchiseModal({ isOpen, onClose, selectedCity }: Franch
               <div className="p-4 rounded-2xl bg-[#f7f7f8] border border-neutral-200 max-w-sm mx-auto text-xs text-neutral-700 text-left space-y-1.5">
                 <div><strong>Selected Model:</strong> {formData.preferredModel}</div>
                 <div><strong>Property:</strong> {formData.propertyType}</div>
-                <div><strong>Direct Kerala Helpline:</strong> 1800-889-EVION (Mon-Sat 9AM-8PM)</div>
+                <div><strong>Customer Support:</strong> <a href="tel:+916238887611" className="text-[#00d26a] font-semibold hover:underline">+91 6238-887611</a> • <a href="mailto:Info@evioncharging.com" className="hover:underline">Info@evioncharging.com</a></div>
               </div>
 
               <div className="pt-4">

@@ -412,7 +412,9 @@ export default function Navbar({
             </button>
             <div className="flex items-center justify-center space-x-2 text-xs text-neutral-500 font-medium">
               <PhoneCall className="w-3.5 h-3.5 text-neutral-700" />
-              <span>Toll-Free Helpline: 1800-889-EVION</span>
+              <a href="tel:+916238887611" className="hover:text-black transition-colors">
+                Customer Support: +91 6238-887611
+              </a>
             </div>
           </div>
         </div>

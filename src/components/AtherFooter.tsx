@@ -36,8 +36,16 @@ export default function AtherFooter() {
               Evion Power Solutions Pvt. Ltd. Kerala’s premier electric car charging network and turnkey franchise partner.
             </p>
             <div className="text-[11px] space-y-1 text-neutral-300 pt-1">
-              <div>Toll-Free: 1800-889-EVION</div>
-              <div>support@evioncharging.com</div>
+              <div>
+                <a href="tel:+916238887611" className="hover:text-[#00d26a] transition-colors">
+                  Customer Support: +91 6238-887611
+                </a>
+              </div>
+              <div>
+                <a href="mailto:Info@evioncharging.com" className="hover:text-[#00d26a] transition-colors">
+                  Info@evioncharging.com
+                </a>
+              </div>
             </div>
           </div>
 

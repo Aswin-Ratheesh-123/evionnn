@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import HeroSlider from "@/components/HeroSlider";
 import StatementSection from "@/components/StatementSection";
 import NetworkShowcase from "@/components/NetworkShowcase";
+import EvGrowthShowcase from "@/components/EvGrowthShowcase";
 import ParkingEvReady from "@/components/ParkingEvReady";
 import KeralaInteractiveMap from "@/components/KeralaInteractiveMap";
 import CallbackBanner from "@/components/CallbackBanner";
@@ -41,14 +42,20 @@ export default function Home() {
         <NetworkShowcase onOpenCallbackModal={() => setCallbackModalOpen(true)} />
       </div>
 
-      {/* 4. Parking EV Ready Section (Sticky Layer 3: slides up over Network Showcase, then stays pinned & static) */}
+      {/* 4. EV Growth Showcase Section (Sticky Layer 3: slides up over Network Showcase, then stays pinned & static) */}
       <div className="sticky top-0 z-30 min-h-[100dvh] w-full bg-[#121212] rounded-t-[32px] sm:rounded-t-[48px] lg:rounded-t-[56px] border-t border-x border-white/10 overflow-hidden flex flex-col justify-center">
+        {/* Record Investment & Explosive EV Growth */}
+        <EvGrowthShowcase onOpenCallbackModal={() => setCallbackModalOpen(true)} />
+      </div>
+
+      {/* 5. Parking EV Ready Section (Sticky Layer 4: slides up over EV Growth Showcase, then stays pinned & static) */}
+      <div className="sticky top-0 z-40 min-h-[100dvh] w-full bg-[#121212] rounded-t-[32px] sm:rounded-t-[48px] lg:rounded-t-[56px] border-t border-x border-white/10 overflow-hidden flex flex-col justify-center">
         {/* Become a Franchisee */}
         <ParkingEvReady onOpenCallbackModal={() => setCallbackModalOpen(true)} />
       </div>
 
-      {/* 5. Kerala Map & Subsequent Sections (Layer 4: slides up over static Parking EV Ready) */}
-      <div className="relative z-40 bg-[#121212] rounded-t-[32px] sm:rounded-t-[48px] lg:rounded-t-[56px] border-t border-x border-white/10 overflow-hidden">
+      {/* 6. Kerala Map & Subsequent Sections (Layer 5: slides up over static Parking EV Ready) */}
+      <div className="relative z-50 bg-[#121212] rounded-t-[32px] sm:rounded-t-[48px] lg:rounded-t-[56px] border-t border-x border-white/10 overflow-hidden">
         {/* Find an Evion Grid near you (Interactive Kerala Map) */}
         <KeralaInteractiveMap
           selectedCity={selectedCity}

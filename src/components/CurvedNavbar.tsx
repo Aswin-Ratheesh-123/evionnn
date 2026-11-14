@@ -144,7 +144,7 @@ export default function CurvedNavbar({ onOpenCallbackModal }: CurvedNavbarProps)
   return (
     <nav
       aria-label="Main Navigation"
-      className={`fixed bottom-5 sm:bottom-6 left-1/2 -translate-x-1/2 z-50 w-[94%] sm:w-auto sm:min-w-[420px] max-w-[450px] select-none transition-all duration-300 ease-out ${
+      className={`fixed bottom-5 sm:bottom-6 left-1/2 -translate-x-1/2 z-[60] w-[94%] sm:w-auto sm:min-w-[420px] max-w-[450px] select-none transition-all duration-300 ease-out ${
         isVisible
           ? "translate-y-0 opacity-100"
           : "translate-y-44 opacity-0 pointer-events-none"
