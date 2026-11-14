@@ -72,9 +72,20 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
       // Stepped mouse wheel on Windows/macOS: smoothly interpolate momentum
       e.preventDefault();
 
+      // Ensure target starts from current position if not currently in flight
+      if (!isRunning) {
+        currentY = window.scrollY;
+        targetY = window.scrollY;
+      }
+
       let delta = e.deltaY;
       if (e.deltaMode === 1) delta *= 40; // Lines mode
       else if (e.deltaMode === 2) delta *= window.innerHeight; // Pages mode
+
+      // If user quickly reverses scroll direction, immediately align to current position
+      if ((delta > 0 && targetY < currentY) || (delta < 0 && targetY > currentY)) {
+        targetY = currentY;
+      }
 
       const maxScroll = Math.max(
         0,
@@ -86,7 +97,6 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
 
       if (!isRunning) {
         isRunning = true;
-        currentY = window.scrollY;
         animationFrameId = requestAnimationFrame(updateScroll);
       }
     };

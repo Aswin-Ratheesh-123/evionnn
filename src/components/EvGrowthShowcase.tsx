@@ -36,12 +36,18 @@ export default function EvGrowthShowcase({ onOpenCallbackModal }: EvGrowthShowca
   const scrollToCard = (index: number) => {
     setActiveCardIndex(index);
     if (carouselRef.current) {
-      const cards = carouselRef.current.children;
-      if (cards[index]) {
-        (cards[index] as HTMLElement).scrollIntoView({
+      const el = carouselRef.current;
+      const targetCard = el.children[index] as HTMLElement | undefined;
+      if (targetCard) {
+        // Horizontally scroll ONLY the carousel container without hijacking/locking window vertical scroll
+        const containerWidth = el.clientWidth;
+        const cardWidth = targetCard.clientWidth;
+        const cardLeft = targetCard.offsetLeft;
+        const targetScrollLeft = cardLeft - (containerWidth - cardWidth) / 2;
+
+        el.scrollTo({
+          left: Math.max(0, targetScrollLeft),
           behavior: "smooth",
-          block: "nearest",
-          inline: "center",
         });
       }
     }
@@ -138,7 +144,7 @@ export default function EvGrowthShowcase({ onOpenCallbackModal }: EvGrowthShowca
         <div
           ref={carouselRef}
           onScroll={handleCarouselScroll}
-          className="flex md:grid md:grid-cols-2 max-w-5xl mx-auto w-full overflow-x-auto md:overflow-x-visible snap-x snap-mandatory gap-5 sm:gap-8 lg:gap-10 pt-4 sm:pt-10 pb-4 px-2 md:px-0 no-scrollbar touch-pan-x"
+          className="flex md:grid md:grid-cols-2 max-w-5xl mx-auto w-full overflow-x-auto md:overflow-x-visible snap-x snap-mandatory gap-5 sm:gap-8 lg:gap-10 pt-4 sm:pt-10 pb-4 px-2 md:px-0 no-scrollbar touch-auto"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           {/* ========================================================= */}
