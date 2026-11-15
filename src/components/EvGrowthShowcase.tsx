@@ -174,8 +174,8 @@ export default function EvGrowthShowcase({ onOpenCallbackModal }: EvGrowthShowca
             </h2>
           </div>
 
-          {/* Right Header Navigation: Pills & Progress Bar */}
-          <div className="flex flex-col items-center justify-center gap-2.5 w-full md:w-auto">
+          {/* Right Header Navigation: Pills */}
+          <div className="flex flex-col items-center justify-center w-full md:w-auto">
             {/* Step Pills */}
             <div className="inline-flex items-center justify-center gap-1.5 sm:gap-2 p-1 rounded-full bg-white/[0.05] border border-white/10 backdrop-blur-md mx-auto">
               {steps.map((step) => {
@@ -194,16 +194,6 @@ export default function EvGrowthShowcase({ onOpenCallbackModal }: EvGrowthShowca
                   </button>
                 );
               })}
-            </div>
-
-            {/* Micro Progress Bar */}
-            <div className="flex items-center justify-center w-full">
-              <div className="w-24 sm:w-32 h-1 bg-white/10 rounded-full overflow-hidden">
-                <div
-                  className="h-full bg-gradient-to-r from-[#00d26a] to-[#34d399] transition-all duration-150 rounded-full"
-                  style={{ width: `${Math.round(scrollProgress * 100)}%` }}
-                />
-              </div>
             </div>
           </div>
         </div>

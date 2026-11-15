@@ -66,8 +66,8 @@ export default function StatementSection() {
         </div>
       </div>
 
-      {/* 1. Animated Atmospheric Radial Glow (Breathing Ambient Pulse) */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_75%_55%_at_50%_35%,rgba(0,210,106,0.15),transparent)] animate-aura-pulse pointer-events-none z-0" />
+      {/* 1. Static Atmospheric Radial Glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_75%_55%_at_50%_35%,rgba(0,210,106,0.12),transparent)] pointer-events-none z-0" />
 
       {/* Subtle Star/Grid Ambient Overlay */}
       <div className="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:32px_32px] opacity-[0.025] pointer-events-none z-0" />
@@ -81,7 +81,7 @@ export default function StatementSection() {
               : "opacity-0 -translate-y-4 scale-95"
           }`}
         >
-          <span className="w-1.5 h-1.5 rounded-full bg-[#00d26a] animate-pulse" />
+          <span className="w-1.5 h-1.5 rounded-full bg-[#00d26a]" />
           <span>The Evion Mission</span>
           <span className="text-white/30">•</span>
           <span className="text-[#00d26a] font-mono font-bold">2026</span>
