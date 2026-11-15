@@ -55,12 +55,14 @@ export default function NetworkShowcase({ onOpenCallbackModal }: NetworkShowcase
     const p = Math.min(1, Math.max(0, scrolled / animDistance));
     setScrollProgress(p);
 
-    // Active card determination
+    // Discrete active card determination (no halfway resting states - full container only)
     let newIndex = 0;
-    if (p >= 0.33 && p < 0.67) {
-      newIndex = 1;
-    } else if (p >= 0.67) {
+    if (p >= 0.60) {
       newIndex = 2;
+    } else if (p >= 0.25) {
+      newIndex = 1;
+    } else {
+      newIndex = 0;
     }
     setActiveCardIndex(newIndex);
 
@@ -74,14 +76,10 @@ export default function NetworkShowcase({ onOpenCallbackModal }: NetworkShowcase
     const stride = cards[1].offsetLeft - cards[0].offsetLeft;
     const startX = (containerWidth - cardWidth) / 2;
 
-    // Organic cubic easing for each segment so elements linger in center before sliding
-    const easeInOut = (t: number) =>
-      t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+    // Discrete full container snap: snaps cleanly to Card 0, 1, or 2 without halfway resting positions
+    const currentX = startX - newIndex * stride;
 
-    const t = easeInOut(p);
-    const currentX = startX - t * (2 * stride);
-
-    // Direct hardware-accelerated transform without CSS transition interference
+    // Direct hardware-accelerated transform with smooth CSS transition
     trackRef.current.style.transform = `translate3d(${currentX}px, 0, 0)`;
   }, []);
 
@@ -229,20 +227,20 @@ export default function NetworkShowcase({ onOpenCallbackModal }: NetworkShowcase
           <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 sm:w-20 bg-gradient-to-r from-[#121212] to-transparent z-20" />
           <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 sm:w-20 bg-gradient-to-l from-[#121212] to-transparent z-20" />
 
-          {/* Sliding Track Translated Horizontally with Hardware Acceleration */}
+          {/* Sliding Track Translated Horizontally with Hardware Acceleration & Smooth Snapping */}
           <div
             ref={trackRef}
-            className="relative flex items-center gap-5 sm:gap-8 lg:gap-10 w-max will-change-transform"
+            className="relative flex items-center gap-5 sm:gap-8 lg:gap-10 w-max will-change-transform transition-transform duration-500 ease-out"
           >
             {/* ------------------------------------------------------------- */}
             {/* CARD 1: MOBILE APP */}
             {/* ------------------------------------------------------------- */}
             <div
               onClick={() => scrollToCard(0)}
-              className={`w-[85vw] max-w-[340px] sm:w-[380px] lg:w-[420px] shrink-0 relative rounded-3xl bg-neutral-900/95 border p-5 sm:p-7 flex flex-col items-center text-center justify-between min-h-[420px] sm:min-h-[480px] overflow-hidden group cursor-pointer transition-all duration-300 ease-out ${
+              className={`w-[85vw] max-w-[340px] sm:w-[380px] lg:w-[420px] shrink-0 relative rounded-3xl bg-neutral-900/95 border p-5 sm:p-7 flex flex-col items-center text-center justify-between min-h-[420px] sm:min-h-[480px] overflow-hidden group cursor-pointer transition-all duration-500 ease-out ${
                 activeCardIndex === 0
                   ? "border-[#00d26a] ring-2 ring-[#00d26a]/30 shadow-[0_0_50px_rgba(0,210,106,0.25)] scale-[1.02] opacity-100"
-                  : "border-white/10 opacity-55 scale-95 hover:opacity-80 hover:border-white/25"
+                  : "border-white/10 opacity-20 sm:opacity-40 scale-95 hover:opacity-75 hover:border-white/25"
               }`}
             >
               {/* Top Visual: Smartphone Mockup with Evion Green Gradient */}
@@ -329,10 +327,10 @@ export default function NetworkShowcase({ onOpenCallbackModal }: NetworkShowcase
             {/* ------------------------------------------------------------- */}
             <div
               onClick={() => scrollToCard(1)}
-              className={`w-[85vw] max-w-[340px] sm:w-[380px] lg:w-[420px] shrink-0 relative rounded-3xl bg-neutral-900/95 border p-5 sm:p-7 flex flex-col items-center text-center justify-between min-h-[420px] sm:min-h-[480px] overflow-hidden group cursor-pointer transition-all duration-300 ease-out ${
+              className={`w-[85vw] max-w-[340px] sm:w-[380px] lg:w-[420px] shrink-0 relative rounded-3xl bg-neutral-900/95 border p-5 sm:p-7 flex flex-col items-center text-center justify-between min-h-[420px] sm:min-h-[480px] overflow-hidden group cursor-pointer transition-all duration-500 ease-out ${
                 activeCardIndex === 1
                   ? "border-[#00d26a] ring-2 ring-[#00d26a]/30 shadow-[0_0_50px_rgba(0,210,106,0.25)] scale-[1.02] opacity-100"
-                  : "border-white/10 opacity-55 scale-95 hover:opacity-80 hover:border-white/25"
+                  : "border-white/10 opacity-20 sm:opacity-40 scale-95 hover:opacity-75 hover:border-white/25"
               }`}
             >
               {/* Top Visual: AUTO CHARGE Illuminated Badge */}
@@ -383,10 +381,10 @@ export default function NetworkShowcase({ onOpenCallbackModal }: NetworkShowcase
             {/* ------------------------------------------------------------- */}
             <div
               onClick={() => scrollToCard(2)}
-              className={`w-[85vw] max-w-[340px] sm:w-[380px] lg:w-[420px] shrink-0 relative rounded-3xl bg-neutral-900/95 border p-5 sm:p-7 flex flex-col items-center text-center justify-between min-h-[420px] sm:min-h-[480px] overflow-hidden group cursor-pointer transition-all duration-300 ease-out ${
+              className={`w-[85vw] max-w-[340px] sm:w-[380px] lg:w-[420px] shrink-0 relative rounded-3xl bg-neutral-900/95 border p-5 sm:p-7 flex flex-col items-center text-center justify-between min-h-[420px] sm:min-h-[480px] overflow-hidden group cursor-pointer transition-all duration-500 ease-out ${
                 activeCardIndex === 2
                   ? "border-[#00d26a] ring-2 ring-[#00d26a]/30 shadow-[0_0_50px_rgba(0,210,106,0.25)] scale-[1.02] opacity-100"
-                  : "border-white/10 opacity-55 scale-95 hover:opacity-80 hover:border-white/25"
+                  : "border-white/10 opacity-20 sm:opacity-40 scale-95 hover:opacity-75 hover:border-white/25"
               }`}
             >
               {/* Top Visual: RFID Key Fob with Lanyard Cord */}
