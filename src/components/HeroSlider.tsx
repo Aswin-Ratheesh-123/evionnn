@@ -33,7 +33,7 @@ export default function HeroSlider({ onOpenFranchiseModal, selectedCity }: HeroP
         <div className="hidden md:block absolute inset-0">
           <Image
             src="/images/hero-station-desktop.jpg"
-            alt="Evion EV Fast Charging Station Hub in Kerala - Highway charging stop with Tata Nexon EV and MG ZS EV charging under canopy with coconut palms"
+            alt="Evion EV Fast Charging Station Hub in Kerala - Highway charging stop with electric vehicles charging under canopy with coconut palms"
             fill
             priority
             quality={95}
