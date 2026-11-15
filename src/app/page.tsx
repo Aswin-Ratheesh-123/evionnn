@@ -36,20 +36,24 @@ export default function Home() {
         <StatementSection />
       </div>
 
-      {/* 3. Network Showcase Section (Sticky Layer 2: slides up over Statement, then stays pinned & static) */}
-      <div className="sticky top-0 z-20 min-h-[100dvh] w-full bg-[#121212] rounded-t-[32px] sm:rounded-t-[48px] lg:rounded-t-[56px] border-t border-x border-white/10 overflow-hidden flex flex-col justify-center transform-gpu will-change-transform">
-        {/* Charge on the go / The Easiest & Smarter Way to Charge */}
-        <NetworkShowcase onOpenCallbackModal={() => setCallbackModalOpen(true)} />
+      {/* 3. Network Showcase Section (Sticky Layer 2: slides up over Statement, pins, horizontal cards slide from left to right, then Layer 4 overlays it) */}
+      <div id="network-showcase-wrapper" className="relative z-20 w-full h-[300vh]">
+        <div className="sticky top-0 min-h-[100dvh] h-[100dvh] w-full bg-[#121212] rounded-t-[32px] sm:rounded-t-[48px] lg:rounded-t-[56px] border-t border-x border-white/10 overflow-hidden flex flex-col justify-center transform-gpu will-change-transform shadow-[0_-25px_60px_rgba(0,0,0,0.85)]">
+          {/* Charge on the go / The Easiest & Smarter Way to Charge */}
+          <NetworkShowcase onOpenCallbackModal={() => setCallbackModalOpen(true)} />
+        </div>
       </div>
 
-      {/* 4. EV Growth Showcase Section (Sticky Layer 3: slides up over Network Showcase, then stays pinned & static) */}
-      <div className="sticky top-0 z-30 min-h-[100dvh] w-full bg-[#121212] rounded-t-[32px] sm:rounded-t-[48px] lg:rounded-t-[56px] border-t border-x border-white/10 overflow-hidden flex flex-col justify-center transform-gpu will-change-transform">
-        {/* Record Investment & Explosive EV Growth */}
-        <EvGrowthShowcase onOpenCallbackModal={() => setCallbackModalOpen(true)} />
+      {/* 4. EV Growth Showcase Section (Sticky Layer 3: slides up and OVERLAYS Layer 3 after left-to-right cards have finished, then pins & slides its cards) */}
+      <div id="ev-growth-wrapper" className="relative z-30 w-full h-[270vh] -mt-[100vh]">
+        <div className="sticky top-0 min-h-[100dvh] h-[100dvh] w-full bg-[#121212] rounded-t-[32px] sm:rounded-t-[48px] lg:rounded-t-[56px] border-t border-x border-white/10 overflow-hidden flex flex-col justify-center transform-gpu will-change-transform shadow-[0_-25px_60px_rgba(0,0,0,0.95)]">
+          {/* Record Investment & Explosive EV Growth */}
+          <EvGrowthShowcase onOpenCallbackModal={() => setCallbackModalOpen(true)} />
+        </div>
       </div>
 
-      {/* 5. Parking EV Ready Section (Sticky Layer 4: slides up over EV Growth Showcase, then stays pinned & static) */}
-      <div className="sticky top-0 z-40 min-h-[100dvh] w-full bg-[#121212] rounded-t-[32px] sm:rounded-t-[48px] lg:rounded-t-[56px] border-t border-x border-white/10 overflow-hidden flex flex-col justify-center transform-gpu will-change-transform">
+      {/* 5. Parking EV Ready Section (Sticky Layer 4: slides up and OVERLAYS Layer 4 after its cards have finished) */}
+      <div className="sticky top-0 z-40 min-h-[100dvh] w-full bg-[#121212] rounded-t-[32px] sm:rounded-t-[48px] lg:rounded-t-[56px] border-t border-x border-white/10 overflow-hidden flex flex-col justify-center transform-gpu will-change-transform -mt-[100vh] shadow-[0_-25px_60px_rgba(0,0,0,0.95)]">
         {/* Become a Franchisee */}
         <ParkingEvReady onOpenCallbackModal={() => setCallbackModalOpen(true)} />
       </div>

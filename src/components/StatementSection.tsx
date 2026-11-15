@@ -44,10 +44,10 @@ export default function StatementSection() {
             priority
             quality={95}
             sizes="100vw"
-            className="object-cover object-bottom brightness-[0.88] contrast-[1.05]"
+            className="object-cover object-bottom brightness-[0.65] contrast-[1.08]"
           />
-          {/* Mobile Light Gradient Overlay for Top Text Readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#121212]/55 via-black/20 to-[#121212]/70" />
+          {/* Mobile Darker Gradient Overlay for Enhanced Text Contrast */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#121212]/80 via-black/50 to-[#121212]/90" />
         </div>
 
         {/* Desktop & Tablet View (>= md): 16:9 Landscape EV Charging Station Hub */}
@@ -59,10 +59,10 @@ export default function StatementSection() {
             priority
             quality={95}
             sizes="100vw"
-            className="object-cover object-center scale-100 brightness-[0.88] contrast-[1.05] transition-transform duration-1000 ease-out"
+            className="object-cover object-center scale-100 brightness-[0.65] contrast-[1.08] transition-transform duration-1000 ease-out"
           />
-          {/* Subtle Gradient Overlays for Ambient Balance without Darkness */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#121212]/45 via-black/20 to-[#121212]/60" />
+          {/* Desktop Darker Gradient Overlay for Balanced Contrast & Richer Shadows */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#121212]/70 via-black/45 to-[#121212]/85" />
         </div>
       </div>
 
