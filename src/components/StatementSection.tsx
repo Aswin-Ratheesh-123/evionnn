@@ -92,7 +92,7 @@ export default function StatementSection() {
           {/* Line 1: Building India's Most */}
           <span className="block overflow-hidden py-1">
             <span
-              className={`block text-white transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] delay-100 ${
+              className={`block text-white transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-150 ${
                 isInView
                   ? "opacity-100 translate-y-0 blur-0"
                   : "opacity-0 translate-y-full blur-[8px]"
@@ -105,7 +105,7 @@ export default function StatementSection() {
           {/* Line 2: Accessible EV Charging with Turquoise Sweep & Stop */}
           <span className="block overflow-hidden py-1 my-0.5 sm:my-1">
             <span
-              className={`block transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] delay-200 ${
+              className={`block transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-300 ${
                 isInView
                   ? "opacity-100 translate-y-0 blur-0"
                   : "opacity-0 translate-y-full blur-[8px]"
@@ -126,7 +126,7 @@ export default function StatementSection() {
           {/* Line 3: Network */}
           <span className="block overflow-hidden py-1">
             <span
-              className={`block text-white transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] delay-300 ${
+              className={`block text-white transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-[450ms] ${
                 isInView
                   ? "opacity-100 translate-y-0 blur-0"
                   : "opacity-0 translate-y-full blur-[8px]"
@@ -139,7 +139,7 @@ export default function StatementSection() {
 
         {/* 4. Animated Supporting Subline with Optical Rack Focus */}
         <p
-          className={`mt-6 sm:mt-8 text-base sm:text-xl md:text-2xl font-light text-neutral-200 max-w-2xl mx-auto leading-relaxed drop-shadow-[0_2px_14px_rgba(0,0,0,0.8)] transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] delay-[400ms] ${
+          className={`mt-6 sm:mt-8 text-base sm:text-xl md:text-2xl font-light text-neutral-200 max-w-2xl mx-auto leading-relaxed drop-shadow-[0_2px_14px_rgba(0,0,0,0.8)] transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-[650ms] ${
             isInView
               ? "opacity-100 translate-y-0 blur-0"
               : "opacity-0 translate-y-6 blur-[6px]"
@@ -164,9 +164,9 @@ export default function StatementSection() {
         <div className="hidden md:grid md:grid-cols-3 gap-5 sm:gap-6 mt-14 sm:mt-18 w-full max-w-4xl">
           {/* Pillar 1: Technology */}
           <div
-            className={`p-6 sm:p-7 rounded-2xl bg-neutral-950/70 border border-white/15 backdrop-blur-xl text-left transition-all duration-500 ease-out hover:-translate-y-2 hover:border-[#40E0D0]/60 hover:bg-neutral-950/85 hover:shadow-[0_16px_40px_rgba(64, 224, 208,0.22)] shadow-xl group cursor-default ${
+            className={`p-6 sm:p-7 rounded-2xl bg-neutral-950/70 border border-white/15 backdrop-blur-xl text-left transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 hover:border-[#40E0D0]/60 hover:bg-neutral-950/85 hover:shadow-[0_16px_40px_rgba(64, 224, 208,0.22)] shadow-xl group cursor-default ${
               isInView
-                ? "opacity-100 translate-y-0 scale-100 delay-[550ms]"
+                ? "opacity-100 translate-y-0 scale-100 delay-[750ms]"
                 : "opacity-0 translate-y-10 scale-95"
             }`}
           >
@@ -188,9 +188,9 @@ export default function StatementSection() {
 
           {/* Pillar 2: Partnerships */}
           <div
-            className={`p-6 sm:p-7 rounded-2xl bg-neutral-950/70 border border-white/15 backdrop-blur-xl text-left transition-all duration-500 ease-out hover:-translate-y-2 hover:border-[#40E0D0]/60 hover:bg-neutral-950/85 hover:shadow-[0_16px_40px_rgba(64, 224, 208,0.22)] shadow-xl group cursor-default ${
+            className={`p-6 sm:p-7 rounded-2xl bg-neutral-950/70 border border-white/15 backdrop-blur-xl text-left transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 hover:border-[#40E0D0]/60 hover:bg-neutral-950/85 hover:shadow-[0_16px_40px_rgba(64, 224, 208,0.22)] shadow-xl group cursor-default ${
               isInView
-                ? "opacity-100 translate-y-0 scale-100 delay-[700ms]"
+                ? "opacity-100 translate-y-0 scale-100 delay-[900ms]"
                 : "opacity-0 translate-y-10 scale-95"
             }`}
           >
@@ -212,9 +212,9 @@ export default function StatementSection() {
 
           {/* Pillar 3: Strategic Expansion */}
           <div
-            className={`p-6 sm:p-7 rounded-2xl bg-neutral-950/70 border border-white/15 backdrop-blur-xl text-left transition-all duration-500 ease-out hover:-translate-y-2 hover:border-[#40E0D0]/60 hover:bg-neutral-950/85 hover:shadow-[0_16px_40px_rgba(64, 224, 208,0.22)] shadow-xl group cursor-default ${
+            className={`p-6 sm:p-7 rounded-2xl bg-neutral-950/70 border border-white/15 backdrop-blur-xl text-left transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 hover:border-[#40E0D0]/60 hover:bg-neutral-950/85 hover:shadow-[0_16px_40px_rgba(64, 224, 208,0.22)] shadow-xl group cursor-default ${
               isInView
-                ? "opacity-100 translate-y-0 scale-100 delay-[850ms]"
+                ? "opacity-100 translate-y-0 scale-100 delay-[1050ms]"
                 : "opacity-0 translate-y-10 scale-95"
             }`}
           >

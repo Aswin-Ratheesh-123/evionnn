@@ -80,7 +80,7 @@ html {
   background-position: 100% 0;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: greenSweepStop 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards;
+  animation: greenSweepStop 2.4s cubic-bezier(0.16, 1, 0.3, 1) 0.45s forwards;
 }
 
 /* One-Shot Turquoise Sweep & Stop for Light Backgrounds (Sweeps from dark text to vibrant turquoise) */
@@ -95,7 +95,7 @@ html {
   background-position: 100% 0;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: greenSweepStop 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards;
+  animation: greenSweepStop 2.4s cubic-bezier(0.16, 1, 0.3, 1) 0.45s forwards;
 }
 
 /* Atmospheric Ambient Glow Pulsing */
@@ -117,12 +117,12 @@ html {
   animation: pulseAura 7s ease-in-out infinite;
 }
 
-/* Optical Blur-to-Focus Text Animation */
+/* Optical Blur-to-Focus Text Animation (Slower, Luxury Pace) */
 @keyframes textFocusIn {
   0% {
     filter: blur(10px);
     opacity: 0;
-    transform: translateY(18px);
+    transform: translateY(20px);
   }
   100% {
     filter: blur(0px);
@@ -132,13 +132,13 @@ html {
 }
 
 .animate-text-focus {
-  animation: textFocusIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: textFocusIn 1.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .animate-text-focus-delay-1 {
-  animation: textFocusIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+  animation: textFocusIn 1.3s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
 }
 
 .animate-text-focus-delay-2 {
-  animation: textFocusIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+  animation: textFocusIn 1.3s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
 }

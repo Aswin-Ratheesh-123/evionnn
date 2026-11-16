@@ -49,7 +49,7 @@ export default function ParkingEvReady({ onOpenCallbackModal }: ParkingEvReadyPr
             <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight text-neutral-900 leading-[1.1] mb-3">
               <span className="block overflow-hidden py-1">
                 <span
-                  className={`block transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] delay-100 ${
+                  className={`block transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-150 ${
                     isInView ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-full blur-[8px]"
                   }`}
                 >
@@ -58,7 +58,7 @@ export default function ParkingEvReady({ onOpenCallbackModal }: ParkingEvReadyPr
               </span>
               <span className="block overflow-hidden py-1 mt-0.5 sm:mt-1">
                 <span
-                  className={`block transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] delay-200 ${
+                  className={`block transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-300 ${
                     isInView ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-full blur-[8px]"
                   }`}
                 >
@@ -77,7 +77,7 @@ export default function ParkingEvReady({ onOpenCallbackModal }: ParkingEvReadyPr
 
             {/* Subtitle with Lens Rack Focus */}
             <p
-              className={`text-sm sm:text-base lg:text-lg text-neutral-600 font-normal leading-relaxed mb-6 max-w-xl transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] delay-300 ${
+              className={`text-sm sm:text-base lg:text-lg text-neutral-600 font-normal leading-relaxed mb-6 max-w-xl transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-[450ms] ${
                 isInView ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-4 blur-[6px]"
               }`}
             >
@@ -87,7 +87,7 @@ export default function ParkingEvReady({ onOpenCallbackModal }: ParkingEvReadyPr
             {/* Key Investment Metrics Chips (Staggered Cascade Pop-in) */}
             <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4 gap-2.5 sm:gap-3 mb-6 sm:mb-8">
               <div
-                className={`bg-neutral-50 hover:bg-white hover:border-[#40E0D0]/40 rounded-2xl p-3 border border-neutral-100 shadow-xs transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] delay-[350ms] ${
+                className={`bg-neutral-50 hover:bg-white hover:border-[#40E0D0]/40 rounded-2xl p-3 border border-neutral-100 shadow-xs transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] delay-[550ms] ${
                   isInView ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-4 scale-95"
                 }`}
               >
@@ -95,7 +95,7 @@ export default function ParkingEvReady({ onOpenCallbackModal }: ParkingEvReadyPr
                 <span className="text-lg sm:text-xl font-bold text-neutral-900 tracking-tight block mt-0.5">₹24L +</span>
               </div>
               <div
-                className={`bg-neutral-50 hover:bg-white hover:border-[#40E0D0]/40 rounded-2xl p-3 border border-neutral-100 shadow-xs transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] delay-[420ms] ${
+                className={`bg-neutral-50 hover:bg-white hover:border-[#40E0D0]/40 rounded-2xl p-3 border border-neutral-100 shadow-xs transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] delay-[650ms] ${
                   isInView ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-4 scale-95"
                 }`}
               >
@@ -103,7 +103,7 @@ export default function ParkingEvReady({ onOpenCallbackModal }: ParkingEvReadyPr
                 <span className="text-lg sm:text-xl font-bold text-[#008b7e] tracking-tight block mt-0.5">18–24 Mo.</span>
               </div>
               <div
-                className={`bg-neutral-50 hover:bg-white hover:border-[#40E0D0]/40 rounded-2xl p-3 border border-neutral-100 shadow-xs transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] delay-[490ms] ${
+                className={`bg-neutral-50 hover:bg-white hover:border-[#40E0D0]/40 rounded-2xl p-3 border border-neutral-100 shadow-xs transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] delay-[750ms] ${
                   isInView ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-4 scale-95"
                 }`}
               >
@@ -111,7 +111,7 @@ export default function ParkingEvReady({ onOpenCallbackModal }: ParkingEvReadyPr
                 <span className="text-lg sm:text-xl font-bold text-neutral-900 tracking-tight block mt-0.5">550 sq.ft</span>
               </div>
               <div
-                className={`bg-neutral-50 hover:bg-white hover:border-[#40E0D0]/40 rounded-2xl p-3 border border-neutral-100 shadow-xs transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] delay-[560ms] ${
+                className={`bg-neutral-50 hover:bg-white hover:border-[#40E0D0]/40 rounded-2xl p-3 border border-neutral-100 shadow-xs transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] delay-[850ms] ${
                   isInView ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-4 scale-95"
                 }`}
               >
@@ -122,7 +122,7 @@ export default function ParkingEvReady({ onOpenCallbackModal }: ParkingEvReadyPr
 
             {/* CTAs */}
             <div
-              className={`flex flex-wrap items-center gap-3 transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] delay-[640ms] ${
+              className={`flex flex-wrap items-center gap-3 transition-all duration-[1000ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-[950ms] ${
                 isInView ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-6 scale-95"
               }`}
             >

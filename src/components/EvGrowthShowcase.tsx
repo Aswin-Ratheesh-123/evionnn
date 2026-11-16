@@ -151,7 +151,7 @@ export default function EvGrowthShowcase({ onOpenCallbackModal }: EvGrowthShowca
             <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight max-w-2xl leading-[1.15] text-left">
               <span className="block overflow-hidden py-0.5">
                 <span
-                  className={`block text-white/90 transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] delay-100 ${
+                  className={`block text-white/90 transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-150 ${
                     isInView ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-full blur-[6px]"
                   }`}
                 >
@@ -161,7 +161,7 @@ export default function EvGrowthShowcase({ onOpenCallbackModal }: EvGrowthShowca
 
               <span className="block overflow-hidden py-0.5 mt-0.5 sm:mt-1">
                 <span
-                  className={`block transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] delay-200 ${
+                  className={`block transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-300 ${
                     isInView ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-full blur-[6px]"
                   }`}
                 >

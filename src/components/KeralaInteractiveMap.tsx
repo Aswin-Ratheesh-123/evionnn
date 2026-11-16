@@ -167,39 +167,43 @@ export default function KeralaInteractiveMap({
             {/* Staggered Animated Headline */}
             <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-black max-w-2xl leading-[1.14]">
               {/* Line 1: Find an Evion Grid */}
-              <span
-                className={`block text-neutral-900 transition-all duration-700 ease-out delay-100 ${
-                  isInView
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-6"
-                }`}
-              >
-                Find an Evion Grid
+              <span className="block overflow-hidden py-0.5">
+                <span
+                  className={`block text-neutral-900 transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-150 ${
+                    isInView
+                      ? "opacity-100 translate-y-0 blur-0"
+                      : "opacity-0 translate-y-full blur-[6px]"
+                  }`}
+                >
+                  Find an Evion Grid
+                </span>
               </span>
 
               {/* Line 2: near you with Green Sweep & Stop */}
-              <span
-                className={`block mt-1 transition-all duration-700 ease-out delay-200 ${
-                  isInView
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-6"
-                }`}
-              >
+              <span className="block overflow-hidden py-0.5 mt-0.5 sm:mt-1">
                 <span
-                  className={
+                  className={`block transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-300 ${
                     isInView
-                      ? "inline-block animate-green-sweep-dark"
-                      : "text-neutral-900"
-                  }
+                      ? "opacity-100 translate-y-0 blur-0"
+                      : "opacity-0 translate-y-full blur-[6px]"
+                  }`}
                 >
-                  near you
+                  <span
+                    className={
+                      isInView
+                        ? "inline-block animate-green-sweep-dark"
+                        : "text-neutral-900"
+                    }
+                  >
+                    near you
+                  </span>
                 </span>
               </span>
             </h2>
 
             <p
-              className={`text-xs sm:text-sm text-neutral-500 max-w-xl transition-all duration-700 ease-out delay-300 ${
-                isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              className={`text-xs sm:text-sm text-neutral-500 max-w-xl transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-[450ms] ${
+                isInView ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-4 blur-[4px]"
               }`}
             >
               Live charger status across Kerala National Highways &amp; key city commercial centers.
