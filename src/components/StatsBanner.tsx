@@ -7,25 +7,25 @@ export default function StatsBanner() {
       value: "145+",
       label: "Active Charging Guns",
       sublabel: "Across Kerala Highways & Cities",
-      icon: <Zap className="w-4 h-4 text-[#00d26a]" />,
+      icon: <Zap className="w-4 h-4 text-[#40E0D0]" />,
     },
     {
       value: "99.6%",
       label: "Network Uptime",
       sublabel: "24/7 Cloud Monitored via OCPP 2.0",
-      icon: <ShieldCheck className="w-4 h-4 text-[#00d26a]" />,
+      icon: <ShieldCheck className="w-4 h-4 text-[#40E0D0]" />,
     },
     {
       value: "10-15 Min",
       label: "A Day's Charge",
       sublabel: "20% to 80% Fast DC Top-up",
-      icon: <Clock className="w-4 h-4 text-[#00d26a]" />,
+      icon: <Clock className="w-4 h-4 text-[#40E0D0]" />,
     },
     {
       value: "₹2.2 Lakh",
       label: "Avg. Partner Net/Mo",
       sublabel: "High Yield Turnkey Franchise",
-      icon: <Award className="w-4 h-4 text-[#00d26a]" />,
+      icon: <Award className="w-4 h-4 text-[#40E0D0]" />,
     },
   ];
 

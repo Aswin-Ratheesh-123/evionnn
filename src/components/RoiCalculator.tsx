@@ -152,7 +152,7 @@ export default function RoiCalculator({ onOpenModal }: RoiCalculatorProps) {
                   step="1"
                   value={dailyCars}
                   onChange={(e) => setDailyCars(Number(e.target.value))}
-                  className="w-full h-2 bg-neutral-300 rounded-lg appearance-none cursor-pointer accent-[#00d26a]"
+                  className="w-full h-2 bg-neutral-300 rounded-lg appearance-none cursor-pointer accent-[#40E0D0]"
                 />
                 <div className="flex justify-between text-[11px] text-neutral-500 mt-1">
                   <span>8 cars/day</span>
@@ -178,7 +178,7 @@ export default function RoiCalculator({ onOpenModal }: RoiCalculatorProps) {
                   step="1"
                   value={avgKwh}
                   onChange={(e) => setAvgKwh(Number(e.target.value))}
-                  className="w-full h-2 bg-neutral-300 rounded-lg appearance-none cursor-pointer accent-[#00d26a]"
+                  className="w-full h-2 bg-neutral-300 rounded-lg appearance-none cursor-pointer accent-[#40E0D0]"
                 />
                 <div className="flex justify-between text-[11px] text-neutral-500 mt-1">
                   <span>15 kWh</span>
@@ -204,7 +204,7 @@ export default function RoiCalculator({ onOpenModal }: RoiCalculatorProps) {
                   step="1"
                   value={sellingPrice}
                   onChange={(e) => setSellingPrice(Number(e.target.value))}
-                  className="w-full h-2 bg-neutral-300 rounded-lg appearance-none cursor-pointer accent-[#00d26a]"
+                  className="w-full h-2 bg-neutral-300 rounded-lg appearance-none cursor-pointer accent-[#40E0D0]"
                 />
                 <div className="flex justify-between text-[11px] text-neutral-500 mt-1">
                   <span>₹18 / unit</span>
@@ -265,7 +265,7 @@ export default function RoiCalculator({ onOpenModal }: RoiCalculatorProps) {
 
                   <div className="flex items-center justify-between pt-2 border-t border-neutral-200 text-sm font-black text-black">
                     <span>Payback Horizon:</span>
-                    <span className="text-[#00d26a] font-mono">
+                    <span className="text-[#40E0D0] font-mono">
                       ~ {paybackMonths} Months
                     </span>
                   </div>

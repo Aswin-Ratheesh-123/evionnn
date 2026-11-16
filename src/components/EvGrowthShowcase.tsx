@@ -138,7 +138,7 @@ export default function EvGrowthShowcase({ onOpenCallbackModal }: EvGrowthShowca
       className="bg-[#121212] text-white pt-6 sm:pt-10 pb-8 sm:pb-12 px-3 sm:px-6 lg:px-8 select-none relative overflow-hidden flex flex-col justify-between h-full min-h-[100dvh]"
     >
       {/* Ambient Radial Electric Green Aura (Matching Site Theme) */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_35%,rgba(0,210,106,0.09),transparent)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_35%,rgba(64, 224, 208,0.09),transparent)] pointer-events-none" />
 
       <div className="max-w-[1360px] mx-auto w-full relative z-10 flex flex-col justify-between h-full">
         {/* ========================================================================= */}
@@ -147,28 +147,33 @@ export default function EvGrowthShowcase({ onOpenCallbackModal }: EvGrowthShowca
         <div className="pb-3 sm:pb-6 border-b border-white/10 flex flex-col md:flex-row items-start md:items-end justify-between gap-4">
           <div className="text-left w-full md:w-auto">
             {/* Staggered Animated Headline (Strictly Left-Aligned) */}
+            {/* Kinetic Masked Animated Headline with Optical Deblur */}
             <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight max-w-2xl leading-[1.15] text-left">
-              <span
-                className={`block text-white/90 transition-all duration-700 ease-out delay-100 ${
-                  isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-                }`}
-              >
-                Record Investment &amp;
+              <span className="block overflow-hidden py-0.5">
+                <span
+                  className={`block text-white/90 transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] delay-100 ${
+                    isInView ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-full blur-[6px]"
+                  }`}
+                >
+                  Record Investment &amp;
+                </span>
               </span>
 
-              <span
-                className={`block mt-0.5 sm:mt-1 transition-all duration-700 ease-out delay-200 ${
-                  isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-                }`}
-              >
+              <span className="block overflow-hidden py-0.5 mt-0.5 sm:mt-1">
                 <span
-                  className={
-                    isInView
-                      ? "inline-block animate-green-sweep-stop"
-                      : "text-white"
-                  }
+                  className={`block transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] delay-200 ${
+                    isInView ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-full blur-[6px]"
+                  }`}
                 >
-                  Explosive EV Growth.
+                  <span
+                    className={
+                      isInView
+                        ? "inline-block animate-green-sweep-stop"
+                        : "text-white"
+                    }
+                  >
+                    Explosive EV Growth.
+                  </span>
                 </span>
               </span>
             </h2>
@@ -186,7 +191,7 @@ export default function EvGrowthShowcase({ onOpenCallbackModal }: EvGrowthShowca
                     onClick={() => scrollToCard(step.id)}
                     className={`px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-bold tracking-wide transition-all duration-300 cursor-pointer flex items-center gap-1.5 ${
                       isActive
-                        ? "bg-[#00d26a] text-black shadow-[0_0_16px_rgba(0,210,106,0.45)] scale-105"
+                        ? "bg-[#40E0D0] text-black shadow-[0_0_16px_rgba(64, 224, 208,0.45)] scale-105"
                         : "text-neutral-400 hover:text-white hover:bg-white/[0.06]"
                     }`}
                   >
@@ -218,12 +223,12 @@ export default function EvGrowthShowcase({ onOpenCallbackModal }: EvGrowthShowca
               onClick={() => scrollToCard(0)}
               className={`w-[85vw] max-w-[360px] sm:w-[440px] lg:w-[480px] shrink-0 relative rounded-3xl bg-neutral-900/95 border p-6 sm:p-9 flex flex-col justify-between min-h-[420px] sm:min-h-[480px] overflow-hidden group cursor-pointer transition-all duration-500 ease-out ${
                 activeCardIndex === 0
-                  ? "border-[#00d26a] ring-2 ring-[#00d26a]/30 shadow-[0_0_50px_rgba(0,210,106,0.25)] scale-[1.02] opacity-100"
+                  ? "border-[#40E0D0] ring-2 ring-[#40E0D0]/30 shadow-[0_0_50px_rgba(64, 224, 208,0.25)] scale-[1.02] opacity-100"
                   : "border-white/10 opacity-20 sm:opacity-40 scale-95 hover:opacity-75 hover:border-white/25"
               }`}
             >
               {/* Ambient Bottom Green Glow */}
-              <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 w-72 h-36 bg-[radial-gradient(ellipse_at_bottom,rgba(0,210,106,0.3),transparent_70%)] pointer-events-none group-hover:opacity-100 transition-opacity" />
+              <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 w-72 h-36 bg-[radial-gradient(ellipse_at_bottom,rgba(64, 224, 208,0.3),transparent_70%)] pointer-events-none group-hover:opacity-100 transition-opacity" />
 
               {/* Stat Value & Title */}
               <div className="relative z-10">
@@ -231,7 +236,7 @@ export default function EvGrowthShowcase({ onOpenCallbackModal }: EvGrowthShowca
                   <span className="text-4xl sm:text-5xl lg:text-[3.75rem] font-bold text-white leading-none">
                     ₹4,000+
                   </span>
-                  <span className="text-3xl sm:text-4xl lg:text-[2.75rem] font-semibold text-[#00d26a] ml-2 leading-none font-sans">
+                  <span className="text-3xl sm:text-4xl lg:text-[2.75rem] font-semibold text-[#40E0D0] ml-2 leading-none font-sans">
                     cr
                   </span>
                 </div>
@@ -264,18 +269,18 @@ export default function EvGrowthShowcase({ onOpenCallbackModal }: EvGrowthShowca
                     transform="translate(14, 75)"
                     className="group-hover:scale-105 transition-transform duration-500 origin-bottom-left"
                   >
-                    <rect x="0" y="0" width="56" height="8.5" rx="2" fill="#00d26a" />
-                    <rect x="0" y="17" width="46" height="8.5" rx="2" fill="#00d26a" />
-                    <rect x="11" y="0" width="8.5" height="52" rx="1.5" fill="#00d26a" />
+                    <rect x="0" y="0" width="56" height="8.5" rx="2" fill="#40E0D0" />
+                    <rect x="0" y="17" width="46" height="8.5" rx="2" fill="#40E0D0" />
+                    <rect x="11" y="0" width="8.5" height="52" rx="1.5" fill="#40E0D0" />
                     <path
                       d="M 11 0 L 11 39 C 29 39 39 29 39 19.5 C 39 9 29 0 11 0 Z"
                       fill="none"
-                      stroke="#00d26a"
+                      stroke="#40E0D0"
                       strokeWidth="8.5"
                     />
                     <path
                       d="M 21 34 L 54 86"
-                      stroke="#00d26a"
+                      stroke="#40E0D0"
                       strokeWidth="9.5"
                       strokeLinecap="round"
                     />
@@ -284,22 +289,22 @@ export default function EvGrowthShowcase({ onOpenCallbackModal }: EvGrowthShowca
                   {/* Rising Zigzag Arrow */}
                   <path
                     d="M 52 175 L 90 142 L 130 172 L 182 122 L 225 155 L 325 45"
-                    stroke="#00d26a"
+                    stroke="#40E0D0"
                     strokeWidth="7"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="group-hover:stroke-[#00ff88] transition-colors duration-300 drop-shadow-[0_0_12px_rgba(0,210,106,0.35)]"
+                    className="group-hover:stroke-[#5eead4] transition-colors duration-300 drop-shadow-[0_0_12px_rgba(64, 224, 208,0.35)]"
                   />
 
                   {/* Arrowhead pointing Up-Right */}
                   <path
                     d="M 282 43 L 332 38 L 327 88"
-                    stroke="#00d26a"
+                    stroke="#40E0D0"
                     strokeWidth="7"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     fill="none"
-                    className="group-hover:stroke-[#00ff88] transition-colors duration-300 drop-shadow-[0_0_12px_rgba(0,210,106,0.35)]"
+                    className="group-hover:stroke-[#5eead4] transition-colors duration-300 drop-shadow-[0_0_12px_rgba(64, 224, 208,0.35)]"
                   />
                 </svg>
               </div>
@@ -312,12 +317,12 @@ export default function EvGrowthShowcase({ onOpenCallbackModal }: EvGrowthShowca
               onClick={() => scrollToCard(1)}
               className={`w-[85vw] max-w-[360px] sm:w-[440px] lg:w-[480px] shrink-0 relative rounded-3xl bg-neutral-900/95 border p-6 sm:p-9 flex flex-col justify-between min-h-[420px] sm:min-h-[480px] overflow-hidden group cursor-pointer transition-all duration-500 ease-out ${
                 activeCardIndex === 1
-                  ? "border-[#00d26a] ring-2 ring-[#00d26a]/30 shadow-[0_0_50px_rgba(0,210,106,0.25)] scale-[1.02] opacity-100"
+                  ? "border-[#40E0D0] ring-2 ring-[#40E0D0]/30 shadow-[0_0_50px_rgba(64, 224, 208,0.25)] scale-[1.02] opacity-100"
                   : "border-white/10 opacity-20 sm:opacity-40 scale-95 hover:opacity-75 hover:border-white/25"
               }`}
             >
               {/* Ambient Bottom Green Glow */}
-              <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 w-72 h-36 bg-[radial-gradient(ellipse_at_bottom,rgba(0,210,106,0.3),transparent_70%)] pointer-events-none group-hover:opacity-100 transition-opacity" />
+              <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 w-72 h-36 bg-[radial-gradient(ellipse_at_bottom,rgba(64, 224, 208,0.3),transparent_70%)] pointer-events-none group-hover:opacity-100 transition-opacity" />
 
               {/* Stat Value & Title */}
               <div className="relative z-10">
@@ -325,7 +330,7 @@ export default function EvGrowthShowcase({ onOpenCallbackModal }: EvGrowthShowca
                   <span className="text-4xl sm:text-5xl lg:text-[3.75rem] font-bold text-white leading-none">
                     17.1%
                   </span>
-                  <span className="text-3xl sm:text-4xl lg:text-[3rem] font-bold text-[#00d26a] ml-3 leading-none font-sans">
+                  <span className="text-3xl sm:text-4xl lg:text-[3rem] font-bold text-[#40E0D0] ml-3 leading-none font-sans">
                     YoY
                   </span>
                 </div>
@@ -356,10 +361,10 @@ export default function EvGrowthShowcase({ onOpenCallbackModal }: EvGrowthShowca
                 >
                   <defs>
                     <linearGradient id="evionGreenGradient" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#00d26a" stopOpacity="0.55" />
-                      <stop offset="45%" stopColor="#00d26a" stopOpacity="0.25" />
-                      <stop offset="90%" stopColor="#00d26a" stopOpacity="0.05" />
-                      <stop offset="100%" stopColor="#00d26a" stopOpacity="0.0" />
+                      <stop offset="0%" stopColor="#40E0D0" stopOpacity="0.55" />
+                      <stop offset="45%" stopColor="#40E0D0" stopOpacity="0.25" />
+                      <stop offset="90%" stopColor="#40E0D0" stopOpacity="0.05" />
+                      <stop offset="100%" stopColor="#40E0D0" stopOpacity="0.0" />
                     </linearGradient>
                   </defs>
 
@@ -373,11 +378,11 @@ export default function EvGrowthShowcase({ onOpenCallbackModal }: EvGrowthShowca
                   {/* Top Polyline Boundary */}
                   <path
                     d="M 0 95 L 45 135 L 95 34 L 142 120 L 188 88 L 235 145 L 288 102 L 350 16 L 380 0"
-                    stroke="#00d26a"
+                    stroke="#40E0D0"
                     strokeWidth="2.8"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="group-hover:stroke-[#00ff88] transition-colors duration-300 drop-shadow-[0_0_8px_rgba(0,210,106,0.35)]"
+                    className="group-hover:stroke-[#5eead4] transition-colors duration-300 drop-shadow-[0_0_8px_rgba(64, 224, 208,0.35)]"
                   />
 
                   {/* Data Point Dots */}
@@ -395,7 +400,7 @@ export default function EvGrowthShowcase({ onOpenCallbackModal }: EvGrowthShowca
                         cx={cx}
                         cy={cy}
                         r="4.5"
-                        fill="#00d26a"
+                        fill="#40E0D0"
                         className="cursor-pointer"
                       />
                       <circle
@@ -417,7 +422,7 @@ export default function EvGrowthShowcase({ onOpenCallbackModal }: EvGrowthShowca
         {/* ========================================================================= */}
         <div className="pt-3 border-t border-white/10 flex items-center justify-between text-xs text-neutral-400">
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#00d26a]" />
+            <span className="w-2 h-2 rounded-full bg-[#40E0D0]" />
             <span className="font-semibold text-white">
               {activeCardIndex === 0 && "Central Subsidy → ₹4,000+ Cr Dedicated EV Infra Allocation"}
               {activeCardIndex === 1 && "Rapid Market Adoption → 17.1% YoY Commercial Fleet & Passenger Expansion"}
@@ -431,7 +436,7 @@ export default function EvGrowthShowcase({ onOpenCallbackModal }: EvGrowthShowca
                 onClick={() => scrollToCard(s.id)}
                 aria-label={`Jump to ${s.label}`}
                 className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                  activeCardIndex === s.id ? "w-8 bg-[#00d26a]" : "w-2 bg-white/20 hover:bg-white/40"
+                  activeCardIndex === s.id ? "w-8 bg-[#40E0D0]" : "w-2 bg-white/20 hover:bg-white/40"
                 }`}
               />
             ))}

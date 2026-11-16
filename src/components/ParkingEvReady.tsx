@@ -45,74 +45,90 @@ export default function ParkingEvReady({ onOpenCallbackModal }: ParkingEvReadyPr
           
           {/* Left Column: Heading, Value Props, Stats, CTAs */}
           <div className="lg:col-span-6 flex flex-col justify-center">
-            {/* Headline with Staggered Entrance & Green Sweep */}
+            {/* Kinetic Masked Headline with Optical Deblur */}
             <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight text-neutral-900 leading-[1.1] mb-3">
-              <span
-                className={`block transition-all duration-700 ease-out delay-100 ${
-                  isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-                }`}
-              >
-                Become a
-              </span>
-              <span
-                className={`block mt-1 transition-all duration-700 ease-out delay-200 ${
-                  isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-                }`}
-              >
+              <span className="block overflow-hidden py-1">
                 <span
-                  className={
-                    isInView
-                      ? "inline-block animate-green-sweep-dark"
-                      : "text-neutral-900"
-                  }
+                  className={`block transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] delay-100 ${
+                    isInView ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-full blur-[8px]"
+                  }`}
                 >
-                  Franchisee
+                  Become a
+                </span>
+              </span>
+              <span className="block overflow-hidden py-1 mt-0.5 sm:mt-1">
+                <span
+                  className={`block transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] delay-200 ${
+                    isInView ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-full blur-[8px]"
+                  }`}
+                >
+                  <span
+                    className={
+                      isInView
+                        ? "inline-block animate-green-sweep-dark"
+                        : "text-neutral-900"
+                    }
+                  >
+                    Franchisee
+                  </span>
                 </span>
               </span>
             </h2>
 
-            {/* Subtitle */}
+            {/* Subtitle with Lens Rack Focus */}
             <p
-              className={`text-sm sm:text-base lg:text-lg text-neutral-600 font-normal leading-relaxed mb-6 max-w-xl transition-all duration-700 ease-out delay-300 ${
-                isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+              className={`text-sm sm:text-base lg:text-lg text-neutral-600 font-normal leading-relaxed mb-6 max-w-xl transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] delay-300 ${
+                isInView ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-4 blur-[6px]"
               }`}
             >
               Make a smart, future-ready investment with proven passive returns without operational headaches. 100% turnkey execution from KSEB approvals to automated revenue payouts.
             </p>
 
-            {/* Key Investment Metrics Chips (Clean 4-stat grid) */}
-            <div
-              className={`grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4 gap-2.5 sm:gap-3 mb-6 sm:mb-8 transition-all duration-700 ease-out delay-400 ${
-                isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-              }`}
-            >
-              <div className="bg-neutral-50 rounded-2xl p-3 border border-neutral-100 flex flex-col">
+            {/* Key Investment Metrics Chips (Staggered Cascade Pop-in) */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4 gap-2.5 sm:gap-3 mb-6 sm:mb-8">
+              <div
+                className={`bg-neutral-50 hover:bg-white hover:border-[#40E0D0]/40 rounded-2xl p-3 border border-neutral-100 shadow-xs transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] delay-[350ms] ${
+                  isInView ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-4 scale-95"
+                }`}
+              >
                 <span className="text-[11px] text-neutral-500 font-medium">Starting At</span>
-                <span className="text-lg sm:text-xl font-bold text-neutral-900 tracking-tight">₹24L +</span>
+                <span className="text-lg sm:text-xl font-bold text-neutral-900 tracking-tight block mt-0.5">₹24L +</span>
               </div>
-              <div className="bg-neutral-50 rounded-2xl p-3 border border-neutral-100 flex flex-col">
+              <div
+                className={`bg-neutral-50 hover:bg-white hover:border-[#40E0D0]/40 rounded-2xl p-3 border border-neutral-100 shadow-xs transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] delay-[420ms] ${
+                  isInView ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-4 scale-95"
+                }`}
+              >
                 <span className="text-[11px] text-neutral-500 font-medium">Payback</span>
-                <span className="text-lg sm:text-xl font-bold text-[#009e4f] tracking-tight">18–24 Mo.</span>
+                <span className="text-lg sm:text-xl font-bold text-[#008b7e] tracking-tight block mt-0.5">18–24 Mo.</span>
               </div>
-              <div className="bg-neutral-50 rounded-2xl p-3 border border-neutral-100 flex flex-col">
+              <div
+                className={`bg-neutral-50 hover:bg-white hover:border-[#40E0D0]/40 rounded-2xl p-3 border border-neutral-100 shadow-xs transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] delay-[490ms] ${
+                  isInView ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-4 scale-95"
+                }`}
+              >
                 <span className="text-[11px] text-neutral-500 font-medium">Space Needed</span>
-                <span className="text-lg sm:text-xl font-bold text-neutral-900 tracking-tight">550 sq.ft</span>
+                <span className="text-lg sm:text-xl font-bold text-neutral-900 tracking-tight block mt-0.5">550 sq.ft</span>
               </div>
-              <div className="bg-neutral-50 rounded-2xl p-3 border border-neutral-100 flex flex-col">
+              <div
+                className={`bg-neutral-50 hover:bg-white hover:border-[#40E0D0]/40 rounded-2xl p-3 border border-neutral-100 shadow-xs transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] delay-[560ms] ${
+                  isInView ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-4 scale-95"
+                }`}
+              >
                 <span className="text-[11px] text-neutral-500 font-medium">Fast DC Guns</span>
-                <span className="text-lg sm:text-xl font-bold text-neutral-900 tracking-tight">30-120 kW</span>
+                <span className="text-lg sm:text-xl font-bold text-neutral-900 tracking-tight block mt-0.5">30-120 kW</span>
               </div>
             </div>
 
             {/* CTAs */}
             <div
-              className={`flex flex-wrap items-center gap-3 transition-all duration-700 ease-out delay-500 ${
-                isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+              className={`flex flex-wrap items-center gap-3 transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] delay-[640ms] ${
+                isInView ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-6 scale-95"
               }`}
             >
               <Link
                 href="/franchise"
-                className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-full bg-[#00d26a] hover:bg-[#00bc5e] text-black font-bold text-sm sm:text-base transition-all duration-200 hover:scale-[1.02] active:scale-95 shadow-md shadow-emerald-500/15"
+                className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-full bg-[#40E0D0] hover:bg-[#30d0c0] text-black font-bold text-sm sm:text-base transition-all duration-200 hover:scale-[1.02] active:scale-95 shadow-md shadow-emerald-500/15"
               >
                 <span>Apply for Franchise</span>
                 <ArrowRight className="w-4 h-4 stroke-[2.5]" />

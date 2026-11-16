@@ -57,7 +57,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className="min-h-screen bg-white text-neutral-900 flex flex-col font-sans selection:bg-[#00d26a] selection:text-black"
+        className="min-h-screen bg-white text-neutral-900 flex flex-col font-sans selection:bg-[#40E0D0] selection:text-black"
         suppressHydrationWarning
       >
         <SmoothScroll>{children}</SmoothScroll>

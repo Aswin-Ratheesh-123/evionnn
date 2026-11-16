@@ -67,7 +67,7 @@ export default function StatementSection() {
       </div>
 
       {/* 1. Static Atmospheric Radial Glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_75%_55%_at_50%_35%,rgba(0,210,106,0.12),transparent)] pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_75%_55%_at_50%_35%,rgba(64, 224, 208,0.12),transparent)] pointer-events-none z-0" />
 
       {/* Subtle Star/Grid Ambient Overlay */}
       <div className="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:32px_32px] opacity-[0.025] pointer-events-none z-0" />
@@ -81,74 +81,80 @@ export default function StatementSection() {
               : "opacity-0 -translate-y-4 scale-95"
           }`}
         >
-          <span className="w-1.5 h-1.5 rounded-full bg-[#00d26a]" />
+          <span className="w-1.5 h-1.5 rounded-full bg-[#40E0D0]" />
           <span>The Evion Mission</span>
           <span className="text-white/30">•</span>
-          <span className="text-[#00d26a] font-mono font-bold">2026</span>
+          <span className="text-[#40E0D0] font-mono font-bold">2026</span>
         </div>
 
-        {/* 3. Staggered Animated Headline Typography (Crisp & Sharp, Zero Blur) */}
+        {/* 3. Kinetic Masked Headline Typography with Optical Deblur */}
         <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-[4.25rem] font-bold tracking-tight leading-[1.14] sm:leading-[1.1] max-w-4xl text-center select-none drop-shadow-[0_4px_28px_rgba(0,0,0,0.85)]">
           {/* Line 1: Building India's Most */}
-          <span
-            className={`block text-white transition-all duration-700 ease-out delay-100 ${
-              isInView
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-6"
-            }`}
-          >
-            Building India&apos;s Most
+          <span className="block overflow-hidden py-1">
+            <span
+              className={`block text-white transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] delay-100 ${
+                isInView
+                  ? "opacity-100 translate-y-0 blur-0"
+                  : "opacity-0 translate-y-full blur-[8px]"
+              }`}
+            >
+              Building India&apos;s Most
+            </span>
           </span>
 
-          {/* Line 2: Accessible EV Charging with Electric Green Sweep & Stop */}
-          <span
-            className={`block my-1 sm:my-1.5 transition-all duration-700 ease-out delay-200 ${
-              isInView
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-6"
-            }`}
-          >
+          {/* Line 2: Accessible EV Charging with Turquoise Sweep & Stop */}
+          <span className="block overflow-hidden py-1 my-0.5 sm:my-1">
             <span
-              className={
+              className={`block transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] delay-200 ${
                 isInView
-                  ? "inline-block animate-green-sweep-stop"
-                  : "text-white"
-              }
+                  ? "opacity-100 translate-y-0 blur-0"
+                  : "opacity-0 translate-y-full blur-[8px]"
+              }`}
             >
-              Accessible EV Charging
+              <span
+                className={
+                  isInView
+                    ? "inline-block animate-green-sweep-stop"
+                    : "text-white"
+                }
+              >
+                Accessible EV Charging
+              </span>
             </span>
           </span>
 
           {/* Line 3: Network */}
-          <span
-            className={`block text-white transition-all duration-700 ease-out delay-300 ${
-              isInView
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-6"
-            }`}
-          >
-            Network
+          <span className="block overflow-hidden py-1">
+            <span
+              className={`block text-white transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] delay-300 ${
+                isInView
+                  ? "opacity-100 translate-y-0 blur-0"
+                  : "opacity-0 translate-y-full blur-[8px]"
+              }`}
+            >
+              Network
+            </span>
           </span>
         </h2>
 
-        {/* 4. Animated Supporting Subline */}
+        {/* 4. Animated Supporting Subline with Optical Rack Focus */}
         <p
-          className={`mt-6 sm:mt-8 text-base sm:text-xl md:text-2xl font-light text-neutral-200 max-w-2xl mx-auto leading-relaxed drop-shadow-[0_2px_14px_rgba(0,0,0,0.8)] transition-all duration-700 ease-out delay-[400ms] ${
+          className={`mt-6 sm:mt-8 text-base sm:text-xl md:text-2xl font-light text-neutral-200 max-w-2xl mx-auto leading-relaxed drop-shadow-[0_2px_14px_rgba(0,0,0,0.8)] transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] delay-[400ms] ${
             isInView
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-6"
+              ? "opacity-100 translate-y-0 blur-0"
+              : "opacity-0 translate-y-6 blur-[6px]"
           }`}
         >
           Through{" "}
-          <span className="text-white font-medium underline decoration-[#00d26a]/60 underline-offset-4 decoration-2">
+          <span className="text-white font-medium underline decoration-[#40E0D0]/60 underline-offset-4 decoration-2">
             Technology
           </span>
           ,{" "}
-          <span className="text-white font-medium underline decoration-[#00d26a]/60 underline-offset-4 decoration-2">
+          <span className="text-white font-medium underline decoration-[#40E0D0]/60 underline-offset-4 decoration-2">
             Partnerships
           </span>
           , and{" "}
-          <span className="text-white font-medium underline decoration-[#00d26a]/60 underline-offset-4 decoration-2">
+          <span className="text-white font-medium underline decoration-[#40E0D0]/60 underline-offset-4 decoration-2">
             Strategic Expansion
           </span>
           .
@@ -158,14 +164,14 @@ export default function StatementSection() {
         <div className="hidden md:grid md:grid-cols-3 gap-5 sm:gap-6 mt-14 sm:mt-18 w-full max-w-4xl">
           {/* Pillar 1: Technology */}
           <div
-            className={`p-6 sm:p-7 rounded-2xl bg-neutral-950/70 border border-white/15 backdrop-blur-xl text-left transition-all duration-500 ease-out hover:-translate-y-2 hover:border-[#00d26a]/60 hover:bg-neutral-950/85 hover:shadow-[0_16px_40px_rgba(0,210,106,0.22)] shadow-xl group cursor-default ${
+            className={`p-6 sm:p-7 rounded-2xl bg-neutral-950/70 border border-white/15 backdrop-blur-xl text-left transition-all duration-500 ease-out hover:-translate-y-2 hover:border-[#40E0D0]/60 hover:bg-neutral-950/85 hover:shadow-[0_16px_40px_rgba(64, 224, 208,0.22)] shadow-xl group cursor-default ${
               isInView
                 ? "opacity-100 translate-y-0 scale-100 delay-[550ms]"
                 : "opacity-0 translate-y-10 scale-95"
             }`}
           >
-            <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-[#00d26a]/20 group-hover:border-[#00d26a]/50 transition-all duration-300">
-              <Zap className="w-5 h-5 text-[#00d26a] group-hover:scale-110 transition-transform" />
+            <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-[#40E0D0]/20 group-hover:border-[#40E0D0]/50 transition-all duration-300">
+              <Zap className="w-5 h-5 text-[#40E0D0] group-hover:scale-110 transition-transform" />
             </div>
             <div className="flex items-center justify-between mb-1">
               <h3 className="text-sm font-bold text-white tracking-wide group-hover:text-white transition-colors">
@@ -182,14 +188,14 @@ export default function StatementSection() {
 
           {/* Pillar 2: Partnerships */}
           <div
-            className={`p-6 sm:p-7 rounded-2xl bg-neutral-950/70 border border-white/15 backdrop-blur-xl text-left transition-all duration-500 ease-out hover:-translate-y-2 hover:border-[#00d26a]/60 hover:bg-neutral-950/85 hover:shadow-[0_16px_40px_rgba(0,210,106,0.22)] shadow-xl group cursor-default ${
+            className={`p-6 sm:p-7 rounded-2xl bg-neutral-950/70 border border-white/15 backdrop-blur-xl text-left transition-all duration-500 ease-out hover:-translate-y-2 hover:border-[#40E0D0]/60 hover:bg-neutral-950/85 hover:shadow-[0_16px_40px_rgba(64, 224, 208,0.22)] shadow-xl group cursor-default ${
               isInView
                 ? "opacity-100 translate-y-0 scale-100 delay-[700ms]"
                 : "opacity-0 translate-y-10 scale-95"
             }`}
           >
-            <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-[#00d26a]/20 group-hover:border-[#00d26a]/50 transition-all duration-300">
-              <Handshake className="w-5 h-5 text-[#00d26a] group-hover:scale-110 transition-transform" />
+            <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-[#40E0D0]/20 group-hover:border-[#40E0D0]/50 transition-all duration-300">
+              <Handshake className="w-5 h-5 text-[#40E0D0] group-hover:scale-110 transition-transform" />
             </div>
             <div className="flex items-center justify-between mb-1">
               <h3 className="text-sm font-bold text-white tracking-wide group-hover:text-white transition-colors">
@@ -206,14 +212,14 @@ export default function StatementSection() {
 
           {/* Pillar 3: Strategic Expansion */}
           <div
-            className={`p-6 sm:p-7 rounded-2xl bg-neutral-950/70 border border-white/15 backdrop-blur-xl text-left transition-all duration-500 ease-out hover:-translate-y-2 hover:border-[#00d26a]/60 hover:bg-neutral-950/85 hover:shadow-[0_16px_40px_rgba(0,210,106,0.22)] shadow-xl group cursor-default ${
+            className={`p-6 sm:p-7 rounded-2xl bg-neutral-950/70 border border-white/15 backdrop-blur-xl text-left transition-all duration-500 ease-out hover:-translate-y-2 hover:border-[#40E0D0]/60 hover:bg-neutral-950/85 hover:shadow-[0_16px_40px_rgba(64, 224, 208,0.22)] shadow-xl group cursor-default ${
               isInView
                 ? "opacity-100 translate-y-0 scale-100 delay-[850ms]"
                 : "opacity-0 translate-y-10 scale-95"
             }`}
           >
-            <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-[#00d26a]/20 group-hover:border-[#00d26a]/50 transition-all duration-300">
-              <TrendingUp className="w-5 h-5 text-[#00d26a] group-hover:scale-110 transition-transform" />
+            <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-[#40E0D0]/20 group-hover:border-[#40E0D0]/50 transition-all duration-300">
+              <TrendingUp className="w-5 h-5 text-[#40E0D0] group-hover:scale-110 transition-transform" />
             </div>
             <div className="flex items-center justify-between mb-1">
               <h3 className="text-sm font-bold text-white tracking-wide group-hover:text-white transition-colors">

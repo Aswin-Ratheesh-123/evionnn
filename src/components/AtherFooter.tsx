@@ -8,7 +8,7 @@ export default function AtherFooter() {
       <div className="bg-[#1c1c1e] border-b border-neutral-800 py-3.5 px-4 sm:px-8">
         <div className="max-w-[1440px] mx-auto flex flex-col sm:flex-row items-center justify-between text-xs text-neutral-300 gap-2">
           <div className="flex items-center space-x-2 font-medium">
-            <span className="w-2 h-2 rounded-full bg-[#00d26a] animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-[#40E0D0] animate-pulse" />
             <span className="text-white font-semibold">Electrifying Kerala</span>
             <span>—</span>
             <span>140+ HyperBolt DC Fast Chargers Live on NH-66 & Cities</span>
@@ -37,12 +37,12 @@ export default function AtherFooter() {
             </p>
             <div className="text-[11px] space-y-1 text-neutral-300 pt-1">
               <div>
-                <a href="tel:+916238887611" className="hover:text-[#00d26a] transition-colors">
+                <a href="tel:+916238887611" className="hover:text-[#40E0D0] transition-colors">
                   Customer Support: +91 6238-887611
                 </a>
               </div>
               <div>
-                <a href="mailto:Info@evioncharging.com" className="hover:text-[#00d26a] transition-colors">
+                <a href="mailto:Info@evioncharging.com" className="hover:text-[#40E0D0] transition-colors">
                   Info@evioncharging.com
                 </a>
               </div>

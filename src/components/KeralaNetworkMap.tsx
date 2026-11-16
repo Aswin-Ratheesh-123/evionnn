@@ -226,7 +226,7 @@ export default function KeralaNetworkMap({ onOpenModal, selectedCity }: KeralaNe
                   </div>
 
                   <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-[11px] font-bold text-emerald-800 shrink-0">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#00d26a]" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#40E0D0]" />
                     <span>{station.availableGuns}/{station.guns} Available</span>
                   </span>
                 </div>

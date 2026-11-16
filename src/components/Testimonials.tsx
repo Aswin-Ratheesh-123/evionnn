@@ -37,7 +37,7 @@ export default function Testimonials() {
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-14">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-neutral-100 text-neutral-800 text-xs font-bold uppercase tracking-wider mb-4 border border-neutral-200">
-            <Star className="w-3.5 h-3.5 fill-[#00d26a] text-[#00d26a]" />
+            <Star className="w-3.5 h-3.5 fill-[#40E0D0] text-[#40E0D0]" />
             <span>Kerala Partner Stories</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-black mb-4">

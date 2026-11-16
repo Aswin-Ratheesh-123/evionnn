@@ -274,7 +274,7 @@ export default function Navbar({
                 <div className="absolute right-0 mt-3 w-72 rounded-2xl bg-white border border-neutral-200/90 shadow-2xl py-2 z-50 animate-in fade-in slide-in-from-top-2">
                   <div className="px-3.5 py-1.5 text-[10px] font-bold text-neutral-400 uppercase tracking-wider border-b border-neutral-100 flex items-center justify-between">
                     <span>Select Kerala EV Hub</span>
-                    <span className="text-[#00d26a]">Live Status</span>
+                    <span className="text-[#40E0D0]">Live Status</span>
                   </div>
                   <div className="max-h-64 overflow-y-auto py-1">
                     {KERALA_HUBS.map((hub) => {
@@ -294,7 +294,7 @@ export default function Navbar({
                           <div>
                             <div className="font-bold text-black flex items-center gap-1.5">
                               <span>{hub.city}</span>
-                              {isSelected && <Check className="w-3.5 h-3.5 text-[#00d26a]" />}
+                              {isSelected && <Check className="w-3.5 h-3.5 text-[#40E0D0]" />}
                             </div>
                             <div className="text-[10px] text-neutral-400 font-normal">
                               {hub.tag}
@@ -340,7 +340,7 @@ export default function Navbar({
                 Kerala Region
               </span>
               <div className="flex items-center gap-1 text-black text-xs font-bold px-3 py-1 rounded-full bg-neutral-100">
-                <MapPin className="w-3.5 h-3.5 text-[#00d26a]" />
+                <MapPin className="w-3.5 h-3.5 text-[#40E0D0]" />
                 <span>{selectedCity}, Kerala</span>
               </div>
             </div>
@@ -348,14 +348,14 @@ export default function Navbar({
             <nav className="flex flex-col space-y-4 text-base font-bold text-neutral-900 pt-2">
               <button
                 onClick={() => scrollTo("hero")}
-                className="text-left py-1 hover:text-[#00d26a] transition-colors"
+                className="text-left py-1 hover:text-[#40E0D0] transition-colors"
               >
                 Overview & Hero
               </button>
 
               <button
                 onClick={() => scrollTo("network-showcase")}
-                className="text-left py-1 hover:text-[#00d26a] transition-colors flex items-center justify-between"
+                className="text-left py-1 hover:text-[#40E0D0] transition-colors flex items-center justify-between"
               >
                 <span>HyperBolt 240kW</span>
                 <span className="text-[10px] bg-[#f5a623] text-white px-2 py-0.5 rounded-full font-bold">
@@ -365,35 +365,35 @@ export default function Navbar({
 
               <button
                 onClick={() => scrollTo("parking-ready")}
-                className="text-left py-1 hover:text-[#00d26a] transition-colors"
+                className="text-left py-1 hover:text-[#40E0D0] transition-colors"
               >
                 CityCharge 120
               </button>
 
               <button
                 onClick={() => scrollTo("parking-ready")}
-                className="text-left py-1 hover:text-[#00d26a] transition-colors"
+                className="text-left py-1 hover:text-[#40E0D0] transition-colors"
               >
                 Evion Node™
               </button>
 
               <button
                 onClick={() => scrollTo("great-power")}
-                className="text-left py-1 hover:text-[#00d26a] transition-colors"
+                className="text-left py-1 hover:text-[#40E0D0] transition-colors"
               >
                 Franchise Hubs & Host Program
               </button>
 
               <button
                 onClick={() => scrollTo("kerala-map")}
-                className="text-left py-1 hover:text-[#00d26a] transition-colors"
+                className="text-left py-1 hover:text-[#40E0D0] transition-colors"
               >
                 Kerala Live Grid Map
               </button>
 
               <button
                 onClick={() => scrollTo("faq")}
-                className="text-left py-1 hover:text-[#00d26a] transition-colors"
+                className="text-left py-1 hover:text-[#40E0D0] transition-colors"
               >
                 Frequently Asked Questions
               </button>

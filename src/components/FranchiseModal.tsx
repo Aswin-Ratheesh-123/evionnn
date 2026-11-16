@@ -309,7 +309,7 @@ export default function FranchiseModal({ isOpen, onClose, selectedCity }: Franch
             </form>
           ) : (
             <div className="text-center py-8 space-y-5 animate-in zoom-in-95">
-              <div className="w-16 h-16 rounded-full bg-emerald-100 border border-emerald-300 flex items-center justify-center mx-auto text-[#00d26a]">
+              <div className="w-16 h-16 rounded-full bg-emerald-100 border border-emerald-300 flex items-center justify-center mx-auto text-[#40E0D0]">
                 <CheckCircle2 className="w-8 h-8 text-emerald-800" />
               </div>
 
@@ -329,7 +329,7 @@ export default function FranchiseModal({ isOpen, onClose, selectedCity }: Franch
               <div className="p-4 rounded-2xl bg-[#f7f7f8] border border-neutral-200 max-w-sm mx-auto text-xs text-neutral-700 text-left space-y-1.5">
                 <div><strong>Selected Model:</strong> {formData.preferredModel}</div>
                 <div><strong>Property:</strong> {formData.propertyType}</div>
-                <div><strong>Customer Support:</strong> <a href="tel:+916238887611" className="text-[#00d26a] font-semibold hover:underline">+91 6238-887611</a> • <a href="mailto:Info@evioncharging.com" className="hover:underline">Info@evioncharging.com</a></div>
+                <div><strong>Customer Support:</strong> <a href="tel:+916238887611" className="text-[#40E0D0] font-semibold hover:underline">+91 6238-887611</a> • <a href="mailto:Info@evioncharging.com" className="hover:underline">Info@evioncharging.com</a></div>
               </div>
 
               <div className="pt-4">

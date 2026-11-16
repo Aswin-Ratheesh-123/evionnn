@@ -77,7 +77,7 @@ export default function ChargerProducts({ onOpenModal }: ChargerProductsProps) {
         {/* Heading */}
         <div className="text-center max-w-3xl mx-auto mb-14">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white text-neutral-800 text-xs font-bold uppercase tracking-wider mb-4 border border-neutral-200">
-            <Zap className="w-3.5 h-3.5 text-[#00d26a]" />
+            <Zap className="w-3.5 h-3.5 text-[#40E0D0]" />
             <span>Industrial Hardware Lineup</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-black mb-4">
@@ -170,7 +170,7 @@ export default function ChargerProducts({ onOpenModal }: ChargerProductsProps) {
               <div className="space-y-2 pt-1">
                 {chargers[activeCharger].features.map((item, idx) => (
                   <div key={idx} className="flex items-start space-x-2 text-xs text-neutral-700">
-                    <CheckCircle2 className="w-4 h-4 text-[#00d26a] shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-[#40E0D0] shrink-0 mt-0.5" />
                     <span>{item}</span>
                   </div>
                 ))}

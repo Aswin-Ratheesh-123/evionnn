@@ -28,7 +28,7 @@ export default function FloatingCallbackButton({ onOpen }: FloatingCallbackButto
         suppressHydrationWarning
         className="flex items-center space-x-2 px-4 sm:px-5 py-2.5 sm:py-3 rounded-full bg-white text-black font-bold text-xs shadow-2xl border border-neutral-300 hover:border-black hover:bg-neutral-50 transition-all hover:scale-105 active:scale-95 group"
       >
-        <span className="w-2 h-2 rounded-full bg-[#00d26a] animate-pulse" />
+        <span className="w-2 h-2 rounded-full bg-[#40E0D0] animate-pulse" />
         <PhoneCall className="w-3.5 h-3.5 text-neutral-800 group-hover:rotate-12 transition-transform" />
         <span className="tracking-tight">Request a callback</span>
       </button>

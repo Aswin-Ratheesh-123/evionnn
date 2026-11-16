@@ -158,10 +158,10 @@ export default function KeralaInteractiveMap({
                   : "opacity-0 translate-y-4"
               }`}
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-[#00d26a] animate-pulse" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#40E0D0] animate-pulse" />
               <span>Live Kerala Grid</span>
               <span className="text-neutral-300">•</span>
-              <span className="text-[#009e4f] font-bold">140+ Fast Guns</span>
+              <span className="text-[#008b7e] font-bold">140+ Fast Guns</span>
             </div>
 
             {/* Staggered Animated Headline */}
@@ -274,14 +274,14 @@ export default function KeralaInteractiveMap({
                   <div className="relative flex items-center justify-center">
                     <span
                       className={`absolute w-6 h-6 rounded-full transition-transform ${
-                        isSelected ? "bg-[#00d26a] animate-ping opacity-60" : "bg-[#00d26a]/30"
+                        isSelected ? "bg-[#40E0D0] animate-ping opacity-60" : "bg-[#40E0D0]/30"
                       }`}
                     />
                     <div
                       className={`w-4 h-4 rounded-full flex items-center justify-center transition-all ${
                         isSelected
-                          ? "bg-[#00d26a] ring-4 ring-white scale-125"
-                          : "bg-[#00d26a] group-hover:scale-110"
+                          ? "bg-[#40E0D0] ring-4 ring-white scale-125"
+                          : "bg-[#40E0D0] group-hover:scale-110"
                       }`}
                     >
                       <Zap className="w-2.5 h-2.5 text-black fill-current" />
@@ -302,7 +302,7 @@ export default function KeralaInteractiveMap({
 
             {/* Map Legend */}
             <div className="absolute bottom-3 left-3 bg-black/70 backdrop-blur-md px-3 py-1.5 rounded-full text-[10px] text-white flex items-center space-x-2 border border-white/10">
-              <span className="w-2 h-2 rounded-full bg-[#00d26a]" />
+              <span className="w-2 h-2 rounded-full bg-[#40E0D0]" />
               <span>Evion DC Fast Hubs (140+ Guns)</span>
             </div>
           </div>

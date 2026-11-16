@@ -21,13 +21,13 @@ export default function Footer() {
             <div className="space-y-1.5 text-xs text-neutral-800 font-medium">
               <div className="flex items-center space-x-2">
                 <Phone className="w-3.5 h-3.5 text-black" />
-                <a href="tel:+916238887611" className="hover:text-[#00d26a] transition-colors">
+                <a href="tel:+916238887611" className="hover:text-[#40E0D0] transition-colors">
                   Customer Support: +91 6238-887611
                 </a>
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="w-3.5 h-3.5 text-black" />
-                <a href="mailto:Info@evioncharging.com" className="hover:text-[#00d26a] transition-colors">
+                <a href="mailto:Info@evioncharging.com" className="hover:text-[#40E0D0] transition-colors">
                   Info@evioncharging.com
                 </a>
               </div>

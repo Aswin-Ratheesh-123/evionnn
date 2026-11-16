@@ -36,16 +36,16 @@ export default function FranchisePage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0c0c0e] text-white selection:bg-[#00d26a] selection:text-black font-sans">
+    <div className="min-h-screen bg-[#0c0c0e] text-white selection:bg-[#40E0D0] selection:text-black font-sans">
       {/* 1. Header Navigation */}
       <header className="sticky top-0 z-50 bg-[#0c0c0e]/85 backdrop-blur-xl border-b border-white/[0.08] transition-all">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 h-16 flex items-center justify-between gap-4">
           {/* Left: Back Button */}
           <Link
             href="/"
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.05] border border-white/10 hover:border-[#00d26a]/40 hover:bg-white/[0.08] text-neutral-300 hover:text-white text-xs sm:text-sm font-medium transition-all group active:scale-95 shadow-sm"
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.05] border border-white/10 hover:border-[#40E0D0]/40 hover:bg-white/[0.08] text-neutral-300 hover:text-white text-xs sm:text-sm font-medium transition-all group active:scale-95 shadow-sm"
           >
-            <ArrowLeft className="w-4 h-4 text-neutral-400 group-hover:text-[#00d26a] group-hover:-translate-x-0.5 transition-transform" />
+            <ArrowLeft className="w-4 h-4 text-neutral-400 group-hover:text-[#40E0D0] group-hover:-translate-x-0.5 transition-transform" />
             <span className="hidden sm:inline">Back to</span>
             <span>Home</span>
           </Link>
@@ -53,7 +53,7 @@ export default function FranchisePage() {
           {/* Right: Primary Call to Action */}
           <a
             href="#apply"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#00d26a] hover:bg-[#00e575] text-black font-semibold text-xs sm:text-sm transition-all shadow-[0_0_18px_rgba(0,210,106,0.3)] hover:scale-105 active:scale-95"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#40E0D0] hover:bg-[#48ebd8] text-black font-semibold text-xs sm:text-sm transition-all shadow-[0_0_18px_rgba(64, 224, 208,0.3)] hover:scale-105 active:scale-95"
           >
             <span>Apply for Franchise</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -62,13 +62,13 @@ export default function FranchisePage() {
       </header>
 
       <main className="max-w-7xl mx-auto px-4 sm:px-8 py-12 sm:py-16 space-y-16">
-        {/* 2. Hero Section (Simple & Professional) */}
+        {/* 2. Hero Section (Simple & Professional with Optical Focus Animation) */}
         <section className="space-y-4 max-w-3xl">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white leading-tight animate-text-focus">
             Complete EV Charging Solutions Everywhere You Need
           </h1>
 
-          <p className="text-base sm:text-lg text-neutral-400 font-normal leading-relaxed max-w-2xl">
+          <p className="text-base sm:text-lg text-neutral-400 font-normal leading-relaxed max-w-2xl animate-text-focus-delay-1">
             With a comprehensive portfolio and an arterial Kerala fast-charging network, we make EV station ownership profitable, dependable, and easy.
           </p>
         </section>
@@ -84,9 +84,9 @@ export default function FranchisePage() {
           {/* 4-Column Responsive Grid matching reference layout */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {/* Column 1: Investment */}
-            <div className="flex flex-col justify-between p-5 rounded-2xl bg-neutral-900/50 border border-white/[0.08] hover:border-[#00d26a]/40 transition-all group">
+            <div className="flex flex-col justify-between p-5 rounded-2xl bg-neutral-900/50 border border-white/[0.08] hover:border-[#40E0D0]/40 transition-all group">
               <div className="space-y-2.5">
-                <div className="w-9 h-9 rounded-xl bg-[#00d26a]/10 border border-[#00d26a]/20 flex items-center justify-center text-[#00d26a] mb-2">
+                <div className="w-9 h-9 rounded-xl bg-[#40E0D0]/10 border border-[#40E0D0]/20 flex items-center justify-center text-[#40E0D0] mb-2">
                   <TrendingUp className="w-4 h-4" />
                 </div>
                 <h3 className="text-lg font-bold text-white tracking-tight leading-snug">
@@ -98,7 +98,7 @@ export default function FranchisePage() {
               </div>
               <a
                 href="#apply"
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#00d26a] hover:text-[#00e575] mt-5 group-hover:gap-2 transition-all"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#40E0D0] hover:text-[#48ebd8] mt-5 group-hover:gap-2 transition-all"
               >
                 <span>18-24 months payback</span>
                 <span>→</span>
@@ -106,9 +106,9 @@ export default function FranchisePage() {
             </div>
 
             {/* Column 2: Charger Options */}
-            <div className="flex flex-col justify-between p-5 rounded-2xl bg-neutral-900/50 border border-white/[0.08] hover:border-[#00d26a]/40 transition-all group">
+            <div className="flex flex-col justify-between p-5 rounded-2xl bg-neutral-900/50 border border-white/[0.08] hover:border-[#40E0D0]/40 transition-all group">
               <div className="space-y-2.5">
-                <div className="w-9 h-9 rounded-xl bg-[#00d26a]/10 border border-[#00d26a]/20 flex items-center justify-center text-[#00d26a] mb-2">
+                <div className="w-9 h-9 rounded-xl bg-[#40E0D0]/10 border border-[#40E0D0]/20 flex items-center justify-center text-[#40E0D0] mb-2">
                   <Zap className="w-4 h-4" />
                 </div>
                 <h3 className="text-lg font-bold text-white tracking-tight leading-snug">
@@ -120,7 +120,7 @@ export default function FranchisePage() {
               </div>
               <a
                 href="#apply"
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#00d26a] hover:text-[#00e575] mt-5 group-hover:gap-2 transition-all"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#40E0D0] hover:text-[#48ebd8] mt-5 group-hover:gap-2 transition-all"
               >
                 <span>Single / Dual Gun DC</span>
                 <span>→</span>
@@ -128,9 +128,9 @@ export default function FranchisePage() {
             </div>
 
             {/* Column 3: Vehicle Type */}
-            <div className="flex flex-col justify-between p-5 rounded-2xl bg-neutral-900/50 border border-white/[0.08] hover:border-[#00d26a]/40 transition-all group">
+            <div className="flex flex-col justify-between p-5 rounded-2xl bg-neutral-900/50 border border-white/[0.08] hover:border-[#40E0D0]/40 transition-all group">
               <div className="space-y-2.5">
-                <div className="w-9 h-9 rounded-xl bg-[#00d26a]/10 border border-[#00d26a]/20 flex items-center justify-center text-[#00d26a] mb-2">
+                <div className="w-9 h-9 rounded-xl bg-[#40E0D0]/10 border border-[#40E0D0]/20 flex items-center justify-center text-[#40E0D0] mb-2">
                   <Car className="w-4 h-4" />
                 </div>
                 <h3 className="text-lg font-bold text-white tracking-tight leading-snug">
@@ -142,7 +142,7 @@ export default function FranchisePage() {
               </div>
               <a
                 href="#apply"
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#00d26a] hover:text-[#00e575] mt-5 group-hover:gap-2 transition-all"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#40E0D0] hover:text-[#48ebd8] mt-5 group-hover:gap-2 transition-all"
               >
                 <span>Universal CCS2 protocol</span>
                 <span>→</span>
@@ -150,9 +150,9 @@ export default function FranchisePage() {
             </div>
 
             {/* Column 4: Space Needed */}
-            <div className="flex flex-col justify-between p-5 rounded-2xl bg-neutral-900/50 border border-white/[0.08] hover:border-[#00d26a]/40 transition-all group">
+            <div className="flex flex-col justify-between p-5 rounded-2xl bg-neutral-900/50 border border-white/[0.08] hover:border-[#40E0D0]/40 transition-all group">
               <div className="space-y-2.5">
-                <div className="w-9 h-9 rounded-xl bg-[#00d26a]/10 border border-[#00d26a]/20 flex items-center justify-center text-[#00d26a] mb-2">
+                <div className="w-9 h-9 rounded-xl bg-[#40E0D0]/10 border border-[#40E0D0]/20 flex items-center justify-center text-[#40E0D0] mb-2">
                   <Maximize2 className="w-4 h-4" />
                 </div>
                 <h3 className="text-lg font-bold text-white tracking-tight leading-snug">
@@ -164,7 +164,7 @@ export default function FranchisePage() {
               </div>
               <a
                 href="#apply"
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#00d26a] hover:text-[#00e575] mt-5 group-hover:gap-2 transition-all"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#40E0D0] hover:text-[#48ebd8] mt-5 group-hover:gap-2 transition-all"
               >
                 <span>2 car parks footprint</span>
                 <span>→</span>
@@ -172,9 +172,9 @@ export default function FranchisePage() {
             </div>
 
             {/* Column 5: Power Connection */}
-            <div className="flex flex-col justify-between p-5 rounded-2xl bg-neutral-900/50 border border-white/[0.08] hover:border-[#00d26a]/40 transition-all group">
+            <div className="flex flex-col justify-between p-5 rounded-2xl bg-neutral-900/50 border border-white/[0.08] hover:border-[#40E0D0]/40 transition-all group">
               <div className="space-y-2.5">
-                <div className="w-9 h-9 rounded-xl bg-[#00d26a]/10 border border-[#00d26a]/20 flex items-center justify-center text-[#00d26a] mb-2">
+                <div className="w-9 h-9 rounded-xl bg-[#40E0D0]/10 border border-[#40E0D0]/20 flex items-center justify-center text-[#40E0D0] mb-2">
                   <Cpu className="w-4 h-4" />
                 </div>
                 <h3 className="text-lg font-bold text-white tracking-tight leading-snug">
@@ -186,7 +186,7 @@ export default function FranchisePage() {
               </div>
               <a
                 href="#apply"
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#00d26a] hover:text-[#00e575] mt-5 group-hover:gap-2 transition-all"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#40E0D0] hover:text-[#48ebd8] mt-5 group-hover:gap-2 transition-all"
               >
                 <span>Plug-and-play setup</span>
                 <span>→</span>
@@ -194,9 +194,9 @@ export default function FranchisePage() {
             </div>
 
             {/* Column 6: Ideal Locations */}
-            <div className="flex flex-col justify-between p-5 rounded-2xl bg-neutral-900/50 border border-white/[0.08] hover:border-[#00d26a]/40 transition-all group">
+            <div className="flex flex-col justify-between p-5 rounded-2xl bg-neutral-900/50 border border-white/[0.08] hover:border-[#40E0D0]/40 transition-all group">
               <div className="space-y-2.5">
-                <div className="w-9 h-9 rounded-xl bg-[#00d26a]/10 border border-[#00d26a]/20 flex items-center justify-center text-[#00d26a] mb-2">
+                <div className="w-9 h-9 rounded-xl bg-[#40E0D0]/10 border border-[#40E0D0]/20 flex items-center justify-center text-[#40E0D0] mb-2">
                   <MapPin className="w-4 h-4" />
                 </div>
                 <h3 className="text-lg font-bold text-white tracking-tight leading-snug">
@@ -208,7 +208,7 @@ export default function FranchisePage() {
               </div>
               <a
                 href="#apply"
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#00d26a] hover:text-[#00e575] mt-5 group-hover:gap-2 transition-all"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#40E0D0] hover:text-[#48ebd8] mt-5 group-hover:gap-2 transition-all"
               >
                 <span>Prime Kerala locations</span>
                 <span>→</span>
@@ -216,9 +216,9 @@ export default function FranchisePage() {
             </div>
 
             {/* Column 7 & 8: Support Package (Spans 2 columns on desktop) */}
-            <div className="lg:col-span-2 flex flex-col justify-between p-5 rounded-2xl bg-neutral-900/50 border border-white/[0.08] hover:border-[#00d26a]/40 transition-all group">
+            <div className="lg:col-span-2 flex flex-col justify-between p-5 rounded-2xl bg-neutral-900/50 border border-white/[0.08] hover:border-[#40E0D0]/40 transition-all group">
               <div className="space-y-2.5">
-                <div className="w-9 h-9 rounded-xl bg-[#00d26a]/10 border border-[#00d26a]/20 flex items-center justify-center text-[#00d26a] mb-2">
+                <div className="w-9 h-9 rounded-xl bg-[#40E0D0]/10 border border-[#40E0D0]/20 flex items-center justify-center text-[#40E0D0] mb-2">
                   <ShieldCheck className="w-4 h-4" />
                 </div>
                 <h3 className="text-lg font-bold text-white tracking-tight leading-snug">
@@ -230,7 +230,7 @@ export default function FranchisePage() {
               </div>
               <a
                 href="#apply"
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#00d26a] hover:text-[#00e575] mt-5 group-hover:gap-2 transition-all"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#40E0D0] hover:text-[#48ebd8] mt-5 group-hover:gap-2 transition-all"
               >
                 <span>CMS dashboard • 24x7 support • Marketing</span>
                 <span>→</span>
@@ -253,12 +253,12 @@ export default function FranchisePage() {
 
             {isSubmitted ? (
               <div className="text-center py-8 space-y-3">
-                <div className="w-12 h-12 rounded-full bg-[#00d26a]/15 border border-[#00d26a]/30 text-[#00d26a] flex items-center justify-center mx-auto">
+                <div className="w-12 h-12 rounded-full bg-[#40E0D0]/15 border border-[#40E0D0]/30 text-[#40E0D0] flex items-center justify-center mx-auto">
                   <CheckCircle2 className="w-6 h-6" />
                 </div>
                 <h3 className="text-lg font-bold text-white">Inquiry Received</h3>
                 <p className="text-xs sm:text-sm text-neutral-300 max-w-sm mx-auto leading-relaxed">
-                  Thank you, <span className="text-[#00d26a] font-semibold">{formData.name || "Partner"}</span>. Our franchise representative will connect with you at <span className="text-white font-mono">{formData.phone}</span>.
+                  Thank you, <span className="text-[#40E0D0] font-semibold">{formData.name || "Partner"}</span>. Our franchise representative will connect with you at <span className="text-white font-mono">{formData.phone}</span>.
                 </p>
                 <button
                   onClick={() => setIsSubmitted(false)}
@@ -279,7 +279,7 @@ export default function FranchisePage() {
                     placeholder="e.g. Rahul Menon"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-black/50 border border-white/10 text-white placeholder-neutral-500 text-sm focus:outline-none focus:border-[#00d26a] transition-colors"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-black/50 border border-white/10 text-white placeholder-neutral-500 text-sm focus:outline-none focus:border-[#40E0D0] transition-colors"
                   />
                 </div>
 
@@ -293,7 +293,7 @@ export default function FranchisePage() {
                     placeholder="+91 98765 43210"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-black/50 border border-white/10 text-white placeholder-neutral-500 text-sm focus:outline-none focus:border-[#00d26a] transition-colors"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-black/50 border border-white/10 text-white placeholder-neutral-500 text-sm focus:outline-none focus:border-[#40E0D0] transition-colors"
                   />
                 </div>
 
@@ -305,7 +305,7 @@ export default function FranchisePage() {
                     <select
                       value={formData.city}
                       onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-black/50 border border-white/10 text-white text-sm focus:outline-none focus:border-[#00d26a] transition-colors"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-black/50 border border-white/10 text-white text-sm focus:outline-none focus:border-[#40E0D0] transition-colors"
                     >
                       <option value="Kochi">Kochi / Ernakulam</option>
                       <option value="Thiruvananthapuram">Thiruvananthapuram</option>
@@ -327,7 +327,7 @@ export default function FranchisePage() {
                     <select
                       value={formData.propertyType}
                       onChange={(e) => setFormData({ ...formData, propertyType: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-black/50 border border-white/10 text-white text-sm focus:outline-none focus:border-[#00d26a] transition-colors"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-black/50 border border-white/10 text-white text-sm focus:outline-none focus:border-[#40E0D0] transition-colors"
                     >
                       <option value="Highway Land">Highway Frontage</option>
                       <option value="Office Park">Office / Tech Park</option>
@@ -341,7 +341,7 @@ export default function FranchisePage() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-3 px-5 rounded-full bg-[#00d26a] hover:bg-[#00e575] text-black font-semibold text-sm transition-all shadow-[0_0_18px_rgba(0,210,106,0.25)] hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 mt-2"
+                  className="w-full py-3 px-5 rounded-full bg-[#40E0D0] hover:bg-[#48ebd8] text-black font-semibold text-sm transition-all shadow-[0_0_18px_rgba(64, 224, 208,0.25)] hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 mt-2"
                 >
                   {isSubmitting ? (
                     <span>Submitting...</span>
@@ -362,7 +362,7 @@ export default function FranchisePage() {
           <p>© 2026 Evion Power Solutions Pvt. Ltd.</p>
           <p>
             Customer Support:{" "}
-            <a href="tel:+916238887611" className="text-[#00d26a] hover:underline">
+            <a href="tel:+916238887611" className="text-[#40E0D0] hover:underline">
               +91 6238-887611
             </a>{" "}
             •{" "}

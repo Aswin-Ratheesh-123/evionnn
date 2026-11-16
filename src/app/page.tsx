@@ -18,7 +18,7 @@ export default function Home() {
   const [selectedCity, setSelectedCity] = useState("Kochi");
 
   return (
-    <main className="min-h-screen bg-[#121212] text-neutral-900 selection:bg-[#00d26a] selection:text-black">
+    <main className="min-h-screen bg-[#121212] text-neutral-900 selection:bg-[#40E0D0] selection:text-black">
       {/* Reference Curved Bottom Navbar (Positioned at Bottom Center) */}
       <CurvedNavbar onOpenCallbackModal={() => setCallbackModalOpen(true)} />
 
@@ -36,9 +36,9 @@ export default function Home() {
         <StatementSection />
       </div>
 
-      {/* 3. Network Showcase Section (Directly UNDER Statement Section - seamless continuous flow, does NOT overlay it) */}
-      <div id="network-showcase-wrapper" className="relative z-20 w-full h-[220vh] bg-[#121212] border-x border-white/10">
-        <div className="sticky top-0 min-h-[100dvh] h-[100dvh] w-full bg-[#121212] overflow-hidden flex flex-col justify-center transform-gpu will-change-transform">
+      {/* 3. Network Showcase Section (White background showcase - directly UNDER Statement Section) */}
+      <div id="network-showcase-wrapper" className="relative z-20 w-full h-[220vh] bg-white border-x border-neutral-200">
+        <div className="sticky top-0 min-h-[100dvh] h-[100dvh] w-full bg-white overflow-hidden flex flex-col justify-center transform-gpu will-change-transform">
           {/* Charge on the go / The Easiest & Smarter Way to Charge */}
           <NetworkShowcase onOpenCallbackModal={() => setCallbackModalOpen(true)} />
         </div>

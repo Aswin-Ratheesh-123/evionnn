@@ -149,40 +149,44 @@ export default function NetworkShowcase({ onOpenCallbackModal }: NetworkShowcase
     <section
       ref={sectionRef}
       id="network-showcase"
-      className="bg-[#121212] text-white pt-6 sm:pt-10 pb-8 sm:pb-12 px-3 sm:px-6 lg:px-8 select-none relative overflow-hidden flex flex-col justify-between h-full min-h-[100dvh]"
+      className="bg-white text-neutral-900 pt-6 sm:pt-10 pb-8 sm:pb-12 px-3 sm:px-6 lg:px-8 select-none relative overflow-hidden flex flex-col justify-between h-full min-h-[100dvh]"
     >
       {/* Ambient Radial Electric Green Aura */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_35%,rgba(0,210,106,0.1),transparent)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_35%,rgba(64, 224, 208,0.06),transparent)] pointer-events-none" />
 
       <div className="max-w-[1360px] mx-auto w-full relative z-10 flex flex-col justify-between h-full">
         {/* ========================================================================= */}
         {/* 1. TOP HEADER & STEP INDICATOR */}
         {/* ========================================================================= */}
-        <div className="pb-3 sm:pb-6 border-b border-white/10 flex flex-col md:flex-row items-start md:items-end justify-between gap-4">
+        <div className="pb-3 sm:pb-6 border-b border-neutral-200 flex flex-col md:flex-row items-start md:items-end justify-between gap-4">
           <div className="text-left w-full md:w-auto">
-            {/* Staggered Animated Headline (Strictly Left-Aligned) */}
+            {/* Kinetic Masked Animated Headline with Optical Deblur */}
             <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight max-w-2xl leading-[1.15] text-left">
-              <span
-                className={`block text-white/90 transition-all duration-700 ease-out delay-100 ${
-                  isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-                }`}
-              >
-                The Easiest &amp;
+              <span className="block overflow-hidden py-0.5">
+                <span
+                  className={`block text-neutral-900 transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] delay-100 ${
+                    isInView ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-full blur-[6px]"
+                  }`}
+                >
+                  The Easiest &amp;
+                </span>
               </span>
 
-              <span
-                className={`block mt-0.5 sm:mt-1 transition-all duration-700 ease-out delay-200 ${
-                  isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-                }`}
-              >
+              <span className="block overflow-hidden py-0.5 mt-0.5 sm:mt-1">
                 <span
-                  className={
-                    isInView
-                      ? "inline-block animate-green-sweep-stop"
-                      : "text-white"
-                  }
+                  className={`block transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] delay-200 ${
+                    isInView ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-full blur-[6px]"
+                  }`}
                 >
-                  Smarter Way to Charge.
+                  <span
+                    className={
+                      isInView
+                        ? "inline-block animate-green-sweep-dark"
+                        : "text-neutral-900"
+                    }
+                  >
+                    Smarter Way to Charge.
+                  </span>
                 </span>
               </span>
             </h2>
@@ -191,7 +195,7 @@ export default function NetworkShowcase({ onOpenCallbackModal }: NetworkShowcase
           {/* Header Navigation: Pills (Centered) */}
           <div className="flex flex-col items-center justify-center w-full md:w-auto">
             {/* Pills Container (Centered) */}
-            <div className="inline-flex items-center justify-center gap-1.5 sm:gap-2 p-1 rounded-full bg-white/[0.05] border border-white/10 backdrop-blur-md mx-auto">
+            <div className="inline-flex items-center justify-center gap-1.5 sm:gap-2 p-1 rounded-full bg-neutral-100 border border-neutral-200/80 mx-auto">
               {steps.map((step) => {
                 const isActive = activeCardIndex === step.id;
                 return (
@@ -200,8 +204,8 @@ export default function NetworkShowcase({ onOpenCallbackModal }: NetworkShowcase
                     onClick={() => scrollToCard(step.id)}
                     className={`px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-bold tracking-wide transition-all duration-300 cursor-pointer flex items-center gap-1.5 ${
                       isActive
-                        ? "bg-[#00d26a] text-black shadow-[0_0_16px_rgba(0,210,106,0.45)] scale-105"
-                        : "text-neutral-400 hover:text-white hover:bg-white/[0.06]"
+                        ? "bg-[#40E0D0] text-black shadow-sm scale-105"
+                        : "text-neutral-600 hover:text-neutral-900 hover:bg-neutral-200/60"
                     }`}
                   >
                     <span>{step.label}</span>
@@ -216,9 +220,9 @@ export default function NetworkShowcase({ onOpenCallbackModal }: NetworkShowcase
         {/* 2. PINNED HORIZONTAL CAROUSEL WINDOW (SCROLL-DRIVEN LEFT TO RIGHT) */}
         {/* ========================================================================= */}
         <div ref={containerRef} className="relative w-full overflow-hidden my-auto py-2 sm:py-6">
-          {/* Subtle Left & Right Edge Vignette Masks for Cinema Transition */}
-          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 sm:w-20 bg-gradient-to-r from-[#121212] to-transparent z-20" />
-          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 sm:w-20 bg-gradient-to-l from-[#121212] to-transparent z-20" />
+          {/* Subtle Left & Right Edge Vignette Masks for Smooth Fade */}
+          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 sm:w-20 bg-gradient-to-r from-white to-transparent z-20" />
+          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 sm:w-20 bg-gradient-to-l from-white to-transparent z-20" />
 
           {/* Sliding Track Translated Horizontally with Hardware Acceleration & Smooth Snapping */}
           <div
@@ -230,16 +234,16 @@ export default function NetworkShowcase({ onOpenCallbackModal }: NetworkShowcase
             {/* ------------------------------------------------------------- */}
             <div
               onClick={() => scrollToCard(0)}
-              className={`w-[85vw] max-w-[340px] sm:w-[380px] lg:w-[420px] shrink-0 relative rounded-3xl bg-neutral-900/95 border p-5 sm:p-7 flex flex-col items-center text-center justify-between min-h-[420px] sm:min-h-[480px] overflow-hidden group cursor-pointer transition-all duration-500 ease-out ${
+              className={`w-[85vw] max-w-[340px] sm:w-[380px] lg:w-[420px] shrink-0 relative rounded-3xl bg-white border p-5 sm:p-7 flex flex-col items-center text-center justify-between min-h-[420px] sm:min-h-[480px] overflow-hidden group cursor-pointer transition-all duration-500 ease-out shadow-lg ${
                 activeCardIndex === 0
-                  ? "border-[#00d26a] ring-2 ring-[#00d26a]/30 shadow-[0_0_50px_rgba(0,210,106,0.25)] scale-[1.02] opacity-100"
-                  : "border-white/10 opacity-20 sm:opacity-40 scale-95 hover:opacity-75 hover:border-white/25"
+                  ? "border-[#40E0D0] ring-2 ring-[#40E0D0]/30 shadow-2xl scale-[1.02] opacity-100"
+                  : "border-neutral-200 opacity-50 sm:opacity-60 scale-95 hover:opacity-90 hover:border-neutral-300"
               }`}
             >
               {/* Top Visual: Real Clean EV Charging App Interface (Luxora / Tesla Inspired from Reference Image) */}
               <div className="relative w-full h-52 sm:h-64 flex items-center justify-center my-1 sm:my-2">
                 {/* Phone Outer Chassis with Sleek Bezel & Ambient Shadow */}
-                <div className="relative w-[162px] sm:w-[192px] h-[246px] sm:h-[286px] rounded-[32px] sm:rounded-[36px] bg-neutral-950 border-[2.5px] border-neutral-700/80 shadow-[0_20px_50px_rgba(0,0,0,0.9),0_0_25px_rgba(0,210,106,0.15)] p-1.5 flex flex-col justify-between overflow-hidden group-hover:scale-105 transition-transform duration-500">
+                <div className="relative w-[162px] sm:w-[192px] h-[246px] sm:h-[286px] rounded-[32px] sm:rounded-[36px] bg-neutral-950 border-[2.5px] border-neutral-700/80 shadow-[0_20px_50px_rgba(0,0,0,0.9),0_0_25px_rgba(64, 224, 208,0.15)] p-1.5 flex flex-col justify-between overflow-hidden group-hover:scale-105 transition-transform duration-500">
                   {/* Clean App Screen (Static, High-Res Clean Design, No Blinking) */}
                   <div className="relative w-full h-full rounded-[26px] sm:rounded-[30px] bg-[#f4f6f8] text-neutral-900 overflow-hidden flex flex-col justify-between p-2 sm:p-2.5 select-none shadow-inner">
                     
@@ -346,12 +350,12 @@ export default function NetworkShowcase({ onOpenCallbackModal }: NetworkShowcase
                             <path
                               d="M 14 47 C 22 44, 30 44, 36 46 C 30 49, 20 49, 14 47 Z"
                               fill="#ffffff"
-                              stroke="#00d26a"
+                              stroke="#40E0D0"
                               strokeWidth="1.2"
                             />
                             <path
                               d="M 16 46 C 24 44, 32 44, 36 45"
-                              stroke="#00ff88"
+                              stroke="#5eead4"
                               strokeWidth="1.5"
                               strokeLinecap="round"
                             />
@@ -415,9 +419,9 @@ export default function NetworkShowcase({ onOpenCallbackModal }: NetworkShowcase
                             <div className="flex items-center gap-1 my-0.5">
                               {/* 4 Segmented Battery Bars (3 Green, 1 Grey) */}
                               <div className="flex items-center gap-[2px]">
-                                <span className="w-1.5 h-3 rounded-[1px] bg-[#00d26a]" />
-                                <span className="w-1.5 h-3 rounded-[1px] bg-[#00d26a]" />
-                                <span className="w-1.5 h-3 rounded-[1px] bg-[#00d26a]" />
+                                <span className="w-1.5 h-3 rounded-[1px] bg-[#40E0D0]" />
+                                <span className="w-1.5 h-3 rounded-[1px] bg-[#40E0D0]" />
+                                <span className="w-1.5 h-3 rounded-[1px] bg-[#40E0D0]" />
                                 <span className="w-1.5 h-3 rounded-[1px] bg-neutral-200" />
                               </div>
                               <span className="text-[10px] sm:text-[11px] font-black text-neutral-900 font-mono leading-none ml-auto">
@@ -426,7 +430,7 @@ export default function NetworkShowcase({ onOpenCallbackModal }: NetworkShowcase
                             </div>
                             <div className="flex items-center justify-between text-[4.5px] font-medium leading-none">
                               <span className="text-neutral-400">92% 180kw</span>
-                              <span className="text-[#00a852] font-bold">Locate ↗</span>
+                              <span className="text-[#008b7e] font-bold">Locate ↗</span>
                             </div>
                           </div>
 
@@ -438,7 +442,7 @@ export default function NetworkShowcase({ onOpenCallbackModal }: NetworkShowcase
                             </div>
                             <div className="flex items-center justify-between my-0.5">
                               {/* Mint Green Fan Glyph (Clean, Solid, No Blinking) */}
-                              <div className="w-4 h-4 rounded-full bg-[#00d26a]/15 text-[#00a852] flex items-center justify-center text-[8px] font-bold">
+                              <div className="w-4 h-4 rounded-full bg-[#40E0D0]/15 text-[#008b7e] flex items-center justify-center text-[8px] font-bold">
                                 ❄
                               </div>
                               {/* Stepper Pill */}
@@ -448,7 +452,7 @@ export default function NetworkShowcase({ onOpenCallbackModal }: NetworkShowcase
                                 <span>+</span>
                               </div>
                             </div>
-                            <div className="text-[4.5px] text-[#00a852] font-semibold leading-none">
+                            <div className="text-[4.5px] text-[#008b7e] font-semibold leading-none">
                               Cooling
                             </div>
                           </div>
@@ -457,7 +461,7 @@ export default function NetworkShowcase({ onOpenCallbackModal }: NetworkShowcase
                         {/* Charging Port Row */}
                         <div className="w-full bg-white rounded-xl p-1.5 shadow-xs border border-neutral-200/80 flex items-center justify-between mt-1">
                           <div className="flex items-center gap-1.5">
-                            <div className="w-4 h-4 rounded-md bg-[#00d26a]/15 flex items-center justify-center text-[8px] text-[#00a852]">
+                            <div className="w-4 h-4 rounded-md bg-[#40E0D0]/15 flex items-center justify-center text-[8px] text-[#008b7e]">
                               🔌
                             </div>
                             <div className="text-left">
@@ -494,12 +498,12 @@ export default function NetworkShowcase({ onOpenCallbackModal }: NetworkShowcase
                             <path d="M 0 35 Q 60 15 160 45" stroke="#ffffff" strokeWidth="8" />
                             <path d="M 40 0 Q 70 50 120 80" stroke="#ffffff" strokeWidth="6" />
                             {/* Navigation Path */}
-                            <path d="M 25 38 Q 65 24 130 52" stroke="#00d26a" strokeWidth="2.5" strokeDasharray="3 2" />
+                            <path d="M 25 38 Q 65 24 130 52" stroke="#40E0D0" strokeWidth="2.5" strokeDasharray="3 2" />
                             {/* Destination Pin */}
                             <circle cx="130" cy="52" r="5" fill="#ef4444" />
                             <circle cx="130" cy="52" r="2" fill="#ffffff" />
                             {/* Current Vehicle Location */}
-                            <rect x="20" y="32" width="10" height="7" rx="2" fill="#00d26a" />
+                            <rect x="20" y="32" width="10" height="7" rx="2" fill="#40E0D0" />
                           </svg>
                         </div>
 
@@ -507,7 +511,7 @@ export default function NetworkShowcase({ onOpenCallbackModal }: NetworkShowcase
                         <div className="bg-white rounded-xl p-1.5 shadow-xs border border-neutral-200/80">
                           <div className="flex items-center justify-between text-[6.5px] font-bold text-neutral-900 mb-0.5">
                             <span>Boost Charge</span>
-                            <span className="text-[5.5px] text-[#00a852] font-mono">80% • 180kW</span>
+                            <span className="text-[5.5px] text-[#008b7e] font-mono">80% • 180kW</span>
                           </div>
                           <div className="grid grid-cols-2 gap-1 text-[5px] text-neutral-500 mb-1">
                             <div className="bg-neutral-50 p-1 rounded-md">
@@ -521,7 +525,7 @@ export default function NetworkShowcase({ onOpenCallbackModal }: NetworkShowcase
                           </div>
                           <div className="flex items-center justify-between pt-0.5 border-t border-neutral-100">
                             <span className="text-[7px] font-bold text-neutral-900">₹300</span>
-                            <span className="px-2 py-0.5 rounded-full bg-[#00d26a] text-black font-bold text-[5.5px]">
+                            <span className="px-2 py-0.5 rounded-full bg-[#40E0D0] text-black font-bold text-[5.5px]">
                               Direction
                             </span>
                           </div>
@@ -539,7 +543,7 @@ export default function NetworkShowcase({ onOpenCallbackModal }: NetworkShowcase
                         aria-label="Dashboard Screen"
                         className={`w-5 h-5 rounded-full flex items-center justify-center text-[8px] transition-all cursor-pointer ${
                           phoneScreenTab === "dashboard"
-                            ? "bg-[#00d26a] text-white shadow-xs scale-105"
+                            ? "bg-[#40E0D0] text-white shadow-xs scale-105"
                             : "text-neutral-400 hover:text-neutral-700"
                         }`}
                       >
@@ -553,7 +557,7 @@ export default function NetworkShowcase({ onOpenCallbackModal }: NetworkShowcase
                         aria-label="Vehicle Screen"
                         className={`w-5 h-5 rounded-full flex items-center justify-center text-[8px] transition-all cursor-pointer ${
                           phoneScreenTab === "dashboard"
-                            ? "text-[#00a852]"
+                            ? "text-[#008b7e]"
                             : "text-neutral-400 hover:text-neutral-700"
                         }`}
                       >
@@ -567,7 +571,7 @@ export default function NetworkShowcase({ onOpenCallbackModal }: NetworkShowcase
                         aria-label="Map Screen"
                         className={`w-5 h-5 rounded-full flex items-center justify-center text-[8px] transition-all cursor-pointer ${
                           phoneScreenTab === "map"
-                            ? "bg-[#00d26a] text-white shadow-xs scale-105"
+                            ? "bg-[#40E0D0] text-white shadow-xs scale-105"
                             : "text-neutral-400 hover:text-neutral-700"
                         }`}
                       >
@@ -584,10 +588,10 @@ export default function NetworkShowcase({ onOpenCallbackModal }: NetworkShowcase
 
               {/* Middle Content */}
               <div className="my-auto py-2">
-                <h3 className="text-base sm:text-xl font-bold tracking-wider text-white uppercase mb-1.5 sm:mb-2">
+                <h3 className="text-base sm:text-xl font-bold tracking-wider text-neutral-900 uppercase mb-1.5 sm:mb-2">
                   MOBILE APP
                 </h3>
-                <p className="text-xs sm:text-sm text-neutral-300 font-normal leading-relaxed max-w-[260px] mx-auto">
+                <p className="text-xs sm:text-sm text-neutral-600 font-normal leading-relaxed max-w-[260px] mx-auto">
                   Select The Charger Connect Your Vehicle Click Start Charging
                 </p>
               </div>
@@ -595,7 +599,7 @@ export default function NetworkShowcase({ onOpenCallbackModal }: NetworkShowcase
               {/* Bottom Badges: Google Play & App Store */}
               <div className="flex items-center justify-center gap-2 sm:gap-2.5 pt-2 sm:pt-4 w-full">
                 {/* Google Play */}
-                <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-xl bg-black border border-white/15 hover:border-[#00d26a]/50 hover:bg-neutral-950 transition-all">
+                <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-xl bg-black border border-white/15 hover:border-[#40E0D0]/50 hover:bg-neutral-950 transition-all">
                   <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" viewBox="0 0 24 24" fill="none">
                     <path d="M3.609 1.814L13.793 12 3.61 22.186A1.854 1.854 0 0 1 3 20.88V3.12c0-.528.225-.996.609-1.306z" fill="#00E676" />
                     <path d="M17.18 8.613l-3.387 3.387 3.387 3.387 3.82-2.17a1.69 1.69 0 0 0 0-2.434l-3.82-2.17z" fill="#FFD600" />
@@ -613,7 +617,7 @@ export default function NetworkShowcase({ onOpenCallbackModal }: NetworkShowcase
                 </div>
 
                 {/* App Store */}
-                <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-xl bg-black border border-white/15 hover:border-[#00d26a]/50 hover:bg-neutral-950 transition-all">
+                <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-xl bg-black border border-white/15 hover:border-[#40E0D0]/50 hover:bg-neutral-950 transition-all">
                   <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 fill-white" viewBox="0 0 24 24">
                     <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.38c.62-.75 1.04-1.8 0.93-2.85-.9.04-1.99.6-2.63 1.35-.57.65-1.06 1.71-.93 2.73 1 .08 2.02-.48 2.63-1.23z" />
                   </svg>
@@ -634,15 +638,15 @@ export default function NetworkShowcase({ onOpenCallbackModal }: NetworkShowcase
             {/* ------------------------------------------------------------- */}
             <div
               onClick={() => scrollToCard(1)}
-              className={`w-[85vw] max-w-[340px] sm:w-[380px] lg:w-[420px] shrink-0 relative rounded-3xl bg-neutral-900/95 border p-5 sm:p-7 flex flex-col items-center text-center justify-between min-h-[420px] sm:min-h-[480px] overflow-hidden group cursor-pointer transition-all duration-500 ease-out ${
+              className={`w-[85vw] max-w-[340px] sm:w-[380px] lg:w-[420px] shrink-0 relative rounded-3xl bg-white border p-5 sm:p-7 flex flex-col items-center text-center justify-between min-h-[420px] sm:min-h-[480px] overflow-hidden group cursor-pointer transition-all duration-500 ease-out shadow-lg ${
                 activeCardIndex === 1
-                  ? "border-[#00d26a] ring-2 ring-[#00d26a]/30 shadow-[0_0_50px_rgba(0,210,106,0.25)] scale-[1.02] opacity-100"
-                  : "border-white/10 opacity-20 sm:opacity-40 scale-95 hover:opacity-75 hover:border-white/25"
+                  ? "border-[#40E0D0] ring-2 ring-[#40E0D0]/30 shadow-2xl scale-[1.02] opacity-100"
+                  : "border-neutral-200 opacity-50 sm:opacity-60 scale-95 hover:opacity-90 hover:border-neutral-300"
               }`}
             >
               {/* Top Visual: Real-World Vehicle Plug & Charge Photograph */}
               <div className="relative w-full h-52 sm:h-64 flex flex-col items-center justify-center my-1 sm:my-2">
-                <div className="relative w-[260px] sm:w-[310px] h-[190px] sm:h-[225px] rounded-2xl overflow-hidden border border-white/15 shadow-[0_20px_45px_rgba(0,0,0,0.9)] bg-neutral-950 select-none group-hover:scale-105 transition-transform duration-500">
+                <div className="relative w-[260px] sm:w-[310px] h-[190px] sm:h-[225px] rounded-2xl overflow-hidden border border-neutral-200 shadow-md bg-neutral-950 select-none group-hover:scale-105 transition-transform duration-500">
                   <Image
                     src="/images/hero-slide-hyperbolt.jpg"
                     alt="Real EV Connected to Evion Fast Charger with CCS2 Gun"
@@ -650,7 +654,7 @@ export default function NetworkShowcase({ onOpenCallbackModal }: NetworkShowcase
                     className="object-cover object-[62%_55%]"
                   />
                   {/* Dark Vignette Overlay for Readability */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none" />
 
                   {/* Floating Station Specs Overlay */}
                   <div className="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-white">
@@ -662,7 +666,7 @@ export default function NetworkShowcase({ onOpenCallbackModal }: NetworkShowcase
                         Connected • ISO 15118 Autostart
                       </div>
                     </div>
-                    <span className="px-2.5 py-0.5 rounded-full bg-[#00d26a] text-black font-black text-[7px] tracking-wide shrink-0">
+                    <span className="px-2.5 py-0.5 rounded-full bg-[#40E0D0] text-black font-black text-[7px] tracking-wide shrink-0">
                       PLUGGED IN
                     </span>
                   </div>
@@ -671,17 +675,17 @@ export default function NetworkShowcase({ onOpenCallbackModal }: NetworkShowcase
 
               {/* Middle Content */}
               <div className="my-auto py-2">
-                <h3 className="text-base sm:text-xl font-bold tracking-wider text-white uppercase mb-1.5 sm:mb-2">
+                <h3 className="text-base sm:text-xl font-bold tracking-wider text-neutral-900 uppercase mb-1.5 sm:mb-2">
                   JUST – PLUG &amp; CHARGE
                 </h3>
-                <p className="text-xs sm:text-sm text-neutral-300 font-normal leading-relaxed max-w-[260px] mx-auto">
+                <p className="text-xs sm:text-sm text-neutral-600 font-normal leading-relaxed max-w-[260px] mx-auto">
                   Avoid The Hassle Just Start Charging!
                 </p>
               </div>
 
               {/* Bottom Status / Micro Action */}
-              <div className="pt-2 sm:pt-4 flex items-center justify-center gap-2 text-xs sm:text-sm font-semibold text-emerald-400">
-                <CheckCircle2 className="w-4 h-4 text-[#00d26a]" />
+              <div className="pt-2 sm:pt-4 flex items-center justify-center gap-2 text-xs sm:text-sm font-semibold text-[#008b7e]">
+                <CheckCircle2 className="w-4 h-4 text-[#008b7e]" />
                 <span>Ready in 3 seconds upon plug-in</span>
               </div>
             </div>
@@ -691,10 +695,10 @@ export default function NetworkShowcase({ onOpenCallbackModal }: NetworkShowcase
             {/* ------------------------------------------------------------- */}
             <div
               onClick={() => scrollToCard(2)}
-              className={`w-[85vw] max-w-[340px] sm:w-[380px] lg:w-[420px] shrink-0 relative rounded-3xl bg-neutral-900/95 border p-5 sm:p-7 flex flex-col items-center text-center justify-between min-h-[420px] sm:min-h-[480px] overflow-hidden group cursor-pointer transition-all duration-500 ease-out ${
+              className={`w-[85vw] max-w-[340px] sm:w-[380px] lg:w-[420px] shrink-0 relative rounded-3xl bg-white border p-5 sm:p-7 flex flex-col items-center text-center justify-between min-h-[420px] sm:min-h-[480px] overflow-hidden group cursor-pointer transition-all duration-500 ease-out shadow-lg ${
                 activeCardIndex === 2
-                  ? "border-[#00d26a] ring-2 ring-[#00d26a]/30 shadow-[0_0_50px_rgba(0,210,106,0.25)] scale-[1.02] opacity-100"
-                  : "border-white/10 opacity-20 sm:opacity-40 scale-95 hover:opacity-75 hover:border-white/25"
+                  ? "border-[#40E0D0] ring-2 ring-[#40E0D0]/30 shadow-2xl scale-[1.02] opacity-100"
+                  : "border-neutral-200 opacity-50 sm:opacity-60 scale-95 hover:opacity-90 hover:border-neutral-300"
               }`}
             >
               {/* Top Visual: Simple, Minimalist RFID Key (Pebble Fob / Tesla-Style Card) */}
@@ -708,8 +712,8 @@ export default function NetworkShowcase({ onOpenCallbackModal }: NetworkShowcase
                     }}
                     className={`px-3 py-0.5 rounded-full text-[9px] font-bold tracking-wide transition-all cursor-pointer ${
                       rfidStyle === "fob"
-                        ? "bg-[#00d26a] text-black shadow-xs font-black scale-105"
-                        : "bg-white/[0.06] text-neutral-400 hover:text-white"
+                        ? "bg-[#40E0D0] text-black shadow-xs font-black scale-105"
+                        : "bg-neutral-100 text-neutral-600 hover:text-neutral-900"
                     }`}
                   >
                     Minimal Fob
@@ -721,8 +725,8 @@ export default function NetworkShowcase({ onOpenCallbackModal }: NetworkShowcase
                     }}
                     className={`px-3 py-0.5 rounded-full text-[9px] font-bold tracking-wide transition-all cursor-pointer ${
                       rfidStyle === "card"
-                        ? "bg-[#00d26a] text-black shadow-xs font-black scale-105"
-                        : "bg-white/[0.06] text-neutral-400 hover:text-white"
+                        ? "bg-[#40E0D0] text-black shadow-xs font-black scale-105"
+                        : "bg-neutral-100 text-neutral-600 hover:text-neutral-900"
                     }`}
                   >
                     Smart Card
@@ -802,7 +806,7 @@ export default function NetworkShowcase({ onOpenCallbackModal }: NetworkShowcase
                     <g transform="translate(80, 114)">
                       <path
                         d="M -3 -1.5 A 3.5 3.5 0 0 1 -3 1.5"
-                        stroke="#00d26a"
+                        stroke="#40E0D0"
                         strokeWidth="1.5"
                         strokeLinecap="round"
                         fill="none"
@@ -810,7 +814,7 @@ export default function NetworkShowcase({ onOpenCallbackModal }: NetworkShowcase
                       />
                       <path
                         d="M -6 -3 A 7 7 0 0 1 -6 3"
-                        stroke="#00d26a"
+                        stroke="#40E0D0"
                         strokeWidth="1.5"
                         strokeLinecap="round"
                         fill="none"
@@ -818,7 +822,7 @@ export default function NetworkShowcase({ onOpenCallbackModal }: NetworkShowcase
                       />
                       <path
                         d="M -9 -4.5 A 10.5 10.5 0 0 1 -9 4.5"
-                        stroke="#00d26a"
+                        stroke="#40E0D0"
                         strokeWidth="1.5"
                         strokeLinecap="round"
                         fill="none"
@@ -910,7 +914,7 @@ export default function NetworkShowcase({ onOpenCallbackModal }: NetworkShowcase
                     <g transform="translate(162, 38)">
                       <path
                         d="M -2.5 -1.5 A 3 3 0 0 1 -2.5 1.5"
-                        stroke="#00d26a"
+                        stroke="#40E0D0"
                         strokeWidth="1.4"
                         strokeLinecap="round"
                         fill="none"
@@ -918,7 +922,7 @@ export default function NetworkShowcase({ onOpenCallbackModal }: NetworkShowcase
                       />
                       <path
                         d="M -5 -3 A 6 6 0 0 1 -5 3"
-                        stroke="#00d26a"
+                        stroke="#40E0D0"
                         strokeWidth="1.4"
                         strokeLinecap="round"
                         fill="none"
@@ -926,7 +930,7 @@ export default function NetworkShowcase({ onOpenCallbackModal }: NetworkShowcase
                       />
                       <path
                         d="M -7.5 -4.5 A 9 9 0 0 1 -7.5 4.5"
-                        stroke="#00d26a"
+                        stroke="#40E0D0"
                         strokeWidth="1.4"
                         strokeLinecap="round"
                         fill="none"
@@ -947,7 +951,7 @@ export default function NetworkShowcase({ onOpenCallbackModal }: NetworkShowcase
                       cx="100"
                       cy="71"
                       r="2.5"
-                      fill="#00d26a"
+                      fill="#40E0D0"
                     />
 
                     {/* Bottom-Left: Micro Label */}
@@ -982,17 +986,17 @@ export default function NetworkShowcase({ onOpenCallbackModal }: NetworkShowcase
 
               {/* Middle Content */}
               <div className="my-auto py-2">
-                <h3 className="text-base sm:text-xl font-bold tracking-wider text-white uppercase mb-1.5 sm:mb-2">
+                <h3 className="text-base sm:text-xl font-bold tracking-wider text-neutral-900 uppercase mb-1.5 sm:mb-2">
                   RFID KEY
                 </h3>
-                <p className="text-xs sm:text-sm text-neutral-300 font-normal leading-relaxed max-w-[260px] mx-auto">
+                <p className="text-xs sm:text-sm text-neutral-600 font-normal leading-relaxed max-w-[260px] mx-auto">
                   Connect Your Vehicle Tap Your RFID Key To Start
                 </p>
               </div>
 
               {/* Bottom Status */}
-              <div className="pt-2 sm:pt-4 flex items-center justify-center gap-2 text-xs sm:text-sm font-semibold text-neutral-300">
-                <Radio className="w-4 h-4 text-[#00d26a]" />
+              <div className="pt-2 sm:pt-4 flex items-center justify-center gap-2 text-xs sm:text-sm font-semibold text-neutral-600">
+                <Radio className="w-4 h-4 text-[#008b7e]" />
                 <span>Tap to start • Offline ready</span>
               </div>
             </div>
@@ -1002,10 +1006,10 @@ export default function NetworkShowcase({ onOpenCallbackModal }: NetworkShowcase
         {/* ========================================================================= */}
         {/* 3. BOTTOM GUIDANCE & BULLETS */}
         {/* ========================================================================= */}
-        <div className="pt-3 border-t border-white/10 flex items-center justify-between text-xs text-neutral-400">
+        <div className="pt-3 border-t border-neutral-200 flex items-center justify-between text-xs text-neutral-500">
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#00d26a]" />
-            <span className="font-semibold text-white">
+            <span className="w-2 h-2 rounded-full bg-[#40E0D0]" />
+            <span className="font-semibold text-neutral-900">
               {activeCardIndex === 0 && "Open App → Scan QR or Select Stall"}
               {activeCardIndex === 1 && "Plug Cable into EV → Auto Authenticates"}
               {activeCardIndex === 2 && "Tap Contactless RFID Fob → Start Instantly"}
@@ -1019,7 +1023,7 @@ export default function NetworkShowcase({ onOpenCallbackModal }: NetworkShowcase
                 onClick={() => scrollToCard(s.id)}
                 aria-label={`Jump to ${s.label}`}
                 className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                  activeCardIndex === s.id ? "w-8 bg-[#00d26a]" : "w-2 bg-white/20 hover:bg-white/40"
+                  activeCardIndex === s.id ? "w-8 bg-[#40E0D0]" : "w-2 bg-neutral-300 hover:bg-neutral-400"
                 }`}
               />
             ))}

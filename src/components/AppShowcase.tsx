@@ -145,7 +145,7 @@ export default function AppShowcase() {
 
             <div className="pt-8 mt-6 border-t border-neutral-100 flex items-center justify-between text-xs text-neutral-500 font-medium">
               <span className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-[#00d26a]" />
+                <span className="w-2 h-2 rounded-full bg-[#40E0D0]" />
                 OCPP 1.6J / 2.0.1 Certified
               </span>
               <span>24/7 Automated Health Checks</span>
