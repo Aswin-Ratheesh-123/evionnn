@@ -30,36 +30,36 @@ export default function Home() {
         />
       </div>
 
-      {/* 2. Statement Section (Sticky Layer 1: slides up over Hero, then stays pinned & static) */}
-      <div className="sticky top-0 z-10 min-h-[100dvh] w-full bg-[#121212] rounded-t-[32px] sm:rounded-t-[48px] lg:rounded-t-[56px] border-t border-x border-white/10 overflow-hidden flex flex-col justify-center transform-gpu will-change-transform">
-        {/* Never run out of charge statement */}
+      {/* 2. Statement Section (slides up over Hero, then scrolls naturally in document flow) */}
+      <div className="relative z-10 min-h-[100dvh] w-full bg-[#121212] rounded-t-[32px] sm:rounded-t-[48px] lg:rounded-t-[56px] border-t border-x border-white/10 overflow-hidden flex flex-col justify-center transform-gpu will-change-transform">
+        {/* Building India's Most Accessible EV Charging Network */}
         <StatementSection />
       </div>
 
-      {/* 3. Network Showcase Section (Sticky Layer 2: slides up over Statement, pins, horizontal cards slide from left to right, then Layer 4 overlays it) */}
-      <div id="network-showcase-wrapper" className="relative z-20 w-full h-[300vh]">
-        <div className="sticky top-0 min-h-[100dvh] h-[100dvh] w-full bg-[#121212] rounded-t-[32px] sm:rounded-t-[48px] lg:rounded-t-[56px] border-t border-x border-white/10 overflow-hidden flex flex-col justify-center transform-gpu will-change-transform shadow-[0_-25px_60px_rgba(0,0,0,0.85)]">
+      {/* 3. Network Showcase Section (Directly UNDER Statement Section - seamless continuous flow, does NOT overlay it) */}
+      <div id="network-showcase-wrapper" className="relative z-20 w-full h-[220vh] bg-[#121212] border-x border-white/10">
+        <div className="sticky top-0 min-h-[100dvh] h-[100dvh] w-full bg-[#121212] overflow-hidden flex flex-col justify-center transform-gpu will-change-transform">
           {/* Charge on the go / The Easiest & Smarter Way to Charge */}
           <NetworkShowcase onOpenCallbackModal={() => setCallbackModalOpen(true)} />
         </div>
       </div>
 
-      {/* 4. EV Growth Showcase Section (Sticky Layer 3: slides up and OVERLAYS Layer 3 after left-to-right cards have finished, then pins & slides its cards) */}
-      <div id="ev-growth-wrapper" className="relative z-30 w-full h-[270vh] -mt-[100vh]">
-        <div className="sticky top-0 min-h-[100dvh] h-[100dvh] w-full bg-[#121212] rounded-t-[32px] sm:rounded-t-[48px] lg:rounded-t-[56px] border-t border-x border-white/10 overflow-hidden flex flex-col justify-center transform-gpu will-change-transform shadow-[0_-25px_60px_rgba(0,0,0,0.95)]">
+      {/* 4. EV Growth Showcase Section (Directly UNDER Network Showcase - seamless continuous flow, does NOT overlay it) */}
+      <div id="ev-growth-wrapper" className="relative z-20 w-full h-[190vh] bg-[#121212] border-x border-white/10">
+        <div className="sticky top-0 min-h-[100dvh] h-[100dvh] w-full bg-[#121212] overflow-hidden flex flex-col justify-center transform-gpu will-change-transform">
           {/* Record Investment & Explosive EV Growth */}
           <EvGrowthShowcase onOpenCallbackModal={() => setCallbackModalOpen(true)} />
         </div>
       </div>
 
-      {/* 5. Parking EV Ready Section (Sticky Layer 4: slides up and OVERLAYS Layer 4 after its cards have finished) */}
-      <div className="sticky top-0 z-40 min-h-[100dvh] w-full bg-[#121212] rounded-t-[32px] sm:rounded-t-[48px] lg:rounded-t-[56px] border-t border-x border-white/10 overflow-hidden flex flex-col justify-center transform-gpu will-change-transform -mt-[100vh] shadow-[0_-25px_60px_rgba(0,0,0,0.95)]">
+      {/* 5. Parking EV Ready Section (Directly UNDER EV Growth Showcase - seamless continuous flow, does NOT overlay it) */}
+      <div className="relative z-20 min-h-[100dvh] w-full bg-[#121212] border-x border-white/10 overflow-hidden flex flex-col justify-center transform-gpu will-change-transform">
         {/* Become a Franchisee */}
         <ParkingEvReady onOpenCallbackModal={() => setCallbackModalOpen(true)} />
       </div>
 
-      {/* 6. Kerala Map & Subsequent Sections (Layer 5: slides up over static Parking EV Ready) */}
-      <div className="relative z-50 bg-[#121212] rounded-t-[32px] sm:rounded-t-[48px] lg:rounded-t-[56px] border-t border-x border-white/10 overflow-hidden">
+      {/* 6. Kerala Map & Subsequent Sections */}
+      <div className="relative z-20 bg-[#121212] border-t border-x border-white/10 overflow-hidden">
         {/* Find an Evion Grid near you (Interactive Kerala Map) */}
         <KeralaInteractiveMap
           selectedCity={selectedCity}
