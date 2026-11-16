@@ -146,17 +146,21 @@ export default function KeralaInteractiveMap({
       id="kerala-map"
       className="bg-[#121212] pt-8 pb-20 sm:pb-28 px-4 sm:px-6 lg:px-8 select-none"
     >
-      <div className="max-w-[1360px] mx-auto bg-white rounded-3xl sm:rounded-[40px] p-6 sm:p-12 lg:p-16 text-neutral-900 shadow-xl border border-neutral-100">
+      <div
+        className={`max-w-[1360px] mx-auto bg-white rounded-3xl sm:rounded-[40px] p-6 sm:p-12 lg:p-16 text-neutral-900 shadow-xl border border-neutral-100 transition-all duration-[1000ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${isInView
+            ? "opacity-100 translate-y-0 scale-100"
+            : "opacity-0 translate-y-12 sm:translate-y-16 scale-[0.98]"
+          }`}
+      >
         {/* Header with Staggered Entrance & Green Sweep */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10 pb-8 border-b border-neutral-100">
           <div className="space-y-3">
             {/* Animated Eyebrow Badge */}
             <div
-              className={`inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-neutral-100 border border-neutral-200/80 text-xs font-semibold uppercase tracking-wider text-neutral-700 transition-all duration-700 ease-out ${
-                isInView
+              className={`inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-neutral-100 border border-neutral-200/80 text-xs font-semibold uppercase tracking-wider text-neutral-700 transition-all duration-700 ease-out ${isInView
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-4"
-              }`}
+                }`}
             >
               <span className="w-1.5 h-1.5 rounded-full bg-[#40E0D0] animate-pulse" />
               <span>Live Kerala Grid</span>
@@ -169,11 +173,10 @@ export default function KeralaInteractiveMap({
               {/* Line 1: Find an Evion Grid */}
               <span className="block overflow-hidden py-0.5">
                 <span
-                  className={`block text-neutral-900 transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-150 ${
-                    isInView
+                  className={`block text-neutral-900 transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-150 ${isInView
                       ? "opacity-100 translate-y-0 blur-0"
                       : "opacity-0 translate-y-full blur-[6px]"
-                  }`}
+                    }`}
                 >
                   Find an Evion Grid
                 </span>
@@ -182,11 +185,10 @@ export default function KeralaInteractiveMap({
               {/* Line 2: near you with Green Sweep & Stop */}
               <span className="block overflow-hidden py-0.5 mt-0.5 sm:mt-1">
                 <span
-                  className={`block transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-300 ${
-                    isInView
+                  className={`block transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-300 ${isInView
                       ? "opacity-100 translate-y-0 blur-0"
                       : "opacity-0 translate-y-full blur-[6px]"
-                  }`}
+                    }`}
                 >
                   <span
                     className={
@@ -202,9 +204,8 @@ export default function KeralaInteractiveMap({
             </h2>
 
             <p
-              className={`text-xs sm:text-sm text-neutral-500 max-w-xl transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-[450ms] ${
-                isInView ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-4 blur-[4px]"
-              }`}
+              className={`text-xs sm:text-sm text-neutral-500 max-w-xl transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-[450ms] ${isInView ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-4 blur-[4px]"
+                }`}
             >
               Live charger status across Kerala National Highways &amp; key city commercial centers.
             </p>
@@ -212,9 +213,8 @@ export default function KeralaInteractiveMap({
 
           {/* Quick city dropdown */}
           <div
-            className={`flex items-center space-x-2 shrink-0 transition-all duration-700 ease-out delay-300 ${
-              isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            }`}
+            className={`flex items-center space-x-2 shrink-0 transition-all duration-700 ease-out delay-300 ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}
           >
             <span className="text-xs font-semibold text-neutral-500 hidden sm:inline">Region:</span>
             <select
@@ -277,16 +277,14 @@ export default function KeralaInteractiveMap({
                 >
                   <div className="relative flex items-center justify-center">
                     <span
-                      className={`absolute w-6 h-6 rounded-full transition-transform ${
-                        isSelected ? "bg-[#40E0D0] animate-ping opacity-60" : "bg-[#40E0D0]/30"
-                      }`}
+                      className={`absolute w-6 h-6 rounded-full transition-transform ${isSelected ? "bg-[#40E0D0] animate-ping opacity-60" : "bg-[#40E0D0]/30"
+                        }`}
                     />
                     <div
-                      className={`w-4 h-4 rounded-full flex items-center justify-center transition-all ${
-                        isSelected
+                      className={`w-4 h-4 rounded-full flex items-center justify-center transition-all ${isSelected
                           ? "bg-[#40E0D0] ring-4 ring-white scale-125"
                           : "bg-[#40E0D0] group-hover:scale-110"
-                      }`}
+                        }`}
                     >
                       <Zap className="w-2.5 h-2.5 text-black fill-current" />
                     </div>
@@ -294,9 +292,8 @@ export default function KeralaInteractiveMap({
 
                   {/* Tooltip on hover/active */}
                   <div
-                    className={`absolute bottom-full mb-2 left-1/2 -translate-x-1/2 whitespace-nowrap px-2.5 py-1 rounded-md text-[10px] font-bold text-white bg-black/90 backdrop-blur-md shadow-lg pointer-events-none transition-opacity ${
-                      isSelected ? "opacity-100" : "opacity-0 group-hover:opacity-100"
-                    }`}
+                    className={`absolute bottom-full mb-2 left-1/2 -translate-x-1/2 whitespace-nowrap px-2.5 py-1 rounded-md text-[10px] font-bold text-white bg-black/90 backdrop-blur-md shadow-lg pointer-events-none transition-opacity ${isSelected ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+                      }`}
                   >
                     {station.name}
                   </div>

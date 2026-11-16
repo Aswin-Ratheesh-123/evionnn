@@ -1,11 +1,26 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { CheckCircle2, Phone } from "lucide-react";
 
 export default function CallbackBanner() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [isInView, setIsInView] = useState(false);
   const [phone, setPhone] = useState("");
   const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+        }
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+    );
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -15,8 +30,13 @@ export default function CallbackBanner() {
   };
 
   return (
-    <section className="bg-[#121212] pb-20 sm:pb-28 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-[1360px] mx-auto bg-[#1c1c1e] rounded-3xl sm:rounded-[36px] p-8 sm:p-14 lg:p-16 border border-neutral-800 text-white">
+    <section ref={sectionRef} className="bg-[#121212] pb-20 sm:pb-28 px-4 sm:px-6 lg:px-8">
+      <div
+        className={`max-w-[1360px] mx-auto bg-[#1c1c1e] rounded-3xl sm:rounded-[36px] p-8 sm:p-14 lg:p-16 border border-neutral-800 text-white transition-all duration-[1000ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${isInView
+            ? "opacity-100 translate-y-0 scale-100"
+            : "opacity-0 translate-y-12 sm:translate-y-16 scale-[0.98]"
+          }`}
+      >
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 lg:gap-14">
           {/* Left Text */}
           <div className="max-w-2xl space-y-3">

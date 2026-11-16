@@ -37,19 +37,15 @@ export default function Home() {
       </div>
 
       {/* 3. Network Showcase Section (White background showcase - directly UNDER Statement Section) */}
-      <div id="network-showcase-wrapper" className="relative z-20 w-full h-[220vh] bg-white border-x border-neutral-200">
-        <div className="sticky top-0 min-h-[100dvh] h-[100dvh] w-full bg-white overflow-hidden flex flex-col justify-center transform-gpu will-change-transform">
-          {/* Charge on the go / The Easiest & Smarter Way to Charge */}
-          <NetworkShowcase onOpenCallbackModal={() => setCallbackModalOpen(true)} />
-        </div>
+      <div id="network-showcase-wrapper" className="relative z-20 w-full bg-white border-x border-neutral-200">
+        {/* Charge on the go / The Easiest & Smarter Way to Charge */}
+        <NetworkShowcase onOpenCallbackModal={() => setCallbackModalOpen(true)} />
       </div>
 
       {/* 4. EV Growth Showcase Section (Directly UNDER Network Showcase - seamless continuous flow, does NOT overlay it) */}
-      <div id="ev-growth-wrapper" className="relative z-20 w-full h-[190vh] bg-[#121212] border-x border-white/10">
-        <div className="sticky top-0 min-h-[100dvh] h-[100dvh] w-full bg-[#121212] overflow-hidden flex flex-col justify-center transform-gpu will-change-transform">
-          {/* Record Investment & Explosive EV Growth */}
-          <EvGrowthShowcase onOpenCallbackModal={() => setCallbackModalOpen(true)} />
-        </div>
+      <div id="ev-growth-wrapper" className="relative z-20 w-full bg-[#121212] border-x border-white/10">
+        {/* Record Investment & Explosive EV Growth */}
+        <EvGrowthShowcase onOpenCallbackModal={() => setCallbackModalOpen(true)} />
       </div>
 
       {/* 5. Parking EV Ready Section (Directly UNDER EV Growth Showcase - seamless continuous flow, does NOT overlay it) */}

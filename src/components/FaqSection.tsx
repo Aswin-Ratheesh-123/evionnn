@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Plus, Minus } from "lucide-react";
 
 interface FaqItem {
@@ -32,15 +32,35 @@ const FAQS: FaqItem[] = [
 ];
 
 export default function FaqSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [isInView, setIsInView] = useState(false);
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+        }
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+    );
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   const toggle = (idx: number) => {
     setOpenIndex(openIndex === idx ? null : idx);
   };
 
   return (
-    <section id="faq" className="bg-white py-20 sm:py-28 px-4 sm:px-6 lg:px-8 border-b border-neutral-200">
-      <div className="max-w-[1360px] mx-auto">
+    <section ref={sectionRef} id="faq" className="bg-white py-20 sm:py-28 px-4 sm:px-6 lg:px-8 border-b border-neutral-200">
+      <div
+        className={`max-w-[1360px] mx-auto transition-all duration-[1000ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${isInView
+            ? "opacity-100 translate-y-0 scale-100"
+            : "opacity-0 translate-y-12 sm:translate-y-16 scale-[0.98]"
+          }`}
+      >
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           {/* Left Title (Ather Style) */}
           <div className="lg:col-span-4 lg:sticky lg:top-32">
