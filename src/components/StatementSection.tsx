@@ -177,7 +177,7 @@ export default function StatementSection() {
               <h3 className="text-sm font-bold text-white tracking-wide group-hover:text-white transition-colors">
                 Cutting-Edge Tech
               </h3>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 font-bold">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#40E0D0]/15 text-[#40E0D0] border border-[#40E0D0]/35 font-bold shadow-[0_0_10px_rgba(64,224,208,0.25)]">
                 OCPP 2.0
               </span>
             </div>
@@ -201,7 +201,7 @@ export default function StatementSection() {
               <h3 className="text-sm font-bold text-white tracking-wide group-hover:text-white transition-colors">
                 Host Partnerships
               </h3>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 font-bold">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#40E0D0]/15 text-[#40E0D0] border border-[#40E0D0]/40 font-extrabold shadow-[0_0_12px_rgba(64,224,208,0.3)]">
                 85% Margin
               </span>
             </div>
@@ -225,7 +225,7 @@ export default function StatementSection() {
               <h3 className="text-sm font-bold text-white tracking-wide group-hover:text-white transition-colors">
                 Strategic Expansion
               </h3>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 font-bold">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#40E0D0]/15 text-[#40E0D0] border border-[#40E0D0]/35 font-bold shadow-[0_0_10px_rgba(64,224,208,0.25)]">
                 14 Districts
               </span>
             </div>

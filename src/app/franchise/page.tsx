@@ -65,11 +65,11 @@ export default function FranchisePage() {
         {/* 2. Hero Section (Simple & Professional with Optical Focus Animation) */}
         <section className="space-y-4 max-w-3xl">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white leading-tight animate-text-focus">
-            Complete EV Charging Solutions Everywhere You Need
+            Complete EV Charging Solutions <span className="text-[#40E0D0] drop-shadow-[0_0_24px_rgba(64,224,208,0.4)]">Everywhere You Need</span>
           </h1>
 
           <p className="text-base sm:text-lg text-neutral-400 font-normal leading-relaxed max-w-2xl animate-text-focus-delay-1">
-            With a comprehensive portfolio and an arterial Kerala fast-charging network, we make EV station ownership profitable, dependable, and easy.
+            With a comprehensive portfolio and an arterial Kerala fast-charging network, we make EV station ownership <span className="text-white font-semibold">profitable</span>, <span className="text-white font-semibold">dependable</span>, and <span className="text-[#40E0D0] font-semibold">easy</span>.
           </p>
         </section>
 
@@ -83,24 +83,24 @@ export default function FranchisePage() {
 
           {/* 4-Column Responsive Grid matching reference layout */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-            {/* Column 1: Investment */}
-            <div className="flex flex-col justify-between p-5 rounded-2xl bg-neutral-900/50 border border-white/[0.08] hover:border-[#40E0D0]/40 transition-all group">
+            {/* Column 1: Investment (Featured Highlight) */}
+            <div className="flex flex-col justify-between p-5 rounded-2xl bg-[#40E0D0]/[0.06] border-2 border-[#40E0D0]/60 ring-2 ring-[#40E0D0]/20 shadow-[0_0_30px_rgba(64,224,208,0.15)] transition-all group">
               <div className="space-y-2.5">
-                <div className="w-9 h-9 rounded-xl bg-[#40E0D0]/10 border border-[#40E0D0]/20 flex items-center justify-center text-[#40E0D0] mb-2">
+                <div className="w-9 h-9 rounded-xl bg-[#40E0D0]/20 border border-[#40E0D0]/40 flex items-center justify-center text-[#40E0D0] mb-2 shadow-[0_0_12px_rgba(64,224,208,0.3)]">
                   <TrendingUp className="w-4 h-4" />
                 </div>
                 <h3 className="text-lg font-bold text-white tracking-tight leading-snug">
-                  Starting Investment of ₹24L +
+                  Starting Investment of <span className="text-[#40E0D0] font-black underline decoration-[#40E0D0] underline-offset-4">₹24L +</span>
                 </h3>
-                <p className="text-sm text-neutral-400 font-normal leading-relaxed">
+                <p className="text-sm text-neutral-300 font-normal leading-relaxed">
                   Turnkey hardware, civil foundation, electrical switchgear, canopy branding, and full commissioning.
                 </p>
               </div>
               <a
                 href="#apply"
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#40E0D0] hover:text-[#48ebd8] mt-5 group-hover:gap-2 transition-all"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-[#40E0D0] hover:text-[#48ebd8] mt-5 group-hover:gap-2 transition-all"
               >
-                <span>18-24 months payback</span>
+                <span className="underline underline-offset-2">18-24 months payback</span>
                 <span>→</span>
               </a>
             </div>
@@ -112,7 +112,7 @@ export default function FranchisePage() {
                   <Zap className="w-4 h-4" />
                 </div>
                 <h3 className="text-lg font-bold text-white tracking-tight leading-snug">
-                  30, 60 &amp; 120 kW Fast Chargers
+                  <span className="text-[#40E0D0] font-bold">30, 60 &amp; 120 kW</span> Fast Chargers
                 </h3>
                 <p className="text-sm text-neutral-400 font-normal leading-relaxed">
                   High-speed DC charging stations with Single or Dual Gun CCS2 configurations and dynamic power sharing.
@@ -156,7 +156,7 @@ export default function FranchisePage() {
                   <Maximize2 className="w-4 h-4" />
                 </div>
                 <h3 className="text-lg font-bold text-white tracking-tight leading-snug">
-                  Space Needed: 550 sq. ft.
+                  Space Needed: <span className="text-[#40E0D0] font-bold">550 sq. ft.</span>
                 </h3>
                 <p className="text-sm text-neutral-400 font-normal leading-relaxed">
                   Requires 2 standard car parking spots plus charger kiosk pad. Easily integrates into commercial frontage.

@@ -151,11 +151,11 @@ export default function EvGrowthShowcase({ onOpenCallbackModal }: EvGrowthShowca
             <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight max-w-2xl leading-[1.15] text-left">
               <span className="block overflow-hidden py-0.5">
                 <span
-                  className={`block text-white/90 transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-150 ${
+                  className={`block text-white transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-150 ${
                     isInView ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-full blur-[6px]"
                   }`}
                 >
-                  Record Investment &amp;
+                  <span className="text-[#40E0D0] font-extrabold drop-shadow-[0_0_24px_rgba(64,224,208,0.45)]">Record Investment</span> &amp;
                 </span>
               </span>
 
@@ -233,16 +233,16 @@ export default function EvGrowthShowcase({ onOpenCallbackModal }: EvGrowthShowca
               {/* Stat Value & Title */}
               <div className="relative z-10">
                 <div className="flex items-baseline tracking-tight">
-                  <span className="text-4xl sm:text-5xl lg:text-[3.75rem] font-bold text-white leading-none">
+                  <span className="text-4xl sm:text-5xl lg:text-[3.75rem] font-bold text-white leading-none drop-shadow-[0_0_24px_rgba(64,224,208,0.35)]">
                     ₹4,000+
                   </span>
-                  <span className="text-3xl sm:text-4xl lg:text-[2.75rem] font-semibold text-[#40E0D0] ml-2 leading-none font-sans">
+                  <span className="text-3xl sm:text-4xl lg:text-[2.75rem] font-semibold text-[#40E0D0] ml-2 leading-none font-sans drop-shadow-[0_0_20px_rgba(64,224,208,0.5)]">
                     cr
                   </span>
                 </div>
 
                 <p className="text-sm sm:text-base lg:text-lg text-neutral-300 font-normal leading-snug mt-3 sm:mt-4 max-w-[320px]">
-                  allocated to EV infra under PM E-Drive Scheme
+                  allocated to EV infra under <span className="text-white font-semibold underline decoration-[#40E0D0] underline-offset-4 decoration-2">PM E-Drive Scheme</span>
                 </p>
               </div>
 
@@ -327,16 +327,16 @@ export default function EvGrowthShowcase({ onOpenCallbackModal }: EvGrowthShowca
               {/* Stat Value & Title */}
               <div className="relative z-10">
                 <div className="flex items-baseline tracking-tight">
-                  <span className="text-4xl sm:text-5xl lg:text-[3.75rem] font-bold text-white leading-none">
+                  <span className="text-4xl sm:text-5xl lg:text-[3.75rem] font-bold text-white leading-none drop-shadow-[0_0_24px_rgba(64,224,208,0.35)]">
                     17.1%
                   </span>
-                  <span className="text-3xl sm:text-4xl lg:text-[3rem] font-bold text-[#40E0D0] ml-3 leading-none font-sans">
+                  <span className="text-3xl sm:text-4xl lg:text-[3rem] font-bold text-[#40E0D0] ml-3 leading-none font-sans drop-shadow-[0_0_20px_rgba(64,224,208,0.5)]">
                     YoY
                   </span>
                 </div>
 
                 <p className="text-sm sm:text-base lg:text-lg text-neutral-300 font-normal leading-snug mt-3 sm:mt-4">
-                  growth in national electric vehicle registrations
+                  growth in <span className="text-white font-semibold underline decoration-[#40E0D0] underline-offset-4 decoration-2">national electric vehicle</span> registrations
                 </p>
               </div>
 
