@@ -48,7 +48,7 @@ export default function FranchiseModal({ isOpen, onClose, selectedCity }: Franch
     propertyType: "Highway Frontage (NH-66 / NH-544)",
     areaSqFt: "1000",
     hasTransformer: "Need Evion KSEB Assistance",
-    preferredModel: "Highway Fast-Charge Superhub (120kW/240kW)"
+    preferredModel: "EVION DC Dual Gun CCS Superhub (60kW–180kW)"
   });
 
   if (!isOpen) return null;
@@ -277,7 +277,7 @@ export default function FranchiseModal({ isOpen, onClose, selectedCity }: Franch
                       onChange={(e) => setFormData({ ...formData, preferredModel: e.target.value })}
                       className="w-full px-3.5 py-2.5 bg-[#f7f7f8] border border-neutral-300 rounded-xl text-sm text-black focus:outline-none focus:border-black"
                     >
-                      <option>Highway Fast-Charge Superhub (120kW/240kW)</option>
+                      <option>EVION DC Dual Gun CCS Superhub (60kW–180kW)</option>
                       <option>Commercial & Retail Plaza Hub (60kW DC + 22kW AC)</option>
                       <option>Destination & Eco-Resort Partner (30kW DC / Dual AC)</option>
                     </select>
@@ -298,7 +298,7 @@ export default function FranchiseModal({ isOpen, onClose, selectedCity }: Franch
 
                     <button
                       type="submit"
-                      className="px-6 py-3 rounded-full bg-black text-white font-bold text-xs hover:bg-neutral-800 shadow-md flex items-center space-x-2 transition-transform active:scale-95"
+                      className="px-6 py-3 rounded-full bg-gradient-to-r from-[#0052cc] via-[#0084e8] to-[#00b4d8] hover:from-[#0047b3] hover:to-[#009dc2] text-white font-bold text-xs shadow-[0_0_18px_rgba(0,180,216,0.35)] flex items-center space-x-2 transition-transform active:scale-95"
                     >
                       <span>Submit Franchise Application</span>
                       <CheckCircle2 className="w-4 h-4" />
@@ -309,8 +309,8 @@ export default function FranchiseModal({ isOpen, onClose, selectedCity }: Franch
             </form>
           ) : (
             <div className="text-center py-8 space-y-5 animate-in zoom-in-95">
-              <div className="w-16 h-16 rounded-full bg-emerald-100 border border-emerald-300 flex items-center justify-center mx-auto text-[#40E0D0]">
-                <CheckCircle2 className="w-8 h-8 text-emerald-800" />
+              <div className="w-16 h-16 rounded-full bg-[#00b4d8]/15 border border-[#00b4d8]/40 flex items-center justify-center mx-auto text-[#00b4d8]">
+                <CheckCircle2 className="w-8 h-8 text-[#0052cc]" />
               </div>
 
               <div>
@@ -329,7 +329,7 @@ export default function FranchiseModal({ isOpen, onClose, selectedCity }: Franch
               <div className="p-4 rounded-2xl bg-[#f7f7f8] border border-neutral-200 max-w-sm mx-auto text-xs text-neutral-700 text-left space-y-1.5">
                 <div><strong>Selected Model:</strong> {formData.preferredModel}</div>
                 <div><strong>Property:</strong> {formData.propertyType}</div>
-                <div><strong>Customer Support:</strong> <a href="tel:+916238887611" className="text-[#40E0D0] font-semibold hover:underline">+91 6238-887611</a> • <a href="mailto:Info@evioncharging.com" className="hover:underline">Info@evioncharging.com</a></div>
+                <div><strong>Customer Support:</strong> <a href="tel:+916238887611" className="text-[#00b4d8] font-semibold hover:underline">+91 6238-887611</a> • <a href="mailto:Info@evioncharging.com" className="hover:underline">Info@evioncharging.com</a></div>
               </div>
 
               <div className="pt-4">

@@ -8,15 +8,15 @@ export default function AtherFooter() {
       <div className="bg-[#1c1c1e] border-b border-neutral-800 py-3.5 px-4 sm:px-8">
         <div className="max-w-[1440px] mx-auto flex flex-col sm:flex-row items-center justify-between text-xs text-neutral-300 gap-2">
           <div className="flex items-center space-x-2 font-medium">
-            <span className="w-2 h-2 rounded-full bg-[#40E0D0] animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-[#00b4d8] animate-pulse" />
             <span className="text-white font-semibold">Electrifying Kerala</span>
             <span>—</span>
-            <span>140+ HyperBolt DC Fast Chargers Live on NH-66 & Cities</span>
+            <span>140+ EVION DC Dual Gun CCS Fast Chargers Live on NH-66 &amp; Cities</span>
           </div>
 
           <a
             href="#parking-ready"
-            className="flex items-center space-x-1 text-white hover:text-emerald-400 font-semibold transition-colors"
+            className="flex items-center space-x-1 text-white hover:text-[#00b4d8] font-semibold transition-colors"
           >
             <span>Learn more about Franchise</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
@@ -37,12 +37,12 @@ export default function AtherFooter() {
             </p>
             <div className="text-[11px] space-y-1 text-neutral-300 pt-1">
               <div>
-                <a href="tel:+916238887611" className="hover:text-[#40E0D0] transition-colors">
+                <a href="tel:+916238887611" className="hover:text-[#00b4d8] transition-colors">
                   Customer Support: +91 6238-887611
                 </a>
               </div>
               <div>
-                <a href="mailto:Info@evioncharging.com" className="hover:text-[#40E0D0] transition-colors">
+                <a href="mailto:Info@evioncharging.com" className="hover:text-[#00b4d8] transition-colors">
                   Info@evioncharging.com
                 </a>
               </div>
@@ -55,10 +55,10 @@ export default function AtherFooter() {
               EV Chargers
             </h4>
             <ul className="space-y-2 text-[11px]">
-              <li><a href="#network-showcase" className="hover:text-white transition-colors">HyperBolt 240kW</a></li>
-              <li><a href="#network-showcase" className="hover:text-white transition-colors">CityCharge 120kW</a></li>
+              <li><a href="#network-showcase" className="hover:text-white transition-colors">EVION DC Dual Gun 180kW</a></li>
+              <li><a href="#network-showcase" className="hover:text-white transition-colors">EVION DC Dual Gun 60kW</a></li>
               <li><a href="#parking-ready" className="hover:text-white transition-colors">Evion Node™</a></li>
-              <li><a href="#network-showcase" className="hover:text-white transition-colors">CCS2 Dual Gun</a></li>
+              <li><a href="#network-showcase" className="hover:text-white transition-colors">CCS2 Dual Gun Fast Charger</a></li>
             </ul>
           </div>
 

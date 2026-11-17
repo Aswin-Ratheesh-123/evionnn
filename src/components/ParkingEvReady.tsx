@@ -68,7 +68,7 @@ export default function ParkingEvReady({ onOpenCallbackModal }: ParkingEvReadyPr
                   <span
                     className={
                       isInView
-                        ? "inline-block animate-green-sweep-dark drop-shadow-[0_2px_14px_rgba(64,224,208,0.35)]"
+                        ? "inline-block animate-green-sweep-dark drop-shadow-[0_2px_14px_rgba(0,180,216,0.35)]"
                         : "text-neutral-900"
                     }
                   >
@@ -83,39 +83,25 @@ export default function ParkingEvReady({ onOpenCallbackModal }: ParkingEvReadyPr
               className={`text-sm sm:text-base lg:text-lg text-neutral-600 font-normal leading-relaxed mb-6 max-w-xl transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-[450ms] ${isInView ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-4 blur-[6px]"
                 }`}
             >
-              Make a smart, <span className="text-neutral-900 font-semibold">future-ready investment</span> with proven <span className="text-[#008b7e] font-semibold underline decoration-[#40E0D0]/50 underline-offset-2">passive returns</span> without operational headaches. <span className="text-neutral-900 font-semibold">100% turnkey execution</span> from KSEB approvals to automated revenue payouts.
+              Make a smart, <span className="text-neutral-900 font-semibold">future-ready investment</span> with proven <span className="text-[#0077e6] font-semibold underline decoration-[#00b4d8]/50 underline-offset-2">passive returns</span> without operational headaches. <span className="text-neutral-900 font-semibold">100% turnkey execution</span> from KSEB approvals to automated revenue payouts.
             </p>
 
             {/* Key Investment Metrics Chips (Staggered Cascade Pop-in) */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4 gap-2.5 sm:gap-3 mb-6 sm:mb-8">
+            <div className="grid grid-cols-2 gap-3 mb-6 sm:mb-8 max-w-sm">
               {/* Featured Investment Highlight: Starting At ₹24L + */}
               <div
-                className={`bg-gradient-to-b from-[#40E0D0]/15 to-[#40E0D0]/5 rounded-2xl p-3 border border-[#40E0D0]/60 ring-2 ring-[#40E0D0]/25 shadow-md shadow-[#40E0D0]/10 hover:border-[#40E0D0] hover:scale-[1.02] transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] delay-[550ms] ${isInView ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-4 scale-95"
+                className={`bg-gradient-to-b from-[#0052cc]/12 to-[#00b4d8]/10 rounded-2xl p-3 sm:p-3.5 border border-[#00b4d8]/60 ring-2 ring-[#00b4d8]/25 shadow-md shadow-[#00b4d8]/10 hover:border-[#00b4d8] hover:scale-[1.02] transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] delay-[550ms] ${isInView ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-4 scale-95"
                   }`}
               >
-                <span className="text-[11px] text-[#008b7e] font-bold uppercase tracking-wider block">Starting At</span>
-                <span className="text-xl sm:text-2xl font-black text-[#008b7e] tracking-tight block mt-0.5 drop-shadow-sm">₹24L +</span>
+                <span className="text-[11px] text-[#0077e6] font-bold uppercase tracking-wider block">Starting At</span>
+                <span className="text-xl sm:text-2xl font-black text-[#0052cc] tracking-tight block mt-0.5 drop-shadow-sm">₹24L +</span>
               </div>
               <div
-                className={`bg-neutral-50 hover:bg-white hover:border-[#40E0D0]/40 rounded-2xl p-3 border border-neutral-100 shadow-xs transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] delay-[650ms] ${isInView ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-4 scale-95"
+                className={`bg-neutral-50 hover:bg-white hover:border-[#00b4d8]/40 rounded-2xl p-3 sm:p-3.5 border border-neutral-100 shadow-xs transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] delay-[650ms] ${isInView ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-4 scale-95"
                   }`}
               >
                 <span className="text-[11px] text-neutral-500 font-medium">Payback</span>
-                <span className="text-lg sm:text-xl font-bold text-[#008b7e] tracking-tight block mt-0.5">18–24 Mo.</span>
-              </div>
-              <div
-                className={`bg-neutral-50 hover:bg-white hover:border-[#40E0D0]/40 rounded-2xl p-3 border border-neutral-100 shadow-xs transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] delay-[750ms] ${isInView ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-4 scale-95"
-                  }`}
-              >
-                <span className="text-[11px] text-neutral-500 font-medium">Space Needed</span>
-                <span className="text-lg sm:text-xl font-bold text-neutral-900 tracking-tight block mt-0.5">550 sq.ft</span>
-              </div>
-              <div
-                className={`bg-neutral-50 hover:bg-white hover:border-[#40E0D0]/40 rounded-2xl p-3 border border-neutral-100 shadow-xs transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] delay-[850ms] ${isInView ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-4 scale-95"
-                  }`}
-              >
-                <span className="text-[11px] text-neutral-500 font-medium">Fast DC Guns</span>
-                <span className="text-lg sm:text-xl font-bold text-neutral-900 tracking-tight block mt-0.5">30-120 kW</span>
+                <span className="text-lg sm:text-xl font-bold text-[#0077e6] tracking-tight block mt-0.5">18–24 Mo.</span>
               </div>
             </div>
 
@@ -126,7 +112,7 @@ export default function ParkingEvReady({ onOpenCallbackModal }: ParkingEvReadyPr
             >
               <Link
                 href="/franchise"
-                className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-full bg-[#40E0D0] hover:bg-[#30d0c0] text-black font-bold text-sm sm:text-base transition-all duration-200 hover:scale-[1.03] active:scale-95 shadow-[0_0_24px_rgba(64,224,208,0.45)] ring-2 ring-[#40E0D0]/40"
+                className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-full bg-gradient-to-r from-[#0052cc] via-[#0084e8] to-[#00b4d8] hover:from-[#0047b3] hover:to-[#009dc2] text-white font-bold text-sm sm:text-base transition-all duration-200 hover:scale-[1.03] active:scale-95 shadow-[0_0_24px_rgba(0,180,216,0.35)] ring-2 ring-[#00b4d8]/30"
               >
                 <span>Apply for Franchise</span>
                 <ArrowRight className="w-4 h-4 stroke-[2.5]" />
@@ -148,8 +134,8 @@ export default function ParkingEvReady({ onOpenCallbackModal }: ParkingEvReadyPr
           >
             <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden bg-neutral-950 aspect-[16/10] sm:aspect-[16/9] lg:aspect-[4/3] xl:aspect-[16/11] border border-neutral-200 shadow-xl group">
               <Image
-                src="/images/hero-slide-franchise-hub.jpg"
-                alt="Evion EV charging franchise hub in Kerala"
+                src="/images/evion-station-family-hub.jpg"
+                alt="EVION DC Dual Gun CCS fast charging franchise hub in Kerala"
                 fill
                 className="object-cover object-center brightness-100 group-hover:scale-105 transition-transform duration-700 ease-out"
                 sizes="(max-width: 1024px) 100vw, 50vw"

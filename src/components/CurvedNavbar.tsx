@@ -188,7 +188,7 @@ export default function CurvedNavbar({ onOpenCallbackModal }: CurvedNavbarProps)
           />
 
           {/* Raised Floating Circular Glass Button with Subtle Turquoise Glow */}
-          <div className="absolute -top-7 left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-white/90 backdrop-blur-2xl border-2 border-white shadow-[0_10px_28px_rgba(0,0,0,0.18),0_0_22px_rgba(64,224,208,0.35)] flex items-center justify-center z-20 transition-all duration-200">
+          <div className="absolute -top-7 left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-white/90 backdrop-blur-2xl border-2 border-white shadow-[0_10px_28px_rgba(0,0,0,0.18),0_0_22px_rgba(0,180,216,0.4)] flex items-center justify-center z-20 transition-all duration-200">
             <ActiveIcon className="w-6 h-6 text-neutral-900 stroke-[2.2]" />
           </div>
 
@@ -226,18 +226,13 @@ export default function CurvedNavbar({ onOpenCallbackModal }: CurvedNavbarProps)
                 <Icon className="w-5 h-5 text-neutral-500 stroke-[1.9] group-hover:text-neutral-900 transition-colors" />
               </div>
 
-              {/* Highlight Dot for Franchisee */}
-              {item.id === "franchisee" && !isActive && (
-                <span className="absolute top-1 right-3 w-1.5 h-1.5 rounded-full bg-[#40E0D0] animate-pulse shadow-[0_0_8px_#40E0D0]" />
-              )}
-
               {/* Label: Bold dark when active, soft charcoal when inactive */}
               <span
                 className={`text-[11px] tracking-tight transition-all duration-200 ${
                   isActive
                     ? "font-extrabold text-neutral-900 pt-1"
                     : item.id === "franchisee"
-                    ? "font-bold text-[#008b7e] group-hover:text-black"
+                    ? "font-bold text-[#0077e6] group-hover:text-black"
                     : "font-semibold text-neutral-500 group-hover:text-neutral-900"
                 }`}
               >

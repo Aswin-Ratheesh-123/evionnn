@@ -19,11 +19,11 @@ export default function HeroSlider({ onOpenFranchiseModal, selectedCity }: HeroP
         {/* Mobile View: Dedicated Portrait EV Fast Charger Station Hero Shot */}
         <div className="block md:hidden absolute inset-0">
           <Image
-            src="/images/hero-station-charger-mobile-v3.jpg"
-            alt="Evion EV Fast Charger Station in Kerala - Sunset golden hour charging under illuminated canopy with coconut palms"
+            src="/images/hero-station-charger-mobile-v4.jpg"
+            alt="EVION DC Dual Gun CCS Fast Charging Station - Daylight mobile hero shot in Kerala with canopy and fast charging EV"
             fill
             priority
-            quality={95}
+            quality={92}
             sizes="100vw"
             className="object-cover object-center scale-100"
           />
@@ -32,8 +32,8 @@ export default function HeroSlider({ onOpenFranchiseModal, selectedCity }: HeroP
         {/* Desktop & Tablet View: 16:9 Landscape Station Architecture Shot */}
         <div className="hidden md:block absolute inset-0">
           <Image
-            src="/images/hero-station-desktop.jpg"
-            alt="Evion EV Fast Charging Station Hub in Kerala - Highway charging stop with electric vehicles charging under canopy with coconut palms"
+            src="/images/evion-station-family-desktop-wide.jpg"
+            alt="EVION DC Dual Gun CCS Fast Charging Station Hub - High-speed EV charging canopy with illuminated halo logo"
             fill
             priority
             quality={95}

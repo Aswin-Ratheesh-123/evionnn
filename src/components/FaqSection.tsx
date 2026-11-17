@@ -15,11 +15,11 @@ const FAQS: FaqItem[] = [
   },
   {
     q: "What is the KSEB power requirement and how are electricity tariffs handled?",
-    a: "For DC Fast Chargers (60kW to 240kW), a dedicated KSEB LT-EV or HT commercial power connection is required. Evion handles the entire end-to-end liaison with the Kerala State Electricity Board, transformer sanctioning, and electrical inspectorate approvals. Electricity costs are calculated at official KSEB commercial EV tariffs."
+    a: "For EVION DC Dual Gun CCS Fast Chargers (60kW to 180kW), a dedicated KSEB LT-EV or HT commercial power connection is required. Evion handles the entire end-to-end liaison with the Kerala State Electricity Board, transformer sanctioning, and electrical inspectorate approvals. Electricity costs are calculated at official KSEB commercial EV tariffs."
   },
   {
     q: "What are the different charging options available for electric four-wheelers?",
-    a: "Evion deploys CCS2 DC Fast Chargers (HyperBolt 240kW, CityCharge 120kW & 60kW) that top up compatible electric cars like Tata Nexon EV, Punch EV, MG ZS EV, Mahindra XUV400, Hyundai Ioniq 5, and BYD in 15 to 45 minutes, alongside 22kW Type-2 AC chargers for overnight destination stays."
+    a: "Evion deploys EVION DC Dual Gun CCS Fast Chargers (60kW to 180kW) with dynamic power sharing that top up compatible electric cars like Tata Nexon EV, Punch EV, MG ZS EV, Mahindra XUV400, Hyundai Ioniq 5, and BYD in 15 to 45 minutes, alongside 22kW Type-2 AC chargers for overnight destination stays."
   },
   {
     q: "How long does it take to set up and commission a station in Kerala?",

@@ -41,7 +41,7 @@ html {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #40E0D0;
+  background: #00b4d8;
 }
 
 /* Smooth transitions */
@@ -51,14 +51,14 @@ html {
 
 /* Subtle Ather Glows */
 .glow-ather {
-  box-shadow: 0 10px 30px -10px rgba(64, 224, 208, 0.25);
+  box-shadow: 0 10px 30px -10px rgba(0, 180, 216, 0.3);
 }
 
 .glow-subtle {
   box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
 }
 
-/* One-Shot Turquoise Sweep & Stop (Charges Up and Stays Turquoise) */
+/* One-Shot Signature Blue-to-Cyan Sweep & Stop (Charges Up and Stays Electric Blue-Cyan) */
 @keyframes greenSweepStop {
   0% {
     background-position: 100% 0;
@@ -71,10 +71,11 @@ html {
 
 .animate-green-sweep-stop {
   background: linear-gradient(90deg,
-      #40E0D0 0%,
-      #40E0D0 45%,
-      #a7f3d0 55%,
-      #ffffff 75%,
+      #0052cc 0%,
+      #0077e6 25%,
+      #00b4d8 50%,
+      #48cae4 70%,
+      #ffffff 85%,
       #ffffff 100%);
   background-size: 250% 100%;
   background-position: 100% 0;
@@ -83,13 +84,14 @@ html {
   animation: greenSweepStop 2.4s cubic-bezier(0.16, 1, 0.3, 1) 0.45s forwards;
 }
 
-/* One-Shot Turquoise Sweep & Stop for Light Backgrounds (Sweeps from dark text to vibrant turquoise) */
+/* One-Shot Blue-to-Cyan Sweep & Stop for Light Backgrounds (Sweeps from dark text to vibrant charger gradient) */
 .animate-green-sweep-dark {
   background: linear-gradient(90deg,
-      #028074 0%,
-      #00a896 45%,
-      #40E0D0 55%,
-      #171717 75%,
+      #0052cc 0%,
+      #0066cc 25%,
+      #0099e6 50%,
+      #00b4d8 70%,
+      #171717 88%,
       #171717 100%);
   background-size: 250% 100%;
   background-position: 100% 0;
@@ -141,4 +143,46 @@ html {
 
 .animate-text-focus-delay-2 {
   animation: textFocusIn 1.3s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+}
+
+/* Animated Electric Cable Flow for Phone Mockup */
+@keyframes electricCableFlow {
+  from {
+    stroke-dashoffset: 24;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-electric-cable {
+  animation: electricCableFlow 0.9s linear infinite;
+}
+
+/* Smooth continuous slow spin for Climate snowflake */
+@keyframes slowSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-slow-spin {
+  animation: slowSpin 12s linear infinite;
+}
+
+/* Fluid Energy Shimmer for Charging Battery Animation */
+@keyframes energyShimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+.animate-energy-shimmer {
+  animation: energyShimmer 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }

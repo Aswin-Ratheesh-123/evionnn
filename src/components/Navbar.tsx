@@ -114,7 +114,7 @@ export default function Navbar({
                 onClick={() => scrollTo("network-showcase")}
                 className="inline-flex items-center space-x-1.5 hover:text-black transition-colors"
               >
-                <span>HyperBolt</span>
+                <span>DC Dual Gun 180kW</span>
                 <span className="inline-flex items-center text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#f5a623] text-white tracking-wide shadow-2xs">
                   New
                 </span>
@@ -124,7 +124,7 @@ export default function Navbar({
                 onClick={() => scrollTo("parking-ready")}
                 className="hover:text-black transition-colors"
               >
-                CityCharge
+                DC Dual Gun 60kW
               </button>
 
               <button
@@ -357,7 +357,7 @@ export default function Navbar({
                 onClick={() => scrollTo("network-showcase")}
                 className="text-left py-1 hover:text-[#40E0D0] transition-colors flex items-center justify-between"
               >
-                <span>HyperBolt 240kW</span>
+                <span>EVION DC Dual Gun 180kW</span>
                 <span className="text-[10px] bg-[#f5a623] text-white px-2 py-0.5 rounded-full font-bold">
                   New
                 </span>
@@ -365,9 +365,9 @@ export default function Navbar({
 
               <button
                 onClick={() => scrollTo("parking-ready")}
-                className="text-left py-1 hover:text-[#40E0D0] transition-colors"
+                className="text-left py-1 hover:text-[#00b4d8] transition-colors"
               >
-                CityCharge 120
+                EVION DC Dual Gun 60kW
               </button>
 
               <button

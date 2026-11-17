@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     title: "Evion Charging | Fast EV Charging Network & Franchise in Kerala",
     description:
       "A day's charge, in 10 minutes. High-yield EV charging station franchise opportunities across Kerala.",
-    images: ["/images/hero-slide-ather-style.jpg"],
+    images: ["/images/evion-station-family-hub.jpg"],
   },
 };
 
@@ -57,7 +57,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className="min-h-screen bg-white text-neutral-900 flex flex-col font-sans selection:bg-[#40E0D0] selection:text-black"
+        className="min-h-screen bg-white text-neutral-900 flex flex-col font-sans selection:bg-[#00b4d8] selection:text-white"
         suppressHydrationWarning
       >
         <SmoothScroll>{children}</SmoothScroll>

@@ -162,10 +162,10 @@ export default function KeralaInteractiveMap({
                   : "opacity-0 translate-y-4"
                 }`}
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-[#40E0D0] animate-pulse" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#00b4d8] animate-pulse" />
               <span>Live Kerala Grid</span>
               <span className="text-neutral-300">•</span>
-              <span className="text-[#008b7e] font-bold">140+ Fast Guns</span>
+              <span className="text-[#0077e6] font-bold">140+ Fast Guns</span>
             </div>
 
             {/* Staggered Animated Headline */}
@@ -277,16 +277,16 @@ export default function KeralaInteractiveMap({
                 >
                   <div className="relative flex items-center justify-center">
                     <span
-                      className={`absolute w-6 h-6 rounded-full transition-transform ${isSelected ? "bg-[#40E0D0] animate-ping opacity-60" : "bg-[#40E0D0]/30"
+                      className={`absolute w-6 h-6 rounded-full transition-transform ${isSelected ? "bg-[#00b4d8] animate-ping opacity-60" : "bg-[#00b4d8]/30"
                         }`}
                     />
                     <div
                       className={`w-4 h-4 rounded-full flex items-center justify-center transition-all ${isSelected
-                          ? "bg-[#40E0D0] ring-4 ring-white scale-125"
-                          : "bg-[#40E0D0] group-hover:scale-110"
+                          ? "bg-gradient-to-r from-[#0052cc] to-[#00b4d8] ring-4 ring-white scale-125 shadow-[0_0_12px_#00b4d8]"
+                          : "bg-gradient-to-r from-[#0052cc] to-[#00b4d8] group-hover:scale-110"
                         }`}
                     >
-                      <Zap className="w-2.5 h-2.5 text-black fill-current" />
+                      <Zap className="w-2.5 h-2.5 text-white fill-current" />
                     </div>
                   </div>
 
@@ -303,7 +303,7 @@ export default function KeralaInteractiveMap({
 
             {/* Map Legend */}
             <div className="absolute bottom-3 left-3 bg-black/70 backdrop-blur-md px-3 py-1.5 rounded-full text-[10px] text-white flex items-center space-x-2 border border-white/10">
-              <span className="w-2 h-2 rounded-full bg-[#40E0D0]" />
+              <span className="w-2 h-2 rounded-full bg-[#00b4d8]" />
               <span>Evion DC Fast Hubs (140+ Guns)</span>
             </div>
           </div>
@@ -315,7 +315,7 @@ export default function KeralaInteractiveMap({
                 <span className="text-xs font-bold text-neutral-500 uppercase tracking-wider">
                   Selected Hub
                 </span>
-                <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-200">
+                <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#00b4d8]/10 text-[#0077e6] border border-[#00b4d8]/30">
                   {activeStation.available} of {activeStation.guns} Guns Available
                 </span>
               </div>

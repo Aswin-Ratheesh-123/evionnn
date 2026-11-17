@@ -18,7 +18,7 @@ export default function Home() {
   const [selectedCity, setSelectedCity] = useState("Kochi");
 
   return (
-    <main className="min-h-screen bg-[#121212] text-neutral-900 selection:bg-[#40E0D0] selection:text-black">
+    <main className="min-h-screen bg-[#121212] text-neutral-900 selection:bg-[#00b4d8] selection:text-white">
       {/* Reference Curved Bottom Navbar (Positioned at Bottom Center) */}
       <CurvedNavbar onOpenCallbackModal={() => setCallbackModalOpen(true)} />
 
@@ -31,21 +31,21 @@ export default function Home() {
       </div>
 
       {/* 2. Statement Section (slides up over Hero, then scrolls naturally in document flow) */}
-      <div className="relative z-10 min-h-[100dvh] w-full bg-[#121212] rounded-t-[32px] sm:rounded-t-[48px] lg:rounded-t-[56px] border-t border-x border-white/10 overflow-hidden flex flex-col justify-center transform-gpu will-change-transform">
+      <div className="relative z-10 min-h-[100dvh] w-full bg-white rounded-t-[32px] sm:rounded-t-[48px] lg:rounded-t-[56px] border-t border-x border-neutral-200 overflow-hidden flex flex-col justify-center transform-gpu will-change-transform">
         {/* Building India's Most Accessible EV Charging Network */}
         <StatementSection />
       </div>
 
-      {/* 3. Network Showcase Section (White background showcase - directly UNDER Statement Section) */}
+      {/* 3. EV Growth Showcase Section (Directly UNDER Statement Section) */}
+      <div id="ev-growth-wrapper" className="relative z-20 w-full bg-white border-x border-neutral-200">
+        {/* Record Investment & Explosive EV Growth */}
+        <EvGrowthShowcase onOpenCallbackModal={() => setCallbackModalOpen(true)} />
+      </div>
+
+      {/* 4. Network Showcase Section (White background showcase - directly UNDER EV Growth Showcase) */}
       <div id="network-showcase-wrapper" className="relative z-20 w-full bg-white border-x border-neutral-200">
         {/* Charge on the go / The Easiest & Smarter Way to Charge */}
         <NetworkShowcase onOpenCallbackModal={() => setCallbackModalOpen(true)} />
-      </div>
-
-      {/* 4. EV Growth Showcase Section (Directly UNDER Network Showcase - seamless continuous flow, does NOT overlay it) */}
-      <div id="ev-growth-wrapper" className="relative z-20 w-full bg-[#121212] border-x border-white/10">
-        {/* Record Investment & Explosive EV Growth */}
-        <EvGrowthShowcase onOpenCallbackModal={() => setCallbackModalOpen(true)} />
       </div>
 
       {/* 5. Parking EV Ready Section (Directly UNDER EV Growth Showcase - seamless continuous flow, does NOT overlay it) */}

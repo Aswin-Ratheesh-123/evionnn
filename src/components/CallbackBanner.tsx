@@ -77,8 +77,8 @@ export default function CallbackBanner() {
                 </button>
               </form>
             ) : (
-              <div className="flex items-center space-x-2 text-emerald-400 font-semibold text-sm bg-[#242426] px-5 py-3 rounded-full border border-emerald-500/30">
-                <CheckCircle2 className="w-5 h-5 text-emerald-400" />
+              <div className="flex items-center space-x-2 text-[#00b4d8] font-semibold text-sm bg-[#242426] px-5 py-3 rounded-full border border-[#00b4d8]/40">
+                <CheckCircle2 className="w-5 h-5 text-[#00b4d8]" />
                 <span>Thank you! Our Kerala specialist will call you shortly.</span>
               </div>
             )}
