@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="bg-white text-neutral-600 border-t border-neutral-200 pt-16 pb-12 text-xs">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-neutral-200">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-neutral-200">
           {/* Brand */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center space-x-2">
@@ -102,26 +102,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Kerala Offices */}
-          <div className="space-y-3">
-            <h4 className="text-xs font-bold text-black uppercase tracking-wider">
-              Regional Offices
-            </h4>
-            <div className="space-y-2 text-[11px] leading-relaxed text-neutral-600">
-              <div>
-                <strong className="text-black">Kochi HQ:</strong>
-                <p>Level 4, Carnival Infopark, Kakkanad, Kochi 682042</p>
-              </div>
-              <div>
-                <strong className="text-black">Trivandrum Hub:</strong>
-                <p>Ganga Building, Technopark Phase 3, Kazhakkoottam 695583</p>
-              </div>
-              <div>
-                <strong className="text-black">Kozhikode Hub:</strong>
-                <p>Cyberpark, Nellikkode, Kozhikode 673016</p>
-              </div>
-            </div>
-          </div>
+
         </div>
 
         {/* Bottom */}

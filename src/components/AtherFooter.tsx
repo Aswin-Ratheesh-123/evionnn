@@ -26,7 +26,7 @@ export default function AtherFooter() {
 
       {/* Main Multi-Column Section */}
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 lg:gap-12 pb-14 border-b border-neutral-800">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12 pb-14 border-b border-neutral-800">
           {/* Col 1: Brand */}
           <div className="col-span-2 md:col-span-1 space-y-3">
             <span className="text-xl font-black tracking-[0.2em] text-white">
@@ -89,22 +89,7 @@ export default function AtherFooter() {
             </ul>
           </div>
 
-          {/* Col 5: Kerala Hubs */}
-          <div className="space-y-3">
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider">
-              Regional Hubs
-            </h4>
-            <div className="space-y-2 text-[11px] text-neutral-400">
-              <div>
-                <strong className="text-white">Kochi HQ:</strong>
-                <p>Level 4, Carnival Infopark, Kakkanad, Kochi 682042</p>
-              </div>
-              <div>
-                <strong className="text-white">Trivandrum:</strong>
-                <p>Ganga, Technopark Phase 3, Kazhakkoottam</p>
-              </div>
-            </div>
-          </div>
+
         </div>
 
         {/* Bottom Credits */}
