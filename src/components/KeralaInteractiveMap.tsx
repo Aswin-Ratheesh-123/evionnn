@@ -1,12 +1,12 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { MapPin, Navigation, Search, CheckCircle, Zap } from "lucide-react";
+import { Zap } from "lucide-react";
 
 interface KeralaInteractiveMapProps {
-  selectedCity: string;
-  onSelectCity: (city: string) => void;
-  onOpenCallbackModal: () => void;
+  selectedCity?: string;
+  onSelectCity?: (city: string) => void;
+  onOpenCallbackModal?: () => void;
 }
 
 interface Station {
@@ -26,7 +26,7 @@ const KERALA_STATIONS: Station[] = [
     name: "Evion Superhub Edappally",
     city: "Kochi",
     coords: { x: 44, y: 55 },
-    power: "240kW DC",
+    power: "180kW DC",
     guns: 4,
     available: 3,
     address: "Near Lulu Mall & Metro Pillar 382, NH-66 Kochi",
@@ -46,7 +46,7 @@ const KERALA_STATIONS: Station[] = [
     name: "Evion Flagship Technopark",
     city: "Thiruvananthapuram",
     coords: { x: 62, y: 88 },
-    power: "240kW DC",
+    power: "180kW DC",
     guns: 4,
     available: 3,
     address: "Opposite Technopark Phase 3 Gate, NH-66 Trivandrum",
@@ -66,7 +66,7 @@ const KERALA_STATIONS: Station[] = [
     name: "Evion Mannuthy Superhub",
     city: "Thrissur",
     coords: { x: 46, y: 46 },
-    power: "240kW DC",
+    power: "180kW DC",
     guns: 4,
     available: 4,
     address: "Highway Food Street Complex, NH-544 Mannuthy",
@@ -109,7 +109,6 @@ export default function KeralaInteractiveMap({
   onOpenCallbackModal,
 }: KeralaInteractiveMapProps) {
   const [activeStation, setActiveStation] = useState<Station>(KERALA_STATIONS[0]);
-  const [search, setSearch] = useState("");
   const [isInView, setIsInView] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -133,13 +132,6 @@ export default function KeralaInteractiveMap({
     return () => observer.disconnect();
   }, []);
 
-  const filtered = KERALA_STATIONS.filter(
-    (s) =>
-      s.name.toLowerCase().includes(search.toLowerCase()) ||
-      s.city.toLowerCase().includes(search.toLowerCase()) ||
-      s.address.toLowerCase().includes(search.toLowerCase())
-  );
-
   return (
     <section
       ref={sectionRef}
@@ -155,19 +147,6 @@ export default function KeralaInteractiveMap({
         {/* Header with Staggered Entrance & Green Sweep */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10 pb-8 border-b border-neutral-100">
           <div className="space-y-3">
-            {/* Animated Eyebrow Badge */}
-            <div
-              className={`inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-neutral-100 border border-neutral-200/80 text-xs font-semibold uppercase tracking-wider text-neutral-700 transition-all duration-700 ease-out ${isInView
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-4"
-                }`}
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-[#00b4d8] animate-pulse" />
-              <span>Live Kerala Grid</span>
-              <span className="text-neutral-300">•</span>
-              <span className="text-[#0077e6] font-bold">140+ Fast Guns</span>
-            </div>
-
             {/* Staggered Animated Headline */}
             <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-black max-w-2xl leading-[1.14]">
               {/* Line 1: Find an Evion Grid */}
@@ -210,42 +189,14 @@ export default function KeralaInteractiveMap({
               Live charger status across Kerala National Highways &amp; key city commercial centers.
             </p>
           </div>
-
-          {/* Quick city dropdown */}
-          <div
-            className={`flex items-center space-x-2 shrink-0 transition-all duration-700 ease-out delay-300 ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-              }`}
-          >
-            <span className="text-xs font-semibold text-neutral-500 hidden sm:inline">Region:</span>
-            <select
-              value={selectedCity}
-              onChange={(e) => {
-                onSelectCity(e.target.value);
-                const match = KERALA_STATIONS.find((s) => s.city.toLowerCase() === e.target.value.toLowerCase());
-                if (match) setActiveStation(match);
-              }}
-              suppressHydrationWarning
-              className="px-4 py-2.5 rounded-full border border-neutral-300 bg-[#f7f7f8] text-xs font-semibold text-black focus:outline-none shadow-xs"
-            >
-              <option value="Kochi">Kochi</option>
-              <option value="Thiruvananthapuram">Thiruvananthapuram</option>
-              <option value="Kozhikode">Kozhikode</option>
-              <option value="Thrissur">Thrissur</option>
-              <option value="Alappuzha">Alappuzha</option>
-              <option value="Munnar">Munnar</option>
-              <option value="Wayanad">Wayanad</option>
-            </select>
-          </div>
         </div>
 
-        {/* Map Visualization Container (Ather Energy Style) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-[#f8f9fa] rounded-3xl p-6 sm:p-10 border border-neutral-200">
-          {/* Left 7 cols: Stylized SVG Map of Kerala with Glowing Green Pins */}
-          <div className="lg:col-span-7 relative h-[380px] sm:h-[460px] bg-neutral-900 rounded-2xl overflow-hidden flex items-center justify-center p-4 select-none">
+        {/* Full-Width Map Visualization Container */}
+        <div className="relative w-full h-[460px] sm:h-[540px] lg:h-[600px] bg-neutral-900 rounded-3xl overflow-hidden flex items-center justify-center p-4 select-none shadow-inner">
             {/* Kerala Outline Graphic Background */}
             <svg
               viewBox="0 0 100 100"
-              className="absolute inset-0 w-full h-full opacity-30 stroke-neutral-700 fill-neutral-800"
+              className="absolute inset-0 w-full h-full opacity-35 stroke-neutral-700 fill-neutral-800"
             >
               {/* Abstract Kerala coastal curved line */}
               <path
@@ -273,7 +224,7 @@ export default function KeralaInteractiveMap({
                   onClick={() => setActiveStation(station)}
                   suppressHydrationWarning
                   style={{ left: `${station.coords.x}%`, top: `${station.coords.y}%` }}
-                  className="absolute transform -translate-x-1/2 -translate-y-1/2 group z-20 focus:outline-none"
+                  className="absolute transform -translate-x-1/2 -translate-y-1/2 group z-20 focus:outline-none cursor-pointer"
                 >
                   <div className="relative flex items-center justify-center">
                     <span
@@ -290,79 +241,23 @@ export default function KeralaInteractiveMap({
                     </div>
                   </div>
 
-                  {/* Tooltip on hover/active */}
+                  {/* Rich Pin Tooltip on hover/active */}
                   <div
-                    className={`absolute bottom-full mb-2 left-1/2 -translate-x-1/2 whitespace-nowrap px-2.5 py-1 rounded-md text-[10px] font-bold text-white bg-black/90 backdrop-blur-md shadow-lg pointer-events-none transition-opacity ${isSelected ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+                    className={`absolute bottom-full mb-2 left-1/2 -translate-x-1/2 whitespace-nowrap px-3 py-1.5 rounded-xl text-xs text-white bg-black/95 border border-white/20 backdrop-blur-md shadow-2xl pointer-events-none transition-all duration-200 z-30 ${isSelected ? "opacity-100 scale-100 -translate-y-1" : "opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100"
                       }`}
                   >
-                    {station.name}
+                    <div className="text-[11px] font-black text-white">{station.name}</div>
+                    <div className="text-[9px] font-mono text-[#00b4d8] mt-0.5">{station.city} • {station.power} • Dual CCS2</div>
                   </div>
                 </button>
               );
             })}
 
-            {/* Map Legend */}
-            <div className="absolute bottom-3 left-3 bg-black/70 backdrop-blur-md px-3 py-1.5 rounded-full text-[10px] text-white flex items-center space-x-2 border border-white/10">
+            {/* Map Legend & Active Details */}
+            <div className="absolute bottom-3 left-3 bg-black/75 backdrop-blur-md px-3.5 py-1.5 rounded-full text-[10px] text-white flex items-center space-x-2 border border-white/10 shadow-lg">
               <span className="w-2 h-2 rounded-full bg-[#00b4d8]" />
-              <span>Evion DC Fast Hubs (140+ Guns)</span>
+              <span className="font-semibold">Evion DC Fast Hubs</span>
             </div>
-          </div>
-
-          {/* Right 5 cols: Active Station Detail Card */}
-          <div className="lg:col-span-5 bg-white rounded-2xl p-6 sm:p-8 border border-neutral-200 flex flex-col justify-between space-y-6">
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-neutral-500 uppercase tracking-wider">
-                  Selected Hub
-                </span>
-                <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#00b4d8]/10 text-[#0077e6] border border-[#00b4d8]/30">
-                  {activeStation.available} of {activeStation.guns} Guns Available
-                </span>
-              </div>
-
-              <div>
-                <h3 className="text-xl sm:text-2xl font-bold text-black">
-                  {activeStation.name}
-                </h3>
-                <p className="text-xs sm:text-sm text-neutral-600 mt-1">
-                  {activeStation.address}
-                </p>
-              </div>
-
-              <div className="grid grid-cols-2 gap-3 pt-2 text-xs">
-                <div className="p-3 rounded-xl bg-[#f7f7f8] border border-neutral-200">
-                  <span className="text-neutral-500 text-[10px] uppercase font-bold">Speed</span>
-                  <div className="text-black font-bold mt-0.5">{activeStation.power}</div>
-                </div>
-                <div className="p-3 rounded-xl bg-[#f7f7f8] border border-neutral-200">
-                  <span className="text-neutral-500 text-[10px] uppercase font-bold">Plugs</span>
-                  <div className="text-black font-bold mt-0.5">Dual CCS2</div>
-                </div>
-              </div>
-            </div>
-
-            <div className="pt-4 border-t border-neutral-100 flex flex-col sm:flex-row gap-3">
-              <a
-                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                  activeStation.name + " " + activeStation.address
-                )}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1 py-3 px-4 rounded-full bg-black text-white hover:bg-neutral-800 text-xs font-bold text-center flex items-center justify-center space-x-2 transition-colors"
-              >
-                <Navigation className="w-3.5 h-3.5" />
-                <span>Navigate in Maps</span>
-              </a>
-
-              <button
-                onClick={onOpenCallbackModal}
-                suppressHydrationWarning
-                className="py-3 px-4 rounded-full border border-neutral-300 hover:border-black text-black text-xs font-bold bg-white transition-colors"
-              >
-                Host an EV Hub
-              </button>
-            </div>
-          </div>
         </div>
       </div>
     </section>
