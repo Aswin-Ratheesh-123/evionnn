@@ -23,7 +23,7 @@ export default function HeroSlider({ onOpenFranchiseModal, selectedCity }: HeroP
             alt="EVION DC Dual Gun CCS Fast Charging Station - Daylight mobile hero shot in Kerala with canopy and fast charging EV"
             fill
             priority
-            quality={92}
+            quality={95}
             sizes="100vw"
             className="object-cover object-center scale-100"
           />

@@ -581,14 +581,15 @@ export default function NetworkShowcase({ onOpenCallbackModal }: NetworkShowcase
           >
             {/* Left / Top Visual: Real-World Evion Fast Charging Scene */}
             <div className="relative w-full md:w-auto flex flex-col items-center justify-center shrink-0">
-              <div className="relative w-[280px] sm:w-[320px] lg:w-[340px] h-[210px] sm:h-[240px] rounded-2xl overflow-hidden border border-neutral-200/90 shadow-xl bg-neutral-950 select-none group hover:scale-[1.02] transition-transform duration-500">
+              <div className="relative w-full max-w-[320px] sm:max-w-none sm:w-[340px] lg:w-[360px] aspect-[16/10] rounded-2xl overflow-hidden border border-neutral-200/90 shadow-xl bg-neutral-950 select-none group hover:scale-[1.02] transition-transform duration-500">
                 <Image
                   src="/images/evion-family-fast-charging-1.jpg"
                   alt="Real EV Connected to Evion DC Fast Charger with Family"
                   fill
-                  sizes="(max-width: 640px) 280px, (max-width: 1024px) 320px, 340px"
-                  className="object-cover object-center"
+                  sizes="(max-width: 640px) 320px, (max-width: 1024px) 340px, 360px"
+                  className="object-cover object-[30%_center]"
                   priority
+                  quality={95}
                 />
               </div>
             </div>
