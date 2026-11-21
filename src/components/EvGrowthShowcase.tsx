@@ -6,6 +6,53 @@ interface EvGrowthShowcaseProps {
   onOpenCallbackModal?: () => void;
 }
 
+// Smooth Number Counter Hook with easeOutExpo curve
+function useCountUp(target: number, duration: number, isStarted: boolean, decimals = 0) {
+  const [val, setVal] = useState(0);
+
+  useEffect(() => {
+    if (!isStarted) return;
+    let startTimestamp: number | null = null;
+    let frameId: number;
+
+    const step = (timestamp: number) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const elapsed = timestamp - startTimestamp;
+      const progress = Math.min(elapsed / duration, 1);
+      // easeOutExpo
+      const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      const current = eased * target;
+      setVal(current);
+
+      if (progress < 1) {
+        frameId = requestAnimationFrame(step);
+      } else {
+        setVal(target);
+      }
+    };
+
+    frameId = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(frameId);
+  }, [target, duration, isStarted]);
+
+  return decimals === 0 ? Math.round(val).toLocaleString() : val.toFixed(decimals);
+}
+
+// Data for Chart 1: PM E-Drive Capital Infusion Milestones
+const INFRA_MILESTONES = [
+  { phase: "Phase 1", year: "2024", label: "Grid Sanction", amount: "₹850 Cr", cx: 72, cy: 135, pct: "21%" },
+  { phase: "Phase 2", year: "2025", label: "NH-66 Corridors", amount: "₹2,100 Cr", cx: 195, cy: 90, pct: "52%" },
+  { phase: "Target", year: "2026", label: "Full Statewide Grid", amount: "₹4,000+ Cr", cx: 325, cy: 38, pct: "100%", isPeak: true },
+];
+
+// Data for Chart 2: YoY National EV Growth Bars
+const ADOPTION_BARS = [
+  { year: "2023", volume: "1.02M", growth: "+6.4%", x: 60, y: 118, w: 42, h: 52, topCenter: { x: 81, y: 118 } },
+  { year: "2024", volume: "1.48M", growth: "+9.8%", x: 128, y: 90, w: 42, h: 80, topCenter: { x: 149, y: 90 } },
+  { year: "2025", volume: "1.95M", growth: "+13.5%", x: 196, y: 62, w: 42, h: 108, topCenter: { x: 217, y: 62 } },
+  { year: "2026E", volume: "2.50M+", growth: "+17.1%", x: 264, y: 28, w: 42, h: 142, topCenter: { x: 285, y: 28 }, isPeak: true },
+];
+
 export default function EvGrowthShowcase({ onOpenCallbackModal }: EvGrowthShowcaseProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const card0Ref = useRef<HTMLDivElement>(null);
@@ -14,8 +61,14 @@ export default function EvGrowthShowcase({ onOpenCallbackModal }: EvGrowthShowca
   const [isInView, setIsInView] = useState(false);
   const [activeCardIndex, setActiveCardIndex] = useState(0);
   const [cardsInView, setCardsInView] = useState([false, false]);
+  const [activeMilestone, setActiveMilestone] = useState<number | null>(null);
+  const [hoveredBarIndex, setHoveredBarIndex] = useState<number | null>(null);
 
-  // IntersectionObserver to trigger initial header entrance animations
+  // Animated Numbers
+  const countCr = useCountUp(4000, 1500, cardsInView[0], 0);
+  const countYoY = useCountUp(17.1, 1500, cardsInView[1], 1);
+
+  // Header intersection observer
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -23,20 +76,14 @@ export default function EvGrowthShowcase({ onOpenCallbackModal }: EvGrowthShowca
           setIsInView(true);
         }
       },
-      {
-        threshold: 0.1,
-        rootMargin: "0px 0px -40px 0px",
-      }
+      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
+    if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
-  // IntersectionObserver to track which card is active as user scrolls through vertically & trigger slide-in
+  // Track cards scrolling into view
   useEffect(() => {
     const cardRefs = [card0Ref, card1Ref];
     const observer = new IntersectionObserver(
@@ -56,10 +103,7 @@ export default function EvGrowthShowcase({ onOpenCallbackModal }: EvGrowthShowca
           }
         });
       },
-      {
-        threshold: 0.15,
-        rootMargin: "0px 0px -40px 0px",
-      }
+      { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
     );
 
     cardRefs.forEach((ref) => {
@@ -75,7 +119,16 @@ export default function EvGrowthShowcase({ onOpenCallbackModal }: EvGrowthShowca
       id="ev-growth"
       className="bg-white text-neutral-900 pt-8 sm:pt-14 pb-12 sm:pb-20 px-3 sm:px-6 lg:px-8 select-none relative overflow-hidden flex flex-col justify-between w-full"
     >
-      {/* Ambient Radial Electric Cyan Aura */}
+      {/* Keyframe Styles for Radar Pulse Animations */}
+      <style dangerouslySetInnerHTML={{ __html: `
+        @keyframes radarPing {
+          0% { transform: scale(0.9); opacity: 0.8; }
+          70% { transform: scale(2.4); opacity: 0; }
+          100% { transform: scale(2.4); opacity: 0; }
+        }
+      ` }} />
+
+      {/* Ambient Electric Cyan Glow */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_35%,rgba(0,180,216,0.06),transparent)] pointer-events-none" />
 
       <div className="max-w-[1360px] mx-auto w-full relative z-10 flex flex-col justify-between h-full">
@@ -84,7 +137,6 @@ export default function EvGrowthShowcase({ onOpenCallbackModal }: EvGrowthShowca
         {/* ========================================================================= */}
         <div className="pb-4 sm:pb-6 border-b border-neutral-200/80">
           <div className="text-left max-w-4xl mx-auto w-full">
-            {/* Kinetic Masked Animated Headline with Optical Deblur */}
             <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight max-w-2xl leading-[1.15] text-left">
               <span className="block overflow-hidden py-0.5">
                 <span
@@ -98,8 +150,9 @@ export default function EvGrowthShowcase({ onOpenCallbackModal }: EvGrowthShowca
 
               <span className="block overflow-hidden py-0.5 mt-0.5 sm:mt-1">
                 <span
-                  className={`block transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-300 ${isInView ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-full blur-[6px]"
-                    }`}
+                  className={`block transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-300 ${
+                    isInView ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-full blur-[6px]"
+                  }`}
                 >
                   <span
                     className={
@@ -117,363 +170,434 @@ export default function EvGrowthShowcase({ onOpenCallbackModal }: EvGrowthShowca
         </div>
 
         {/* ========================================================================= */}
-        {/* 2. VERTICAL CARDS CONTAINER (ONE BELOW THE OTHER NOT SIDEWAYS) */}
+        {/* 2. VERTICAL CARDS CONTAINER */}
         {/* ========================================================================= */}
         <div className="flex flex-col gap-8 sm:gap-12 w-full max-w-4xl mx-auto my-8 sm:my-12">
           {/* ------------------------------------------------------------- */}
-          {/* CARD 1: ₹4,000+cr PM E-DRIVE SCHEME ALLOCATION */}
+          {/* CARD 1: ₹4,000+cr PM E-DRIVE INFRASTRUCTURE DEPLOYMENT WAVE */}
           {/* ------------------------------------------------------------- */}
           <div
             ref={card0Ref}
             id="card-pm-edrive"
-            className={`w-full rounded-3xl bg-white border border-neutral-200/90 hover:border-[#00b4d8]/60 p-6 sm:p-9 lg:p-10 flex flex-col justify-between min-h-[420px] sm:min-h-[460px] overflow-hidden group shadow-[0_12px_40px_-10px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_50px_-12px_rgba(0,180,216,0.18)] relative transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+            className={`w-full rounded-3xl bg-white border border-neutral-200/90 hover:border-[#00b4d8]/60 p-6 sm:p-8 flex flex-col gap-4 sm:gap-5 overflow-hidden group shadow-[0_12px_40px_-10px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_50px_-12px_rgba(0,180,216,0.18)] relative transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
               cardsInView[0]
                 ? "opacity-100 translate-y-0 scale-100"
                 : "opacity-0 translate-y-12 sm:translate-y-16 scale-[0.98]"
             }`}
           >
-            {/* Ambient Bottom Blue-Cyan Glow */}
-            <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 w-96 h-44 bg-[radial-gradient(ellipse_at_bottom,rgba(0,180,216,0.18),transparent_70%)] pointer-events-none group-hover:opacity-100 transition-opacity" />
+            {/* Ambient Cyan Aura */}
+            <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 w-96 h-44 bg-[radial-gradient(ellipse_at_bottom,rgba(0,180,216,0.14),transparent_70%)] pointer-events-none group-hover:opacity-100 transition-opacity" />
 
-            {/* Stat Value & Title */}
+            {/* Stat Value & Title with Count-Up Animation */}
             <div className="relative z-10">
               <div className="flex items-baseline tracking-tight">
-                <span className="text-4xl sm:text-5xl lg:text-[4.25rem] font-bold text-neutral-900 leading-none">
-                  ₹4,000+
+                <span
+                  suppressHydrationWarning
+                  className="text-4xl sm:text-5xl lg:text-[4.25rem] font-bold text-neutral-900 leading-none tabular-nums"
+                >
+                  ₹{countCr}+
                 </span>
                 <span className="text-3xl sm:text-4xl lg:text-[3rem] font-semibold text-[#0077b6] ml-3 leading-none font-sans">
                   cr
                 </span>
               </div>
 
-              <p className="text-sm sm:text-base lg:text-lg text-neutral-600 font-normal leading-snug mt-3 sm:mt-4 max-w-xl">
+              <p className="text-sm sm:text-base lg:text-lg text-neutral-600 font-normal leading-snug mt-2 sm:mt-3 max-w-xl">
                 allocated to EV infra under <span className="text-neutral-900 font-semibold underline decoration-[#00b4d8] underline-offset-4 decoration-2">PM E-Drive Scheme</span>
               </p>
             </div>
 
-            {/* Bottom Graphic: Exponential Growth Arrow Infographic with Pillars (Matching Uploaded Reference) */}
-            <div className="relative w-full h-52 sm:h-60 md:h-64 mt-6 overflow-hidden flex items-end justify-center bg-gradient-to-b from-slate-50/70 to-slate-100/50 rounded-2xl border border-slate-100/90 p-2 sm:p-4">
+            {/* Clean White Graphic Container with Capital Deployment Wave */}
+            <div className="relative w-full h-48 sm:h-56 overflow-hidden flex items-center justify-center bg-white rounded-2xl border border-neutral-200/90 p-2 sm:p-4 shadow-xs">
               <svg
-                viewBox="0 0 360 212"
-                className="w-full max-w-[390px] h-full relative z-10 overflow-visible"
+                viewBox="0 0 380 180"
+                className="w-full max-w-[420px] h-full overflow-visible"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <defs>
-                  {/* Soft Drop Shadow for the Curving Arrow Ribbon */}
-                  <filter id="infographicArrowShadow" x="-20%" y="-20%" width="150%" height="150%">
-                    <feDropShadow dx="0" dy="6" stdDeviation="6" floodColor="#0052cc" floodOpacity="0.28" />
-                  </filter>
+                  <defs>
+                    {/* Glowing Area Fill Gradient for White Background */}
+                    <linearGradient id="waveAreaGradWhite" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#00b4d8" stopOpacity="0.22" />
+                      <stop offset="60%" stopColor="#0077b6" stopOpacity="0.05" />
+                      <stop offset="100%" stopColor="#ffffff" stopOpacity="0.0" />
+                    </linearGradient>
 
-                  {/* Pillar Soft Drop Shadow */}
-                  <filter id="pillarSoftShadow" x="-30%" y="-10%" width="160%" height="130%">
-                    <feDropShadow dx="-2" dy="3" stdDeviation="3" floodColor="#0f172a" floodOpacity="0.07" />
-                  </filter>
+                    {/* Gradient for Line */}
+                    <linearGradient id="waveLineGradWhite" x1="0" y1="1" x2="1" y2="0">
+                      <stop offset="0%" stopColor="#00b4d8" />
+                      <stop offset="45%" stopColor="#0077b6" />
+                      <stop offset="100%" stopColor="#0052cc" />
+                    </linearGradient>
 
-                  {/* Gradient for the Blue Core Ribbon */}
-                  <linearGradient id="infographicBlueRibbon" x1="0" y1="1" x2="1" y2="0">
-                    <stop offset="0%" stopColor="#0052cc" />
-                    <stop offset="45%" stopColor="#0077b6" />
-                    <stop offset="100%" stopColor="#00b4d8" />
-                  </linearGradient>
-                </defs>
+                    {/* Soft Shadow for Floating Badges */}
+                    <filter id="cleanCardShadow" x="-20%" y="-20%" width="140%" height="140%">
+                      <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor="#0f172a" floodOpacity="0.1" />
+                    </filter>
+                  </defs>
 
-                {/* 1. Horizontal Blue Baseline Platform */}
-                <rect
-                  x="16"
-                  y="194"
-                  width="328"
-                  height="6"
-                  rx="3"
-                  fill="#0077b6"
-                />
+                  {/* Horizontal Guideline Benchmarks */}
+                  {[
+                    { label: "₹4,000 Cr", y: 38 },
+                    { label: "₹2,000 Cr", y: 95 },
+                    { label: "₹0 Cr", y: 152 },
+                  ].map((guide) => (
+                    <g key={guide.label}>
+                      <line
+                        x1="45"
+                        y1={guide.y}
+                        x2="365"
+                        y2={guide.y}
+                        stroke="#e2e8f0"
+                        strokeWidth="1"
+                        strokeDasharray="4 4"
+                      />
+                      <text
+                        x="38"
+                        y={guide.y + 3}
+                        textAnchor="end"
+                        fontSize="7.5"
+                        fontFamily="monospace"
+                        fill="#64748b"
+                        fontWeight="600"
+                      >
+                        {guide.label}
+                      </text>
+                    </g>
+                  ))}
 
-                {/* 2. Seven Vertical Rising Pillars (Standing on the Baseline with DATA 01 - 07 labels) */}
-                {/* Pillar 1 */}
-                <g className="transition-transform duration-300 origin-bottom group-hover:scale-y-[1.02]">
-                  <rect
-                    x="46"
-                    y="132"
-                    width="28"
-                    height="62"
-                    rx="3"
-                    fill="#ffffff"
-                    filter="url(#pillarSoftShadow)"
-                    stroke="#e2e8f0"
-                    strokeWidth="0.75"
+                  {/* Vertical Phase Boundaries */}
+                  {[72, 195, 325].map((xPos) => (
+                    <line
+                      key={xPos}
+                      x1={xPos}
+                      y1="24"
+                      x2={xPos}
+                      y2="152"
+                      stroke="#f1f5f9"
+                      strokeWidth="1"
+                      strokeDasharray="3 3"
+                    />
+                  ))}
+
+                  {/* Area Wave Gradient Fill Under Curve */}
+                  <path
+                    d="M 45 152 L 45 146 C 110 142, 140 115, 195 90 C 255 64, 280 44, 325 38 L 365 35 L 365 152 Z"
+                    fill="url(#waveAreaGradWhite)"
+                    style={{
+                      opacity: cardsInView[0] ? 1 : 0,
+                      transition: "opacity 1000ms ease-out 400ms",
+                    }}
                   />
-                  <rect x="46" y="132" width="3.5" height="62" rx="1.5" fill="#cbd5e1" opacity="0.35" />
-                  <text x="60" y="176" textAnchor="middle" fontSize="6.5" fontWeight="700" fill="#64748b" letterSpacing="0.5" fontFamily="system-ui, sans-serif">DATA</text>
-                  <text x="60" y="189" textAnchor="middle" fontSize="10.5" fontWeight="800" fill="#0f172a" fontFamily="system-ui, sans-serif">01</text>
-                </g>
 
-                {/* Pillar 2 */}
-                <g className="transition-transform duration-300 origin-bottom group-hover:scale-y-[1.02]">
-                  <rect
-                    x="86"
-                    y="124"
-                    width="28"
-                    height="70"
-                    rx="3"
-                    fill="#ffffff"
-                    filter="url(#pillarSoftShadow)"
-                    stroke="#e2e8f0"
-                    strokeWidth="0.75"
+                  {/* Animated Glowing Wave Stroke */}
+                  <path
+                    d="M 45 146 C 110 142, 140 115, 195 90 C 255 64, 280 44, 325 38 L 365 35"
+                    stroke="url(#waveLineGradWhite)"
+                    strokeWidth="3.5"
+                    strokeLinecap="round"
+                    strokeDasharray="380"
+                    strokeDashoffset={cardsInView[0] ? 0 : 380}
+                    style={{
+                      transition: "stroke-dashoffset 1400ms cubic-bezier(0.16, 1, 0.3, 1) 250ms",
+                    }}
                   />
-                  <rect x="86" y="124" width="3.5" height="70" rx="1.5" fill="#cbd5e1" opacity="0.35" />
-                  <text x="100" y="176" textAnchor="middle" fontSize="6.5" fontWeight="700" fill="#64748b" letterSpacing="0.5" fontFamily="system-ui, sans-serif">DATA</text>
-                  <text x="100" y="189" textAnchor="middle" fontSize="10.5" fontWeight="800" fill="#0f172a" fontFamily="system-ui, sans-serif">02</text>
-                </g>
 
-                {/* Pillar 3 */}
-                <g className="transition-transform duration-300 origin-bottom group-hover:scale-y-[1.02]">
-                  <rect
-                    x="126"
-                    y="112"
-                    width="28"
-                    height="82"
-                    rx="3"
-                    fill="#ffffff"
-                    filter="url(#pillarSoftShadow)"
-                    stroke="#e2e8f0"
-                    strokeWidth="0.75"
-                  />
-                  <rect x="126" y="112" width="3.5" height="82" rx="1.5" fill="#cbd5e1" opacity="0.35" />
-                  <text x="140" y="176" textAnchor="middle" fontSize="6.5" fontWeight="700" fill="#64748b" letterSpacing="0.5" fontFamily="system-ui, sans-serif">DATA</text>
-                  <text x="140" y="189" textAnchor="middle" fontSize="10.5" fontWeight="800" fill="#0f172a" fontFamily="system-ui, sans-serif">03</text>
-                </g>
+                  {/* Interactive Milestone Checkpoints along Trajectory */}
+                  {INFRA_MILESTONES.map((m, i) => {
+                    const isActive = activeMilestone === i;
+                    return (
+                      <g
+                        key={m.phase}
+                        className="cursor-pointer"
+                        onMouseEnter={() => setActiveMilestone(i)}
+                        onMouseLeave={() => setActiveMilestone(null)}
+                        style={{
+                          transformOrigin: `${m.cx}px ${m.cy}px`,
+                          opacity: cardsInView[0] ? 1 : 0,
+                          transform: cardsInView[0] ? "scale(1)" : "scale(0)",
+                          transition: `transform 500ms cubic-bezier(0.34, 1.56, 0.64, 1) ${i * 200 + 750}ms, opacity 350ms ease ${i * 200 + 750}ms`,
+                        }}
+                      >
+                        {/* Peak Pulsing Radar Ring */}
+                        {m.isPeak && (
+                          <circle
+                            cx={m.cx}
+                            cy={m.cy}
+                            r="12"
+                            fill="#00b4d8"
+                            opacity="0.3"
+                            style={{
+                              transformOrigin: `${m.cx}px ${m.cy}px`,
+                              animation: cardsInView[0] ? "radarPing 2.2s cubic-bezier(0, 0, 0.2, 1) infinite 1200ms" : "none",
+                            }}
+                          />
+                        )}
 
-                {/* Pillar 4 */}
-                <g className="transition-transform duration-300 origin-bottom group-hover:scale-y-[1.02]">
-                  <rect
-                    x="166"
-                    y="94"
-                    width="28"
-                    height="100"
-                    rx="3"
-                    fill="#ffffff"
-                    filter="url(#pillarSoftShadow)"
-                    stroke="#e2e8f0"
-                    strokeWidth="0.75"
-                  />
-                  <rect x="166" y="94" width="3.5" height="100" rx="1.5" fill="#cbd5e1" opacity="0.35" />
-                  <text x="180" y="176" textAnchor="middle" fontSize="6.5" fontWeight="700" fill="#64748b" letterSpacing="0.5" fontFamily="system-ui, sans-serif">DATA</text>
-                  <text x="180" y="189" textAnchor="middle" fontSize="10.5" fontWeight="800" fill="#0f172a" fontFamily="system-ui, sans-serif">04</text>
-                </g>
+                        {/* Node Outer Ring */}
+                        <circle
+                          cx={m.cx}
+                          cy={m.cy}
+                          r={m.isPeak ? 7 : 5.5}
+                          fill="#ffffff"
+                          stroke={m.isPeak ? "#0052cc" : isActive ? "#0077b6" : "#00b4d8"}
+                          strokeWidth="2.5"
+                          filter="url(#cleanCardShadow)"
+                        />
 
-                {/* Pillar 5 */}
-                <g className="transition-transform duration-300 origin-bottom group-hover:scale-y-[1.02]">
-                  <rect
-                    x="206"
-                    y="72"
-                    width="28"
-                    height="122"
-                    rx="3"
-                    fill="#ffffff"
-                    filter="url(#pillarSoftShadow)"
-                    stroke="#e2e8f0"
-                    strokeWidth="0.75"
-                  />
-                  <rect x="206" y="72" width="3.5" height="122" rx="1.5" fill="#cbd5e1" opacity="0.35" />
-                  <text x="220" y="176" textAnchor="middle" fontSize="6.5" fontWeight="700" fill="#64748b" letterSpacing="0.5" fontFamily="system-ui, sans-serif">DATA</text>
-                  <text x="220" y="189" textAnchor="middle" fontSize="10.5" fontWeight="800" fill="#0f172a" fontFamily="system-ui, sans-serif">05</text>
-                </g>
+                        {/* Node Inner Core Dot */}
+                        <circle
+                          cx={m.cx}
+                          cy={m.cy}
+                          r={m.isPeak ? 3.5 : 2.5}
+                          fill={m.isPeak ? "#00b4d8" : "#0077b6"}
+                        />
 
-                {/* Pillar 6 */}
-                <g className="transition-transform duration-300 origin-bottom group-hover:scale-y-[1.02]">
-                  <rect
-                    x="246"
-                    y="44"
-                    width="28"
-                    height="150"
-                    rx="3"
-                    fill="#ffffff"
-                    filter="url(#pillarSoftShadow)"
-                    stroke="#e2e8f0"
-                    strokeWidth="0.75"
-                  />
-                  <rect x="246" y="44" width="3.5" height="150" rx="1.5" fill="#cbd5e1" opacity="0.35" />
-                  <text x="260" y="176" textAnchor="middle" fontSize="6.5" fontWeight="700" fill="#64748b" letterSpacing="0.5" fontFamily="system-ui, sans-serif">DATA</text>
-                  <text x="260" y="189" textAnchor="middle" fontSize="10.5" fontWeight="800" fill="#0f172a" fontFamily="system-ui, sans-serif">06</text>
-                </g>
+                        {/* Milestone Card Badge Floating Above Node */}
+                        <g
+                          style={{
+                            transform: isActive || m.isPeak ? "translateY(-3px)" : "translateY(0)",
+                            transition: "transform 250ms ease",
+                          }}
+                        >
+                          <rect
+                            x={m.cx - (m.isPeak ? 44 : 36)}
+                            y={m.cy - 30}
+                            width={m.isPeak ? 88 : 72}
+                            height="22"
+                            rx="5"
+                            fill={m.isPeak ? "#0052cc" : "#ffffff"}
+                            stroke={m.isPeak ? "#00b4d8" : "#cbd5e1"}
+                            strokeWidth={m.isPeak ? "1.5" : "1"}
+                            filter="url(#cleanCardShadow)"
+                          />
+                          <text
+                            x={m.cx}
+                            y={m.cy - 19}
+                            textAnchor="middle"
+                            fontSize="8"
+                            fontWeight="800"
+                            fill={m.isPeak ? "#ffffff" : "#0f172a"}
+                            fontFamily="monospace"
+                          >
+                            {m.amount}
+                          </text>
+                          <text
+                            x={m.cx}
+                            y={m.cy - 11}
+                            textAnchor="middle"
+                            fontSize="6"
+                            fontWeight="600"
+                            fill={m.isPeak ? "#93c5fd" : "#64748b"}
+                            fontFamily="system-ui, sans-serif"
+                          >
+                            {m.label}
+                          </text>
+                        </g>
 
-                {/* Pillar 7 */}
-                <g className="transition-transform duration-300 origin-bottom group-hover:scale-y-[1.02]">
-                  <rect
-                    x="286"
-                    y="14"
-                    width="28"
-                    height="180"
-                    rx="3"
-                    fill="#ffffff"
-                    filter="url(#pillarSoftShadow)"
-                    stroke="#e2e8f0"
-                    strokeWidth="0.75"
-                  />
-                  <rect x="286" y="14" width="3.5" height="180" rx="1.5" fill="#cbd5e1" opacity="0.35" />
-                  <text x="300" y="176" textAnchor="middle" fontSize="6.5" fontWeight="700" fill="#64748b" letterSpacing="0.5" fontFamily="system-ui, sans-serif">DATA</text>
-                  <text x="300" y="189" textAnchor="middle" fontSize="10.5" fontWeight="800" fill="#0f172a" fontFamily="system-ui, sans-serif">07</text>
-                </g>
-
-                {/* 3. Exponential Upward-Curving Arrow Ribbon (Rendered on top of pillars) */}
-                {/* Outer White Layer with Drop Shadow */}
-                <path
-                  d="M 16 146 C 88 146, 172 132, 238 84 C 274 58, 298 38, 314 22"
-                  stroke="#ffffff"
-                  strokeWidth="26"
-                  strokeLinecap="round"
-                  filter="url(#infographicArrowShadow)"
-                />
-
-                {/* Inner Electric Blue Core Stripe */}
-                <path
-                  d="M 16 146 C 88 146, 172 132, 238 84 C 274 58, 298 38, 314 22"
-                  stroke="url(#infographicBlueRibbon)"
-                  strokeWidth="13"
-                  strokeLinecap="round"
-                />
-
-                {/* 4. Large Diagonal Arrowhead pointing Up-Right (↗) */}
-                <g className="transition-transform duration-300 origin-center group-hover:translate-x-1 group-hover:-translate-y-1">
-                  {/* Outer White Arrowhead with Shadow */}
-                  <polygon
-                    points="292,16 344,6 332,54 316,36 306,26"
-                    fill="#ffffff"
-                    stroke="#ffffff"
-                    strokeWidth="8"
-                    strokeLinejoin="round"
-                    filter="url(#infographicArrowShadow)"
-                  />
-                  {/* Inner Blue Arrowhead Fill */}
-                  <polygon
-                    points="292,16 344,6 332,54 316,36 306,26"
-                    fill="url(#infographicBlueRibbon)"
-                    stroke="url(#infographicBlueRibbon)"
-                    strokeWidth="2"
-                    strokeLinejoin="round"
-                  />
-                </g>
-              </svg>
+                        {/* Bottom Year Label */}
+                        <text
+                          x={m.cx}
+                          y="168"
+                          textAnchor="middle"
+                          fontSize="8"
+                          fontWeight="700"
+                          fill={m.isPeak ? "#0052cc" : "#64748b"}
+                          fontFamily="monospace"
+                        >
+                          {m.year}
+                        </text>
+                      </g>
+                    );
+                  })}
+                </svg>
             </div>
           </div>
 
           {/* ------------------------------------------------------------- */}
-          {/* CARD 2: 17.1% YoY GROWTH BAR CHART */}
+          {/* CARD 2: 17.1% YoY NATIONAL EV REGISTRATION MATRIX */}
           {/* ------------------------------------------------------------- */}
           <div
             ref={card1Ref}
             id="card-yoy-growth"
-            className={`w-full rounded-3xl bg-white border border-neutral-200/90 hover:border-[#00b4d8]/60 p-6 sm:p-9 lg:p-10 flex flex-col justify-between min-h-[420px] sm:min-h-[460px] overflow-hidden group shadow-[0_12px_40px_-10px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_50px_-12px_rgba(0,180,216,0.18)] relative transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+            className={`w-full rounded-3xl bg-white border border-neutral-200/90 hover:border-[#00b4d8]/60 p-6 sm:p-8 flex flex-col gap-4 sm:gap-5 overflow-hidden group shadow-[0_12px_40px_-10px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_50px_-12px_rgba(0,180,216,0.18)] relative transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
               cardsInView[1]
                 ? "opacity-100 translate-y-0 scale-100"
                 : "opacity-0 translate-y-12 sm:translate-y-16 scale-[0.98]"
             }`}
           >
-            {/* Ambient Bottom Blue-Cyan Glow */}
-            <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 w-96 h-44 bg-[radial-gradient(ellipse_at_bottom,rgba(0,180,216,0.18),transparent_70%)] pointer-events-none group-hover:opacity-100 transition-opacity" />
+            {/* Ambient Cyan Aura */}
+            <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 w-96 h-44 bg-[radial-gradient(ellipse_at_bottom,rgba(0,180,216,0.14),transparent_70%)] pointer-events-none group-hover:opacity-100 transition-opacity" />
 
-            {/* Stat Value & Title */}
+            {/* Stat Value & Title with Count-Up Animation */}
             <div className="relative z-10">
               <div className="flex items-baseline tracking-tight">
-                <span className="text-4xl sm:text-5xl lg:text-[4.25rem] font-bold text-neutral-900 leading-none">
-                  17.1%
+                <span
+                  suppressHydrationWarning
+                  className="text-4xl sm:text-5xl lg:text-[4.25rem] font-bold text-neutral-900 leading-none tabular-nums"
+                >
+                  {countYoY}%
                 </span>
                 <span className="text-3xl sm:text-4xl lg:text-[3.25rem] font-bold text-[#0077b6] ml-3 leading-none font-sans">
                   YoY
                 </span>
               </div>
 
-              <p className="text-sm sm:text-base lg:text-lg text-neutral-600 font-normal leading-snug mt-3 sm:mt-4 max-w-xl">
+              <p className="text-sm sm:text-base lg:text-lg text-neutral-600 font-normal leading-snug mt-2 sm:mt-3 max-w-xl">
                 growth in <span className="text-neutral-900 font-semibold underline decoration-[#00b4d8] underline-offset-4 decoration-2">national electric vehicle</span> registrations
               </p>
             </div>
 
-            {/* Bottom Graphic: Rising YoY Growth Bar Chart (2nd type of design) */}
-            <div className="relative w-full h-52 sm:h-60 md:h-64 mt-6 overflow-hidden flex items-end justify-center bg-gradient-to-b from-slate-50/70 to-slate-100/50 rounded-2xl border border-slate-100/90 p-2 sm:p-4">
+            {/* Clean White Graphic Container with Growth Bars & Spline */}
+            <div className="relative w-full h-48 sm:h-56 overflow-hidden flex items-center justify-center bg-white rounded-2xl border border-neutral-200/90 p-2 sm:p-4 shadow-xs">
               <svg
-                viewBox="0 0 320 200"
-                className="w-full max-w-[340px] h-full relative z-10 overflow-visible"
+                viewBox="0 0 360 180"
+                className="w-full max-w-[390px] h-full overflow-visible"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                {/* L-Shaped Coordinate Axes */}
-                {/* Y-Axis Line */}
-                <line
-                  x1="46"
-                  y1="168"
-                  x2="46"
-                  y2="28"
-                  stroke="#1e293b"
-                  strokeWidth="5.5"
-                  strokeLinecap="round"
-                />
-                {/* Y-Axis Up Arrowhead */}
-                <polygon
-                  points="46,14 37,32 55,32"
-                  fill="#1e293b"
-                />
+                  <defs>
+                    {/* Glowing Bar Gradients for Light Mode */}
+                    <linearGradient id="lightBar1" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#38bdf8" />
+                      <stop offset="100%" stopColor="#0284c7" />
+                    </linearGradient>
+                    <linearGradient id="lightBar2" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#00b4d8" />
+                      <stop offset="100%" stopColor="#0077b6" />
+                    </linearGradient>
+                    <linearGradient id="lightBar3" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#0077b6" />
+                      <stop offset="100%" stopColor="#0052cc" />
+                    </linearGradient>
+                    <linearGradient id="lightBar4" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#0052cc" />
+                      <stop offset="100%" stopColor="#003399" />
+                    </linearGradient>
 
-                {/* X-Axis Line */}
-                <line
-                  x1="46"
-                  y1="168"
-                  x2="286"
-                  y2="168"
-                  stroke="#1e293b"
-                  strokeWidth="5.5"
-                  strokeLinecap="round"
-                />
-                {/* X-Axis Right Arrowhead */}
-                <polygon
-                  points="300,168 282,159 282,177"
-                  fill="#1e293b"
-                />
+                    {/* Soft Shadow Filter */}
+                    <filter id="cleanBarShadow" x="-20%" y="-20%" width="140%" height="140%">
+                      <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor="#0052cc" floodOpacity="0.12" />
+                    </filter>
+                  </defs>
 
-                {/* 4 Rising Vertical Bars (Site Theme: Cyan to Cobalt Blue Progression) */}
-                {/* Bar 1: Light Electric Sky Cyan (Shortest) */}
-                <rect
-                  x="74"
-                  y="114"
-                  width="38"
-                  height="54"
-                  rx="4"
-                  fill="#38bdf8"
-                  className="transition-transform duration-300 origin-bottom group-hover:scale-y-105"
-                />
+                  {/* Horizontal Grid Guide Lines */}
+                  {[40, 85, 130, 170].map((yVal) => (
+                    <line
+                      key={yVal}
+                      x1="45"
+                      y1={yVal}
+                      x2="335"
+                      y2={yVal}
+                      stroke="#e2e8f0"
+                      strokeWidth="1"
+                      strokeDasharray="4 4"
+                    />
+                  ))}
 
-                {/* Bar 2: Signature Evion Turquoise Cyan */}
-                <rect
-                  x="126"
-                  y="84"
-                  width="38"
-                  height="84"
-                  rx="4"
-                  fill="#00b4d8"
-                  className="transition-transform duration-300 origin-bottom group-hover:scale-y-105"
-                />
+                  {/* 4 Column Bars */}
+                  {ADOPTION_BARS.map((b, i) => {
+                    const isHovered = hoveredBarIndex === i;
+                    const gradId = i === 0 ? "lightBar1" : i === 1 ? "lightBar2" : i === 2 ? "lightBar3" : "lightBar4";
+                    return (
+                      <g
+                        key={b.year}
+                        className="cursor-pointer"
+                        onMouseEnter={() => setHoveredBarIndex(i)}
+                        onMouseLeave={() => setHoveredBarIndex(null)}
+                      >
+                        {/* Column Bar with Staggered Rise */}
+                        <rect
+                          x={b.x}
+                          y={b.y}
+                          width={b.w}
+                          height={b.h}
+                          rx="6"
+                          fill={`url(#${gradId})`}
+                          stroke={isHovered ? "#0052cc" : b.isPeak ? "#0077b6" : "rgba(0,0,0,0.06)"}
+                          strokeWidth={isHovered ? "2" : "1"}
+                          filter="url(#cleanBarShadow)"
+                          style={{
+                            transformOrigin: `${b.x + b.w / 2}px 170px`,
+                            transform: cardsInView[1]
+                              ? isHovered
+                                ? "scaleY(1.04) translateY(-3px)"
+                                : "scaleY(1)"
+                              : "scaleY(0)",
+                            opacity: cardsInView[1] ? 1 : 0,
+                            transition: `transform 850ms cubic-bezier(0.16, 1, 0.3, 1) ${i * 120 + 300}ms, opacity 400ms ease ${i * 120 + 300}ms`,
+                          }}
+                        />
 
-                {/* Bar 3: Electric Azure Blue */}
-                <rect
-                  x="178"
-                  y="54"
-                  width="38"
-                  height="114"
-                  rx="4"
-                  fill="#0077b6"
-                  className="transition-transform duration-300 origin-bottom group-hover:scale-y-105"
-                />
+                        {/* Top Cap Light Highlight */}
+                        <rect
+                          x={b.x + 3}
+                          y={b.y + 2}
+                          width={b.w - 6}
+                          height="4"
+                          rx="2"
+                          fill="#ffffff"
+                          opacity={b.isPeak ? "0.85" : "0.5"}
+                          style={{
+                            transformOrigin: `${b.x + b.w / 2}px 170px`,
+                            transform: cardsInView[1] ? "scaleY(1)" : "scaleY(0)",
+                            transition: `transform 850ms cubic-bezier(0.16, 1, 0.3, 1) ${i * 120 + 300}ms`,
+                          }}
+                        />
 
-                {/* Bar 4: Deep Cobalt Sapphire Blue (Tallest) */}
-                <rect
-                  x="230"
-                  y="24"
-                  width="38"
-                  height="144"
-                  rx="4"
-                  fill="#0047ba"
-                  className="transition-transform duration-300 origin-bottom group-hover:scale-y-105"
-                />
-              </svg>
+                        {/* Floating Growth Badge on top of Bar */}
+                        <g
+                          style={{
+                            transformOrigin: `${b.topCenter.x}px ${b.topCenter.y - 12}px`,
+                            opacity: cardsInView[1] ? 1 : 0,
+                            transform: cardsInView[1]
+                              ? isHovered
+                                ? "scale(1.1) translateY(-4px)"
+                                : "scale(1) translateY(0)"
+                              : "scale(0.6) translateY(10px)",
+                            transition: `all 450ms cubic-bezier(0.34, 1.56, 0.64, 1) ${i * 120 + 750}ms`,
+                          }}
+                        >
+                          <rect
+                            x={b.topCenter.x - (b.isPeak ? 28 : 22)}
+                            y={b.topCenter.y - 20}
+                            width={b.isPeak ? 56 : 44}
+                            height="16"
+                            rx="4"
+                            fill={b.isPeak ? "#0052cc" : "#ffffff"}
+                            stroke={b.isPeak ? "#00b4d8" : "#cbd5e1"}
+                            strokeWidth="1.2"
+                            filter="url(#cleanBarShadow)"
+                          />
+                          <text
+                            x={b.topCenter.x}
+                            y={b.topCenter.y - 9}
+                            textAnchor="middle"
+                            fontSize={b.isPeak ? "8" : "7"}
+                            fontWeight="800"
+                            fill={b.isPeak ? "#ffffff" : "#0f172a"}
+                            fontFamily="monospace"
+                          >
+                            {b.growth}
+                          </text>
+                        </g>
+
+                        {/* Year Label */}
+                        <text
+                          x={b.topCenter.x}
+                          y="180"
+                          textAnchor="middle"
+                          fontSize="8.5"
+                          fontWeight="700"
+                          fill={b.isPeak ? "#0052cc" : isHovered ? "#0077b6" : "#64748b"}
+                          fontFamily="monospace"
+                        >
+                          {b.year}
+                        </text>
+                      </g>
+                    );
+                  })}
+                </svg>
             </div>
           </div>
         </div>
@@ -483,7 +607,7 @@ export default function EvGrowthShowcase({ onOpenCallbackModal }: EvGrowthShowca
         {/* ========================================================================= */}
         <div className="pt-4 sm:pt-6 border-t border-neutral-200/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500 max-w-4xl mx-auto w-full">
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#0077b6]" />
+            <span className="w-2 h-2 rounded-full bg-[#0077b6] animate-pulse" />
             <span className="font-semibold text-neutral-800">
               {activeCardIndex === 0 && "Central Subsidy → ₹4,000+ Cr Dedicated EV Infra Allocation"}
               {activeCardIndex === 1 && "Rapid Market Adoption → 17.1% YoY Commercial Fleet & Passenger Expansion"}
