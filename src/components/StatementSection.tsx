@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { Zap, Handshake, TrendingUp, Sparkles } from "lucide-react";
+
 
 export default function StatementSection() {
   const [isInView, setIsInView] = useState(false);
@@ -127,78 +127,6 @@ export default function StatementSection() {
           </span>
           .
         </p>
-
-        {/* 5. Interactive 3-Pillar Glass Cards with Staggered Entrance & Hover Glow (Hidden on Mobile View) */}
-        <div className="hidden md:grid md:grid-cols-3 gap-5 sm:gap-6 mt-14 sm:mt-18 w-full max-w-4xl">
-          {/* Pillar 1: Technology */}
-          <div
-            className={`p-6 sm:p-7 rounded-2xl bg-white border border-neutral-200/90 text-left transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 hover:border-[#00b4d8]/60 hover:shadow-[0_16px_40px_rgba(0,180,216,0.18)] shadow-[0_4px_20px_-4px_rgba(0,0,0,0.06)] group cursor-default ${isInView
-                ? "opacity-100 translate-y-0 scale-100 delay-[750ms]"
-                : "opacity-0 translate-y-10 scale-95"
-              }`}
-          >
-            <div className="w-10 h-10 rounded-xl bg-neutral-100 border border-neutral-200 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-[#0077b6]/10 group-hover:border-[#0077b6]/40 transition-all duration-300">
-              <Zap className="w-5 h-5 text-[#0077b6] group-hover:scale-110 transition-transform" />
-            </div>
-            <div className="flex items-center justify-between mb-1">
-              <h3 className="text-sm font-bold text-neutral-900 tracking-wide group-hover:text-black transition-colors">
-                Cutting-Edge Tech
-              </h3>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-blue-50 text-[#0077b6] border border-[#0077b6]/30 font-bold shadow-sm">
-                OCPP 2.0
-              </span>
-            </div>
-            <p className="text-xs text-neutral-600 mt-2 leading-relaxed group-hover:text-neutral-900 transition-colors">
-              Smart cloud CMS, dynamic power sharing, and EVION DC Dual Gun CCS fast charging hubs up to 180kW.
-            </p>
-          </div>
-
-          {/* Pillar 2: Partnerships */}
-          <div
-            className={`p-6 sm:p-7 rounded-2xl bg-white border border-neutral-200/90 text-left transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 hover:border-[#00b4d8]/60 hover:shadow-[0_16px_40px_rgba(0,180,216,0.18)] shadow-[0_4px_20px_-4px_rgba(0,0,0,0.06)] group cursor-default ${isInView
-                ? "opacity-100 translate-y-0 scale-100 delay-[900ms]"
-                : "opacity-0 translate-y-10 scale-95"
-              }`}
-          >
-            <div className="w-10 h-10 rounded-xl bg-neutral-100 border border-neutral-200 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-[#0077b6]/10 group-hover:border-[#0077b6]/40 transition-all duration-300">
-              <Handshake className="w-5 h-5 text-[#0077b6] group-hover:scale-110 transition-transform" />
-            </div>
-            <div className="flex items-center justify-between mb-1">
-              <h3 className="text-sm font-bold text-neutral-900 tracking-wide group-hover:text-black transition-colors">
-                Host Partnerships
-              </h3>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-blue-50 text-[#0077b6] border border-[#0077b6]/30 font-bold shadow-sm">
-                85% Margin
-              </span>
-            </div>
-            <p className="text-xs text-neutral-600 mt-2 leading-relaxed group-hover:text-neutral-900 transition-colors">
-              Turn commercial real estate into high-yield recurring profit centers with turnkey setup and zero operational hassle.
-            </p>
-          </div>
-
-          {/* Pillar 3: Strategic Expansion */}
-          <div
-            className={`p-6 sm:p-7 rounded-2xl bg-white border border-neutral-200/90 text-left transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 hover:border-[#00b4d8]/60 hover:shadow-[0_16px_40px_rgba(0,180,216,0.18)] shadow-[0_4px_20px_-4px_rgba(0,0,0,0.06)] group cursor-default ${isInView
-                ? "opacity-100 translate-y-0 scale-100 delay-[1050ms]"
-                : "opacity-0 translate-y-10 scale-95"
-              }`}
-          >
-            <div className="w-10 h-10 rounded-xl bg-neutral-100 border border-neutral-200 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-[#0077b6]/10 group-hover:border-[#0077b6]/40 transition-all duration-300">
-              <TrendingUp className="w-5 h-5 text-[#0077b6] group-hover:scale-110 transition-transform" />
-            </div>
-            <div className="flex items-center justify-between mb-1">
-              <h3 className="text-sm font-bold text-neutral-900 tracking-wide group-hover:text-black transition-colors">
-                Strategic Expansion
-              </h3>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-blue-50 text-[#0077b6] border border-[#0077b6]/30 font-bold shadow-sm">
-                14 Districts
-              </span>
-            </div>
-            <p className="text-xs text-neutral-600 mt-2 leading-relaxed group-hover:text-neutral-900 transition-colors">
-              Arterial deployment along NH-66 &amp; NH-544 highway corridors across Kerala expanding nationwide.
-            </p>
-          </div>
-        </div>
       </div>
     </section>
   );

@@ -88,22 +88,18 @@ export default function FranchisePage() {
           </div>
 
           {/* Metric Bar (Unboxed Horizontal Strip) */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 py-6 border-y border-neutral-200">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 py-6 border-y border-neutral-200">
             <div>
               <div className="text-2xl sm:text-3xl font-black text-neutral-950">₹24L +</div>
               <div className="text-xs text-neutral-500 font-medium mt-0.5">Starting Investment</div>
             </div>
             <div>
-              <div className="text-2xl sm:text-3xl font-black text-neutral-950">18–24 Mo.</div>
+              <div className="text-2xl sm:text-3xl font-black text-neutral-950">24–36 Mo.</div>
               <div className="text-xs text-neutral-500 font-medium mt-0.5">Payback Horizon</div>
             </div>
             <div>
-              <div className="text-2xl sm:text-3xl font-black text-neutral-950">180kW DC</div>
+              <div className="text-2xl sm:text-3xl font-black text-neutral-950">DC Charging</div>
               <div className="text-xs text-neutral-500 font-medium mt-0.5">Dual Gun CCS Speed</div>
-            </div>
-            <div>
-              <div className="text-2xl sm:text-3xl font-black text-[#0077e6]">70 / 30</div>
-              <div className="text-xs text-neutral-500 font-medium mt-0.5">Revenue Share</div>
             </div>
           </div>
         </section>
@@ -146,7 +142,7 @@ export default function FranchisePage() {
                   href="#apply"
                   className="inline-flex items-center gap-1 text-xs font-bold text-[#0077e6] hover:underline mt-1"
                 >
-                  <span>18-24 months payback</span>
+                  <span>24-36 months payback</span>
                   <span>→</span>
                 </a>
               </div>
@@ -331,12 +327,6 @@ export default function FranchisePage() {
                     </a>
                   </span>
                 </div>
-              </div>
-
-              <div className="p-4 rounded-xl bg-neutral-50 border border-neutral-200 text-xs text-neutral-600 space-y-1.5 font-mono">
-                <div>✓ 1. Immediate kit dispatch via WhatsApp</div>
-                <div>✓ 2. Technical site feasibility within 48h</div>
-                <div>✓ 3. Turnkey deployment in 30 days</div>
               </div>
             </div>
 

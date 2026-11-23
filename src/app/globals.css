@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -19,6 +19,11 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+}
+
+.font-display {
+  font-family: 'Barlow Condensed', 'Plus Jakarta Sans', -apple-system, sans-serif;
+  letter-spacing: -0.02em;
 }
 
 /* Smooth Scroll Optimizations */
@@ -51,7 +56,7 @@ html {
 
 /* Subtle Ather Glows */
 .glow-ather {
-  box-shadow: 0 10px 30px -10px rgba(0, 180, 216, 0.3);
+  box-shadow: 0 10px 30px -10px rgba(230, 0, 40, 0.3);
 }
 
 .glow-subtle {
@@ -102,7 +107,6 @@ html {
 
 /* Atmospheric Ambient Glow Pulsing */
 @keyframes pulseAura {
-
   0%,
   100% {
     opacity: 0.07;
@@ -185,4 +189,11 @@ html {
 
 .animate-energy-shimmer {
   animation: energyShimmer 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Authentic Tactile Paper Grain Utility */
+.paper-grain {
+  background-image: url('/images/paper-texture.png');
+  background-repeat: repeat;
+  background-size: 360px auto;
 }

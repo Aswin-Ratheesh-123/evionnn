@@ -61,7 +61,6 @@ export default function EvGrowthShowcase({ onOpenCallbackModal }: EvGrowthShowca
   const [isInView, setIsInView] = useState(false);
   const [activeCardIndex, setActiveCardIndex] = useState(0);
   const [cardsInView, setCardsInView] = useState([false, false]);
-  const [activeMilestone, setActiveMilestone] = useState<number | null>(null);
   const [hoveredBarIndex, setHoveredBarIndex] = useState<number | null>(null);
 
   // Animated Numbers
@@ -237,33 +236,17 @@ export default function EvGrowthShowcase({ onOpenCallbackModal }: EvGrowthShowca
                   </defs>
 
                   {/* Horizontal Guideline Benchmarks */}
-                  {[
-                    { label: "₹4,000 Cr", y: 38 },
-                    { label: "₹2,000 Cr", y: 95 },
-                    { label: "₹0 Cr", y: 152 },
-                  ].map((guide) => (
-                    <g key={guide.label}>
-                      <line
-                        x1="45"
-                        y1={guide.y}
-                        x2="365"
-                        y2={guide.y}
-                        stroke="#e2e8f0"
-                        strokeWidth="1"
-                        strokeDasharray="4 4"
-                      />
-                      <text
-                        x="38"
-                        y={guide.y + 3}
-                        textAnchor="end"
-                        fontSize="7.5"
-                        fontFamily="monospace"
-                        fill="#64748b"
-                        fontWeight="600"
-                      >
-                        {guide.label}
-                      </text>
-                    </g>
+                  {[38, 95, 152].map((y) => (
+                    <line
+                      key={y}
+                      x1="25"
+                      y1={y}
+                      x2="365"
+                      y2={y}
+                      stroke="#e2e8f0"
+                      strokeWidth="1"
+                      strokeDasharray="4 4"
+                    />
                   ))}
 
                   {/* Vertical Phase Boundaries */}
@@ -302,114 +285,6 @@ export default function EvGrowthShowcase({ onOpenCallbackModal }: EvGrowthShowca
                       transition: "stroke-dashoffset 1400ms cubic-bezier(0.16, 1, 0.3, 1) 250ms",
                     }}
                   />
-
-                  {/* Interactive Milestone Checkpoints along Trajectory */}
-                  {INFRA_MILESTONES.map((m, i) => {
-                    const isActive = activeMilestone === i;
-                    return (
-                      <g
-                        key={m.phase}
-                        className="cursor-pointer"
-                        onMouseEnter={() => setActiveMilestone(i)}
-                        onMouseLeave={() => setActiveMilestone(null)}
-                        style={{
-                          transformOrigin: `${m.cx}px ${m.cy}px`,
-                          opacity: cardsInView[0] ? 1 : 0,
-                          transform: cardsInView[0] ? "scale(1)" : "scale(0)",
-                          transition: `transform 500ms cubic-bezier(0.34, 1.56, 0.64, 1) ${i * 200 + 750}ms, opacity 350ms ease ${i * 200 + 750}ms`,
-                        }}
-                      >
-                        {/* Peak Pulsing Radar Ring */}
-                        {m.isPeak && (
-                          <circle
-                            cx={m.cx}
-                            cy={m.cy}
-                            r="12"
-                            fill="#00b4d8"
-                            opacity="0.3"
-                            style={{
-                              transformOrigin: `${m.cx}px ${m.cy}px`,
-                              animation: cardsInView[0] ? "radarPing 2.2s cubic-bezier(0, 0, 0.2, 1) infinite 1200ms" : "none",
-                            }}
-                          />
-                        )}
-
-                        {/* Node Outer Ring */}
-                        <circle
-                          cx={m.cx}
-                          cy={m.cy}
-                          r={m.isPeak ? 7 : 5.5}
-                          fill="#ffffff"
-                          stroke={m.isPeak ? "#0052cc" : isActive ? "#0077b6" : "#00b4d8"}
-                          strokeWidth="2.5"
-                          filter="url(#cleanCardShadow)"
-                        />
-
-                        {/* Node Inner Core Dot */}
-                        <circle
-                          cx={m.cx}
-                          cy={m.cy}
-                          r={m.isPeak ? 3.5 : 2.5}
-                          fill={m.isPeak ? "#00b4d8" : "#0077b6"}
-                        />
-
-                        {/* Milestone Card Badge Floating Above Node */}
-                        <g
-                          style={{
-                            transform: isActive || m.isPeak ? "translateY(-3px)" : "translateY(0)",
-                            transition: "transform 250ms ease",
-                          }}
-                        >
-                          <rect
-                            x={m.cx - (m.isPeak ? 44 : 36)}
-                            y={m.cy - 30}
-                            width={m.isPeak ? 88 : 72}
-                            height="22"
-                            rx="5"
-                            fill={m.isPeak ? "#0052cc" : "#ffffff"}
-                            stroke={m.isPeak ? "#00b4d8" : "#cbd5e1"}
-                            strokeWidth={m.isPeak ? "1.5" : "1"}
-                            filter="url(#cleanCardShadow)"
-                          />
-                          <text
-                            x={m.cx}
-                            y={m.cy - 19}
-                            textAnchor="middle"
-                            fontSize="8"
-                            fontWeight="800"
-                            fill={m.isPeak ? "#ffffff" : "#0f172a"}
-                            fontFamily="monospace"
-                          >
-                            {m.amount}
-                          </text>
-                          <text
-                            x={m.cx}
-                            y={m.cy - 11}
-                            textAnchor="middle"
-                            fontSize="6"
-                            fontWeight="600"
-                            fill={m.isPeak ? "#93c5fd" : "#64748b"}
-                            fontFamily="system-ui, sans-serif"
-                          >
-                            {m.label}
-                          </text>
-                        </g>
-
-                        {/* Bottom Year Label */}
-                        <text
-                          x={m.cx}
-                          y="168"
-                          textAnchor="middle"
-                          fontSize="8"
-                          fontWeight="700"
-                          fill={m.isPeak ? "#0052cc" : "#64748b"}
-                          fontFamily="monospace"
-                        >
-                          {m.year}
-                        </text>
-                      </g>
-                    );
-                  })}
                 </svg>
             </div>
           </div>

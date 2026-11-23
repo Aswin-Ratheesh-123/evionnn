@@ -57,9 +57,30 @@ export default function RootLayout({
         />
       </head>
       <body
-        className="min-h-screen bg-white text-neutral-900 flex flex-col font-sans selection:bg-[#00b4d8] selection:text-white"
+        className="min-h-screen bg-white text-neutral-900 flex flex-col font-sans selection:bg-[#00b4d8] selection:text-white relative"
         suppressHydrationWarning
       >
+        {/* Global Tactile Paper Texture Layers across Entire Website */}
+        <div
+          className="fixed inset-0 pointer-events-none z-[99999] opacity-[0.24] bg-repeat"
+          style={{
+            backgroundImage: "url('/images/paper-texture.png')",
+            backgroundSize: "360px auto",
+            mixBlendMode: "multiply",
+            pointerEvents: "none",
+          }}
+          aria-hidden="true"
+        />
+        <div
+          className="fixed inset-0 pointer-events-none z-[99999] opacity-[0.14] bg-repeat"
+          style={{
+            backgroundImage: "url('/images/paper-texture.png')",
+            backgroundSize: "360px auto",
+            mixBlendMode: "overlay",
+            pointerEvents: "none",
+          }}
+          aria-hidden="true"
+        />
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
