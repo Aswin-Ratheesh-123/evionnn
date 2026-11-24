@@ -19,7 +19,7 @@ export default function TornPaperEdge({
   flipY = false,
   flipX = false,
   heightClass = "h-8 sm:h-14",
-  className = "",
+  className = "z-10",
 }: TornPaperEdgeProps) {
   const rawId = useId();
   const filterId = `torn-shadow-${rawId.replace(/[^a-zA-Z0-9]/g, "_")}`;
@@ -27,7 +27,7 @@ export default function TornPaperEdge({
 
   return (
     <div
-      className={`w-full overflow-hidden leading-none z-20 relative pointer-events-none ${className}`}
+      className={`w-full overflow-hidden leading-none relative pointer-events-none ${className}`}
       style={transform ? { transform } : undefined}
     >
       <svg

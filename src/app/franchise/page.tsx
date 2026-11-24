@@ -40,14 +40,14 @@ export default function FranchisePage() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-neutral-900 selection:bg-[#00b4d8] selection:text-white font-sans">
+    <div className="min-h-screen bg-white text-neutral-700 selection:bg-[#00b4d8] selection:text-white font-sans">
       {/* 1. Header Navigation */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-neutral-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 h-16 flex items-center justify-between gap-4">
           {/* Left: Back Button */}
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-neutral-600 hover:text-neutral-950 transition-colors group"
+            className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-neutral-600 hover:text-neutral-800 transition-colors group"
           >
             <ArrowLeft className="w-4 h-4 text-neutral-400 group-hover:text-[#0077e6] group-hover:-translate-x-1 transition-all" />
             <span>Back to Home</span>
@@ -56,7 +56,7 @@ export default function FranchisePage() {
           {/* Right: Primary Call to Action */}
           <a
             href="#apply"
-            className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-neutral-950 hover:bg-[#0077e6] text-white font-semibold text-xs sm:text-sm transition-all"
+            className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-neutral-700 hover:bg-[#0077e6] text-white font-semibold text-xs sm:text-sm transition-all"
           >
             <span>Apply for Franchise</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -72,7 +72,7 @@ export default function FranchisePage() {
               EVION FRANCHISE NETWORK • KERALA
             </span>
 
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-neutral-950 leading-[1.08]">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-neutral-700 leading-[1.08]">
               Complete EV Charging Solutions{" "}
               <span className="bg-gradient-to-r from-[#0052cc] via-[#0077e6] to-[#00b4d8] bg-clip-text text-transparent">
                 Everywhere You Need
@@ -81,8 +81,8 @@ export default function FranchisePage() {
 
             <p className="text-base sm:text-xl text-neutral-600 font-normal leading-relaxed max-w-2xl pt-2">
               With a comprehensive portfolio and an arterial Kerala fast-charging network, we make EV station ownership{" "}
-              <span className="text-neutral-950 font-bold">profitable</span>,{" "}
-              <span className="text-neutral-950 font-bold">dependable</span>, and{" "}
+              <span className="text-neutral-700 font-bold">profitable</span>,{" "}
+              <span className="text-neutral-700 font-bold">dependable</span>, and{" "}
               <span className="text-[#0077e6] font-bold">easy</span>.
             </p>
           </div>
@@ -90,15 +90,15 @@ export default function FranchisePage() {
           {/* Metric Bar (Unboxed Horizontal Strip) */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 py-6 border-y border-neutral-200">
             <div>
-              <div className="text-2xl sm:text-3xl font-black text-neutral-950">₹24L +</div>
+              <div className="text-2xl sm:text-3xl font-black text-neutral-700">₹24L +</div>
               <div className="text-xs text-neutral-500 font-medium mt-0.5">Starting Investment</div>
             </div>
             <div>
-              <div className="text-2xl sm:text-3xl font-black text-neutral-950">24–36 Mo.</div>
+              <div className="text-2xl sm:text-3xl font-black text-neutral-700">24–36 Mo.</div>
               <div className="text-xs text-neutral-500 font-medium mt-0.5">Payback Horizon</div>
             </div>
             <div>
-              <div className="text-2xl sm:text-3xl font-black text-neutral-950">DC Charging</div>
+              <div className="text-2xl sm:text-3xl font-black text-neutral-700">DC Charging</div>
               <div className="text-xs text-neutral-500 font-medium mt-0.5">Dual Gun CCS Speed</div>
             </div>
           </div>
@@ -117,7 +117,7 @@ export default function FranchisePage() {
             <div className="text-xs font-mono font-bold tracking-widest text-[#0077e6] uppercase mb-2">
               TECHNICAL BLUEPRINT
             </div>
-            <h2 className="text-2xl sm:text-4xl font-black tracking-tight text-neutral-950">
+            <h2 className="text-2xl sm:text-4xl font-black tracking-tight text-neutral-700">
               Franchise Blueprint &amp; Requirements
             </h2>
             <p className="text-sm sm:text-base text-neutral-600 mt-2">
@@ -134,7 +134,7 @@ export default function FranchisePage() {
                 <span>Capital Investment</span>
               </div>
               <div className="md:col-span-4">
-                <div className="text-lg sm:text-xl font-bold text-neutral-950">
+                <div className="text-lg sm:text-xl font-bold text-neutral-700">
                   Starting Investment of{" "}
                   <span className="text-[#0077e6] font-black">₹24L +</span>
                 </div>
@@ -158,7 +158,7 @@ export default function FranchisePage() {
                 <span>Charger Hardware</span>
               </div>
               <div className="md:col-span-4">
-                <div className="text-lg sm:text-xl font-bold text-neutral-950">
+                <div className="text-lg sm:text-xl font-bold text-neutral-700">
                   <span className="text-[#0077e6] font-bold">60kW, 120kW &amp; 180kW</span> DC Dual Gun CCS
                 </div>
                 <a
@@ -181,7 +181,7 @@ export default function FranchisePage() {
                 <span>Vehicle Type</span>
               </div>
               <div className="md:col-span-4">
-                <div className="text-lg sm:text-xl font-bold text-neutral-950">
+                <div className="text-lg sm:text-xl font-bold text-neutral-700">
                   4-Wheeler Passenger EVs
                 </div>
                 <a
@@ -204,7 +204,7 @@ export default function FranchisePage() {
                 <span>Space Needed</span>
               </div>
               <div className="md:col-span-4">
-                <div className="text-lg sm:text-xl font-bold text-neutral-950">
+                <div className="text-lg sm:text-xl font-bold text-neutral-700">
                   Space Needed: <span className="text-[#0077e6]">550 sq. ft.</span>
                 </div>
                 <a
@@ -227,7 +227,7 @@ export default function FranchisePage() {
                 <span>Power Connection</span>
               </div>
               <div className="md:col-span-4">
-                <div className="text-lg sm:text-xl font-bold text-neutral-950">
+                <div className="text-lg sm:text-xl font-bold text-neutral-700">
                   Direct Grid Connection
                 </div>
                 <a
@@ -250,7 +250,7 @@ export default function FranchisePage() {
                 <span>Ideal Locations</span>
               </div>
               <div className="md:col-span-4">
-                <div className="text-lg sm:text-xl font-bold text-neutral-950">
+                <div className="text-lg sm:text-xl font-bold text-neutral-700">
                   Highways, Office Parks &amp; Malls
                 </div>
                 <a
@@ -273,7 +273,7 @@ export default function FranchisePage() {
                 <span>Support Package</span>
               </div>
               <div className="md:col-span-4">
-                <div className="text-lg sm:text-xl font-bold text-neutral-950">
+                <div className="text-lg sm:text-xl font-bold text-neutral-700">
                   Service and Support You Can Trust
                 </div>
                 <a
@@ -300,7 +300,7 @@ export default function FranchisePage() {
                 <span className="text-xs font-mono font-bold tracking-widest text-[#0077e6] uppercase">
                   PARTNER ONBOARDING
                 </span>
-                <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-neutral-950 mt-2">
+                <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-neutral-700 mt-2">
                   Apply for Franchise
                 </h2>
                 <p className="text-base text-neutral-600 leading-relaxed mt-3">
@@ -313,7 +313,7 @@ export default function FranchisePage() {
                   <Phone className="w-4 h-4 text-[#0077e6] shrink-0" />
                   <span>
                     Direct Helpline:{" "}
-                    <a href="tel:+916238887611" className="text-neutral-950 font-bold hover:underline">
+                    <a href="tel:+916238887611" className="text-neutral-700 font-bold hover:underline">
                       +91 6238-887611
                     </a>
                   </span>
@@ -322,7 +322,7 @@ export default function FranchisePage() {
                   <Mail className="w-4 h-4 text-[#0077e6] shrink-0" />
                   <span>
                     Inquiries:{" "}
-                    <a href="mailto:Info@evioncharging.com" className="text-neutral-950 font-bold hover:underline">
+                    <a href="mailto:Info@evioncharging.com" className="text-neutral-700 font-bold hover:underline">
                       Info@evioncharging.com
                     </a>
                   </span>
@@ -337,13 +337,13 @@ export default function FranchisePage() {
                   <div className="w-12 h-12 rounded-full bg-[#0077e6]/10 text-[#0077e6] flex items-center justify-center mx-auto">
                     <CheckCircle2 className="w-6 h-6" />
                   </div>
-                  <h3 className="text-xl font-bold text-neutral-950">Inquiry Received</h3>
+                  <h3 className="text-xl font-bold text-neutral-700">Inquiry Received</h3>
                   <p className="text-sm text-neutral-600 max-w-md mx-auto leading-relaxed">
-                    Thank you, <span className="text-[#0077e6] font-semibold">{formData.name || "Partner"}</span>. Our franchise representative will connect with you at <span className="text-neutral-950 font-mono font-bold">{formData.phone}</span> regarding the <span className="text-neutral-950 font-semibold">{formData.preferredModel}</span> model.
+                    Thank you, <span className="text-[#0077e6] font-semibold">{formData.name || "Partner"}</span>. Our franchise representative will connect with you at <span className="text-neutral-700 font-mono font-bold">{formData.phone}</span> regarding the <span className="text-neutral-700 font-semibold">{formData.preferredModel}</span> model.
                   </p>
                   <button
                     onClick={() => setIsSubmitted(false)}
-                    className="mt-2 text-xs text-neutral-500 hover:text-neutral-900 underline cursor-pointer"
+                    className="mt-2 text-xs text-neutral-500 hover:text-neutral-700 underline cursor-pointer"
                   >
                     Submit another inquiry
                   </button>
@@ -360,7 +360,7 @@ export default function FranchisePage() {
                       placeholder="e.g. Rahul Menon"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-neutral-50 border border-neutral-200 text-neutral-900 placeholder-neutral-400 text-sm focus:bg-white focus:outline-none focus:border-[#0077e6] focus:ring-1 focus:ring-[#0077e6] transition-all"
+                      className="w-full px-4 py-3 rounded-xl bg-neutral-50 border border-neutral-200 text-neutral-700 placeholder-neutral-400 text-sm focus:bg-white focus:outline-none focus:border-[#0077e6] focus:ring-1 focus:ring-[#0077e6] transition-all"
                     />
                   </div>
 
@@ -374,7 +374,7 @@ export default function FranchisePage() {
                       placeholder="+91 98765 43210"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-neutral-50 border border-neutral-200 text-neutral-900 placeholder-neutral-400 text-sm focus:bg-white focus:outline-none focus:border-[#0077e6] focus:ring-1 focus:ring-[#0077e6] transition-all"
+                      className="w-full px-4 py-3 rounded-xl bg-neutral-50 border border-neutral-200 text-neutral-700 placeholder-neutral-400 text-sm focus:bg-white focus:outline-none focus:border-[#0077e6] focus:ring-1 focus:ring-[#0077e6] transition-all"
                     />
                   </div>
 
@@ -386,7 +386,7 @@ export default function FranchisePage() {
                       <select
                         value={formData.city}
                         onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl bg-neutral-50 border border-neutral-200 text-neutral-900 text-sm focus:bg-white focus:outline-none focus:border-[#0077e6] focus:ring-1 focus:ring-[#0077e6] transition-all"
+                        className="w-full px-4 py-3 rounded-xl bg-neutral-50 border border-neutral-200 text-neutral-700 text-sm focus:bg-white focus:outline-none focus:border-[#0077e6] focus:ring-1 focus:ring-[#0077e6] transition-all"
                       >
                         <option value="Kochi">Kochi / Ernakulam</option>
                         <option value="Thiruvananthapuram">Thiruvananthapuram</option>
@@ -408,7 +408,7 @@ export default function FranchisePage() {
                       <select
                         value={formData.propertyType}
                         onChange={(e) => setFormData({ ...formData, propertyType: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl bg-neutral-50 border border-neutral-200 text-neutral-900 text-sm focus:bg-white focus:outline-none focus:border-[#0077e6] focus:ring-1 focus:ring-[#0077e6] transition-all"
+                        className="w-full px-4 py-3 rounded-xl bg-neutral-50 border border-neutral-200 text-neutral-700 text-sm focus:bg-white focus:outline-none focus:border-[#0077e6] focus:ring-1 focus:ring-[#0077e6] transition-all"
                       >
                         <option value="Highway Land">Highway Frontage</option>
                         <option value="Office Park">Office / Tech Park</option>
@@ -426,7 +426,7 @@ export default function FranchisePage() {
                     <select
                       value={formData.preferredModel}
                       onChange={(e) => setFormData({ ...formData, preferredModel: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-neutral-50 border border-neutral-200 text-neutral-900 text-sm focus:bg-white focus:outline-none focus:border-[#0077e6] focus:ring-1 focus:ring-[#0077e6] transition-all"
+                      className="w-full px-4 py-3 rounded-xl bg-neutral-50 border border-neutral-200 text-neutral-700 text-sm focus:bg-white focus:outline-none focus:border-[#0077e6] focus:ring-1 focus:ring-[#0077e6] transition-all"
                     >
                       <option value="70 / 30 Revenue-Share">70 / 30 Revenue-Share (Keep 70% of Charging Revenue)</option>
                       <option value="FOCO (Franchise Owned, Company Operated)">FOCO (Franchise Owned, Company Operated)</option>
@@ -464,7 +464,7 @@ export default function FranchisePage() {
               +91 6238-887611
             </a>{" "}
             •{" "}
-            <a href="mailto:Info@evioncharging.com" className="text-neutral-900 font-medium hover:underline">
+            <a href="mailto:Info@evioncharging.com" className="text-neutral-700 font-medium hover:underline">
               Info@evioncharging.com
             </a>
           </p>

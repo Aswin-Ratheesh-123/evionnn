@@ -66,11 +66,11 @@ export default function FranchiseModal({ isOpen, onClose, selectedCity }: Franch
 
   return (
     <div className="fixed inset-0 z-[70] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="relative w-full max-w-2xl bg-white border border-neutral-200 rounded-3xl shadow-2xl overflow-hidden text-neutral-900">
+      <div className="relative w-full max-w-2xl bg-white border border-neutral-200 rounded-3xl shadow-2xl overflow-hidden text-neutral-700">
         {/* Header Bar */}
         <div className="flex items-center justify-between px-6 py-5 border-b border-neutral-200 bg-[#f7f7f8]">
           <div className="flex items-center space-x-2">
-            <span className="text-lg font-black tracking-widest text-black">
+            <span className="text-lg font-black tracking-widest text-neutral-700">
               EVION
             </span>
             <span className="text-xs px-2 py-0.5 rounded-full bg-neutral-200 text-neutral-700 font-bold uppercase">
@@ -80,7 +80,7 @@ export default function FranchiseModal({ isOpen, onClose, selectedCity }: Franch
 
           <button
             onClick={onClose}
-            className="p-1.5 rounded-full hover:bg-neutral-200 text-neutral-500 hover:text-black transition-colors"
+            className="p-1.5 rounded-full hover:bg-neutral-200 text-neutral-500 hover:text-neutral-700 transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -100,7 +100,7 @@ export default function FranchiseModal({ isOpen, onClose, selectedCity }: Franch
                   >
                     1
                   </span>
-                  <span className="text-xs font-bold text-black">Partner Details</span>
+                  <span className="text-xs font-bold text-neutral-700">Partner Details</span>
                 </div>
                 <div className="h-0.5 w-12 bg-neutral-200" />
                 <div className="flex items-center space-x-2">
@@ -129,7 +129,7 @@ export default function FranchiseModal({ isOpen, onClose, selectedCity }: Franch
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         placeholder="e.g. Rahul Varma"
-                        className="w-full pl-10 pr-4 py-2.5 bg-[#f7f7f8] border border-neutral-300 rounded-xl text-sm text-black placeholder-neutral-400 focus:outline-none focus:border-black"
+                        className="w-full pl-10 pr-4 py-2.5 bg-[#f7f7f8] border border-neutral-300 rounded-xl text-sm text-neutral-700 placeholder-neutral-400 focus:outline-none focus:border-black"
                       />
                     </div>
                   </div>
@@ -147,7 +147,7 @@ export default function FranchiseModal({ isOpen, onClose, selectedCity }: Franch
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                           placeholder="+91 98765 43210"
-                          className="w-full pl-10 pr-4 py-2.5 bg-[#f7f7f8] border border-neutral-300 rounded-xl text-sm text-black placeholder-neutral-400 focus:outline-none focus:border-black"
+                          className="w-full pl-10 pr-4 py-2.5 bg-[#f7f7f8] border border-neutral-300 rounded-xl text-sm text-neutral-700 placeholder-neutral-400 focus:outline-none focus:border-black"
                         />
                       </div>
                     </div>
@@ -164,7 +164,7 @@ export default function FranchiseModal({ isOpen, onClose, selectedCity }: Franch
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                           placeholder="rahul@example.com"
-                          className="w-full pl-10 pr-4 py-2.5 bg-[#f7f7f8] border border-neutral-300 rounded-xl text-sm text-black placeholder-neutral-400 focus:outline-none focus:border-black"
+                          className="w-full pl-10 pr-4 py-2.5 bg-[#f7f7f8] border border-neutral-300 rounded-xl text-sm text-neutral-700 placeholder-neutral-400 focus:outline-none focus:border-black"
                         />
                       </div>
                     </div>
@@ -178,7 +178,7 @@ export default function FranchiseModal({ isOpen, onClose, selectedCity }: Franch
                       <select
                         value={formData.district}
                         onChange={(e) => setFormData({ ...formData, district: e.target.value })}
-                        className="w-full px-3.5 py-2.5 bg-[#f7f7f8] border border-neutral-300 rounded-xl text-sm text-black focus:outline-none focus:border-black"
+                        className="w-full px-3.5 py-2.5 bg-[#f7f7f8] border border-neutral-300 rounded-xl text-sm text-neutral-700 focus:outline-none focus:border-black"
                       >
                         {KERALA_DISTRICTS.map((dist) => (
                           <option key={dist} value={dist}>
@@ -198,7 +198,7 @@ export default function FranchiseModal({ isOpen, onClose, selectedCity }: Franch
                         value={formData.cityOrTown}
                         onChange={(e) => setFormData({ ...formData, cityOrTown: e.target.value })}
                         placeholder="e.g. Edappally Bypass or Aluva"
-                        className="w-full px-4 py-2.5 bg-[#f7f7f8] border border-neutral-300 rounded-xl text-sm text-black placeholder-neutral-400 focus:outline-none focus:border-black"
+                        className="w-full px-4 py-2.5 bg-[#f7f7f8] border border-neutral-300 rounded-xl text-sm text-neutral-700 placeholder-neutral-400 focus:outline-none focus:border-black"
                       />
                     </div>
                   </div>
@@ -228,7 +228,7 @@ export default function FranchiseModal({ isOpen, onClose, selectedCity }: Franch
                     <select
                       value={formData.propertyType}
                       onChange={(e) => setFormData({ ...formData, propertyType: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-[#f7f7f8] border border-neutral-300 rounded-xl text-sm text-black focus:outline-none focus:border-black"
+                      className="w-full px-3.5 py-2.5 bg-[#f7f7f8] border border-neutral-300 rounded-xl text-sm text-neutral-700 focus:outline-none focus:border-black"
                     >
                       <option>Highway Frontage (NH-66 / NH-544 / MC Road)</option>
                       <option>Commercial Shopping Mall / Complex</option>
@@ -248,7 +248,7 @@ export default function FranchiseModal({ isOpen, onClose, selectedCity }: Franch
                         value={formData.areaSqFt}
                         onChange={(e) => setFormData({ ...formData, areaSqFt: e.target.value })}
                         placeholder="e.g. 800 - 1500 sq.ft (3-6 cars)"
-                        className="w-full px-4 py-2.5 bg-[#f7f7f8] border border-neutral-300 rounded-xl text-sm text-black placeholder-neutral-400 focus:outline-none focus:border-black"
+                        className="w-full px-4 py-2.5 bg-[#f7f7f8] border border-neutral-300 rounded-xl text-sm text-neutral-700 placeholder-neutral-400 focus:outline-none focus:border-black"
                       />
                     </div>
 
@@ -259,7 +259,7 @@ export default function FranchiseModal({ isOpen, onClose, selectedCity }: Franch
                       <select
                         value={formData.hasTransformer}
                         onChange={(e) => setFormData({ ...formData, hasTransformer: e.target.value })}
-                        className="w-full px-3.5 py-2.5 bg-[#f7f7f8] border border-neutral-300 rounded-xl text-sm text-black focus:outline-none focus:border-black"
+                        className="w-full px-3.5 py-2.5 bg-[#f7f7f8] border border-neutral-300 rounded-xl text-sm text-neutral-700 focus:outline-none focus:border-black"
                       >
                         <option>Need Evion KSEB Assistance (Turnkey)</option>
                         <option>Existing HT Transformer on Site</option>
@@ -275,7 +275,7 @@ export default function FranchiseModal({ isOpen, onClose, selectedCity }: Franch
                     <select
                       value={formData.preferredModel}
                       onChange={(e) => setFormData({ ...formData, preferredModel: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-[#f7f7f8] border border-neutral-300 rounded-xl text-sm text-black focus:outline-none focus:border-black"
+                      className="w-full px-3.5 py-2.5 bg-[#f7f7f8] border border-neutral-300 rounded-xl text-sm text-neutral-700 focus:outline-none focus:border-black"
                     >
                       <option>EVION DC Dual Gun CCS Superhub (60kW–180kW)</option>
                       <option>Commercial & Retail Plaza Hub (60kW DC + 22kW AC)</option>
@@ -284,14 +284,14 @@ export default function FranchiseModal({ isOpen, onClose, selectedCity }: Franch
                   </div>
 
                   <div className="p-3.5 rounded-2xl bg-neutral-100 border border-neutral-200 text-xs text-neutral-600">
-                    🔒 <strong className="text-black">Confidential Site Assessment:</strong> Your property details are securely evaluated by our technical team and never shared with third parties.
+                    🔒 <strong className="text-neutral-700">Confidential Site Assessment:</strong> Your property details are securely evaluated by our technical team and never shared with third parties.
                   </div>
 
                   <div className="pt-4 flex items-center justify-between">
                     <button
                       type="button"
                       onClick={() => setStep(1)}
-                      className="px-4 py-2.5 text-xs font-bold text-neutral-500 hover:text-black"
+                      className="px-4 py-2.5 text-xs font-bold text-neutral-500 hover:text-neutral-700"
                     >
                       ← Back
                     </button>
@@ -317,12 +317,12 @@ export default function FranchiseModal({ isOpen, onClose, selectedCity }: Franch
                 <span className="text-xs font-mono uppercase tracking-widest text-neutral-500 font-bold">
                   Application Logged • Ref #EV-KL-2026-8492
                 </span>
-                <h4 className="text-2xl font-black text-black mt-1">
+                <h4 className="text-2xl font-black text-neutral-700 mt-1">
                   Thank you, {formData.name}!
                 </h4>
                 <p className="text-sm text-neutral-600 max-w-md mx-auto mt-2 leading-relaxed">
                   Our Kerala Regional Franchise Director has received your application for{" "}
-                  <strong className="text-black">{formData.cityOrTown}, {formData.district}</strong>. We will contact you within 24 business hours to arrange the free site survey.
+                  <strong className="text-neutral-700">{formData.cityOrTown}, {formData.district}</strong>. We will contact you within 24 business hours to arrange the free site survey.
                 </p>
               </div>
 

@@ -28,7 +28,7 @@ export default function BusinessModelSection({ onSelectModel }: BusinessModelSec
           <span>BUSINESS MODELS</span>
         </div>
 
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-neutral-950 tracking-tight leading-[1.1] mb-4">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-neutral-700 tracking-tight leading-[1.1] mb-4">
           Multiple Revenue Streams. Scalable Growth.
         </h2>
 
@@ -55,7 +55,7 @@ export default function BusinessModelSection({ onSelectModel }: BusinessModelSec
 
             {/* Plan Title & Subtitle */}
             <div>
-              <h3 className="text-4xl sm:text-5xl font-black tracking-tight text-neutral-950">
+              <h3 className="text-4xl sm:text-5xl font-black tracking-tight text-neutral-700">
                 70 / 30
               </h3>
               <p className="text-sm font-bold text-[#0077e6] mt-1">
@@ -85,7 +85,7 @@ export default function BusinessModelSection({ onSelectModel }: BusinessModelSec
                 <div className="w-5 h-5 rounded-full bg-[#0077e6]/10 text-[#0077e6] flex items-center justify-center shrink-0 mt-0.5">
                   <Check className="w-3.5 h-3.5 stroke-[3]" />
                 </div>
-                <span className="font-semibold text-neutral-900">70% of the revenue goes to you</span>
+                <span className="font-semibold text-neutral-700">70% of the revenue goes to you</span>
               </li>
               <li className="flex items-start gap-2.5">
                 <div className="w-5 h-5 rounded-full bg-[#0077e6]/10 text-[#0077e6] flex items-center justify-center shrink-0 mt-0.5">
@@ -127,7 +127,7 @@ export default function BusinessModelSection({ onSelectModel }: BusinessModelSec
 
             {/* Plan Title & Subtitle */}
             <div>
-              <h3 className="text-4xl sm:text-5xl font-black tracking-tight text-neutral-950">
+              <h3 className="text-4xl sm:text-5xl font-black tracking-tight text-neutral-700">
                 FOCO
               </h3>
               <p className="text-sm font-bold text-purple-700 mt-1">
@@ -209,7 +209,7 @@ export default function BusinessModelSection({ onSelectModel }: BusinessModelSec
 
             {/* Plan Title & Subtitle */}
             <div>
-              <h3 className="text-4xl sm:text-5xl font-black tracking-tight text-neutral-950">
+              <h3 className="text-4xl sm:text-5xl font-black tracking-tight text-neutral-700">
                 COCO
               </h3>
               <p className="text-sm font-bold text-emerald-700 mt-1">
@@ -286,7 +286,7 @@ export default function BusinessModelSection({ onSelectModel }: BusinessModelSec
             <span className="block text-[#0077e6] text-[11px] font-mono font-bold tracking-wider uppercase mb-1">
               NEED FUNDING?
             </span>
-            <h4 className="text-lg sm:text-xl font-bold text-neutral-950 tracking-tight leading-snug mb-1">
+            <h4 className="text-lg sm:text-xl font-bold text-neutral-700 tracking-tight leading-snug mb-1">
               Loan support through SBI EV Mitra
             </h4>
             <p className="text-sm text-neutral-600 leading-relaxed max-w-2xl">
