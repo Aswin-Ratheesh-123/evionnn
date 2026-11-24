@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import {
   MapPin,
   ChevronDown,
@@ -103,9 +104,13 @@ export default function Navbar({
           <div className="flex items-center space-x-8 lg:space-x-12">
             {/* Logo */}
             <a href="#" className="flex items-center group">
-              <span className="text-lg sm:text-xl font-extrabold tracking-[0.24em] text-black group-hover:opacity-80 transition-opacity">
-                EVION
-              </span>
+              <Image
+                src="/images/evion-logo.png"
+                alt="EVION"
+                width={140}
+                height={24}
+                className="h-5 sm:h-6 w-auto object-contain group-hover:opacity-90 transition-opacity"
+              />
             </a>
 
             {/* Product Links - Clean Ather Typography */}

@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { Zap, Phone, Mail, ArrowUpRight } from "lucide-react";
 
 export default function AtherFooter() {
@@ -29,9 +30,13 @@ export default function AtherFooter() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12 pb-14 border-b border-neutral-800">
           {/* Col 1: Brand */}
           <div className="col-span-2 md:col-span-1 space-y-3">
-            <span className="text-xl font-black tracking-[0.2em] text-white">
-              EVION
-            </span>
+            <Image
+              src="/images/evion-logo-white.png"
+              alt="EVION"
+              width={140}
+              height={24}
+              className="h-6 w-auto object-contain"
+            />
             <p className="text-[11px] text-neutral-400 leading-relaxed">
               Evion Power Solutions Pvt. Ltd. Kerala’s premier electric car charging network and turnkey franchise partner.
             </p>

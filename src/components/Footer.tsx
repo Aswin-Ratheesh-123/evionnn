@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { Zap, Phone, Mail } from "lucide-react";
 
 export default function Footer() {
@@ -9,9 +10,13 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center space-x-2">
-              <span className="text-xl sm:text-2xl font-black tracking-[0.2em] text-black">
-                EVION
-              </span>
+              <Image
+                src="/images/evion-logo.png"
+                alt="EVION"
+                width={140}
+                height={24}
+                className="h-6 w-auto object-contain"
+              />
             </div>
 
             <p className="text-neutral-600 text-xs sm:text-sm leading-relaxed max-w-sm">

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -45,6 +45,47 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
     ? KERALA_HUBS.filter((h) => h.toLowerCase().includes(searchQuery.toLowerCase()))
     : [];
 
+  // Luxury Slow Fade-Up Scroll & Entrance Animation Observer
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.querySelectorAll(".fade-up, .fade-up-slow").forEach((el) => {
+        el.classList.add("in-view");
+      });
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.08,
+        rootMargin: "0px 0px -40px 0px",
+      }
+    );
+
+    const elements = document.querySelectorAll(".fade-up, .fade-up-slow");
+    elements.forEach((el) => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        requestAnimationFrame(() => {
+          setTimeout(() => el.classList.add("in-view"), 60);
+        });
+      } else {
+        observer.observe(el);
+      }
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   // Reusable Hero Media Collage (Exact Oklahoma State Reference Layout from media_1795465986497_32545f84.jpg & media_1795466006927_85dc8107.jpg)
   const heroMediaCollage = (
     <div className="relative flex flex-col items-center w-full">
@@ -83,10 +124,14 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
           {/* Brand Logo */}
           <Link href="/" className="flex items-center gap-2 group">
             <div className="flex items-center">
-              <span className="font-display font-black text-3xl sm:text-4xl tracking-tighter text-[#00b4d8]">
-                EVION
-              </span>
-              
+              <Image
+                src="/images/evion-logo.png"
+                alt="EVION"
+                width={150}
+                height={26}
+                className="h-6 sm:h-7 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]"
+                priority
+              />
             </div>
           </Link>
 
@@ -148,7 +193,7 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
         <div className="max-w-[1480px] xl:max-w-[1520px] mx-auto px-4 sm:px-8 pt-0 pb-0 relative z-30">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start">
             {/* Left Column: Bold Collegiate Typography */}
-            <div className="lg:col-span-5 text-white">
+            <div className="lg:col-span-5 text-white fade-up fade-delay-1">
               <div className="relative inline-block ml-1 sm:ml-4 lg:ml-6 -mt-1 sm:-mt-2 lg:-mt-3">
                 {/* Diagonal Paper Fold Crease Line (Matching Reference Image "THE CODE CALLS.") */}
                 <div
@@ -179,7 +224,7 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
             </div>
 
             {/* Right Column (Desktop): Hero Media Collage Overhanging the Paper Cut matching OSU Reference */}
-            <div className="hidden lg:flex lg:col-span-7 relative flex-col items-center xl:items-end w-full translate-y-12 lg:translate-y-16 xl:translate-y-20 -mb-84 lg:-mb-[400px] xl:-mb-[430px] z-40 pr-0 lg:pr-2 xl:pr-6">
+            <div className="hidden lg:flex lg:col-span-7 relative flex-col items-center xl:items-end w-full translate-y-12 lg:translate-y-16 xl:translate-y-20 -mb-84 lg:-mb-[400px] xl:-mb-[430px] z-40 pr-0 lg:pr-2 xl:pr-6 fade-up-slow fade-delay-2">
               {heroMediaCollage}
             </div>
           </div>
@@ -195,7 +240,7 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
           <div className="max-w-[1480px] xl:max-w-[1520px] mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start">
               {/* Left Column: High-Contrast Black Block Tags & Action Buttons */}
-              <div className="lg:col-span-5 space-y-3 sm:space-y-3.5 -mt-1 sm:-mt-2 ml-1 sm:ml-4 lg:ml-6">
+              <div className="lg:col-span-5 space-y-3 sm:space-y-3.5 -mt-1 sm:-mt-2 ml-1 sm:ml-4 lg:ml-6 fade-up fade-delay-2">
                 {/* High-Contrast Grey Block Tags with Paper Cut Background Box */}
                 <div className="flex flex-wrap gap-2.5">
                   <PaperCutBox
@@ -237,7 +282,7 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
               </div>
 
               {/* Mobile Only: Hero Media Collage */}
-              <div className="lg:hidden relative flex flex-col items-center w-full mt-12 sm:mt-16 z-40">
+              <div className="lg:hidden relative flex flex-col items-center w-full mt-12 sm:mt-16 z-40 fade-up-slow">
                 {heroMediaCollage}
               </div>
 
@@ -271,7 +316,7 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
 
         <div className="max-w-[1400px] mx-auto px-4 sm:px-8 relative z-10">
           {/* Section Header: Grey Styling */}
-          <div className="mb-8 sm:mb-12">
+          <div className="mb-8 sm:mb-12 fade-up">
             <h2 className="font-display font-black text-4xl sm:text-5xl md:text-6xl uppercase tracking-tight text-neutral-600">
               Why EVION?
             </h2>
@@ -285,7 +330,7 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
 
             {/* Right Column: Moved far to the right edge */}
             <div className="lg:col-span-6 xl:col-span-5 flex flex-col items-start lg:items-end">
-              <div className="w-full max-w-lg xl:max-w-xl space-y-8 sm:space-y-10 bg-white/85 lg:bg-transparent p-6 sm:p-8 lg:p-0 rounded-none backdrop-blur-sm lg:backdrop-blur-none shadow-sm lg:shadow-none border border-white/60 lg:border-0">
+              <div className="w-full max-w-lg xl:max-w-xl space-y-8 sm:space-y-10 bg-white/85 lg:bg-transparent p-6 sm:p-8 lg:p-0 rounded-none backdrop-blur-sm lg:backdrop-blur-none shadow-sm lg:shadow-none border border-white/60 lg:border-0 fade-up fade-delay-1">
                 {/* Lead Editorial Paragraph in Grey */}
                 <div className="space-y-3">
                   <p className="text-base sm:text-lg text-neutral-600 leading-relaxed font-medium">
@@ -374,7 +419,7 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
             {/* ----------------------------------------------------------------- */}
             <div className="flex flex-col gap-5 sm:gap-6 justify-between">
               {/* Box 1: Solid Vibrant Turquoise Card with Thick White Border Overlapping Why EVION (Exact Reference) */}
-              <div className="relative -mt-16 sm:-mt-24 lg:-mt-32 z-20 overflow-hidden bg-[#00b4d8] text-white p-8 sm:p-12 flex flex-col justify-center items-center text-center rounded-none border-4 sm:border-[6px] lg:border-[8px] border-white shadow-2xl min-h-[220px] sm:min-h-[260px]">
+              <div className="relative -mt-16 sm:-mt-24 lg:-mt-32 z-20 overflow-hidden bg-[#00b4d8] text-white p-8 sm:p-12 flex flex-col justify-center items-center text-center rounded-none border-4 sm:border-[6px] lg:border-[8px] border-white shadow-2xl min-h-[220px] sm:min-h-[260px] fade-up">
                 <Image
                   src="/images/evion-station-cafe-plaza-travelers-desktop-wide.jpg"
                   alt="Top 50 Fast-Charging Superhubs in South India"
@@ -395,7 +440,7 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
               {/* Bottom Row: Photo Tile (col-span-5) + White Framed Card (col-span-7) */}
               <div className="grid grid-cols-1 sm:grid-cols-12 gap-5 sm:gap-6 flex-1 items-stretch">
                 {/* Box 2: Portrait Photo Tile */}
-                <div className="sm:col-span-5 relative min-h-[240px] sm:min-h-[270px] overflow-hidden rounded-none shadow-sm bg-neutral-900 group">
+                <div className="sm:col-span-5 relative min-h-[240px] sm:min-h-[270px] overflow-hidden rounded-none shadow-sm bg-neutral-900 group fade-up fade-delay-1">
                   <Image
                     src="/images/evion-family-fast-charging-2.jpg"
                     alt="EV Drivers in Kerala"
@@ -406,7 +451,7 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
                 </div>
 
                 {/* Box 3: White Card with Thick Turquoise Border */}
-                <div className="sm:col-span-7 bg-white border-4 sm:border-[5px] border-[#00b4d8] p-6 sm:p-8 flex flex-col justify-center items-center text-center rounded-none shadow-sm min-h-[240px] sm:min-h-[270px]">
+                <div className="sm:col-span-7 bg-white border-4 sm:border-[5px] border-[#00b4d8] p-6 sm:p-8 flex flex-col justify-center items-center text-center rounded-none shadow-sm min-h-[240px] sm:min-h-[270px] fade-up fade-delay-2">
                   <div className="max-w-xs mx-auto space-y-3">
                     <h3 className="font-display font-black text-2xl sm:text-3xl md:text-4xl uppercase tracking-tight leading-[0.95] text-neutral-600">
                       Named best value in Kerala EV charging
@@ -426,7 +471,7 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
               {/* Top Row: Tall Vertical Portrait Photo (col-span-5) + White Framed Card (col-span-7) */}
               <div className="grid grid-cols-1 sm:grid-cols-12 gap-5 sm:gap-6 flex-1 items-stretch">
                 {/* Box 4: Tall Vertical Portrait Photo (Highway Corridor / Lamppost Avenue) */}
-                <div className="sm:col-span-5 relative min-h-[260px] sm:min-h-[300px] overflow-hidden rounded-none shadow-sm bg-neutral-900 group">
+                <div className="sm:col-span-5 relative min-h-[260px] sm:min-h-[300px] overflow-hidden rounded-none shadow-sm bg-neutral-900 group fade-up fade-delay-1">
                   <Image
                     src="/images/hero-station-charger-mobile-optimized.jpg"
                     alt="Kerala EV Highway Superhub Corridor"
@@ -437,7 +482,7 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
                 </div>
 
                 {/* Box 5: White Card with Thick Turquoise Border (Offset to align cleanly) */}
-                <div className="sm:col-span-7 sm:self-end bg-white border-4 sm:border-[5px] border-[#00b4d8] p-6 sm:p-8 flex flex-col justify-center items-center text-center rounded-none shadow-sm min-h-[240px] sm:min-h-[270px]">
+                <div className="sm:col-span-7 sm:self-end bg-white border-4 sm:border-[5px] border-[#00b4d8] p-6 sm:p-8 flex flex-col justify-center items-center text-center rounded-none shadow-sm min-h-[240px] sm:min-h-[270px] fade-up fade-delay-2">
                   <div className="max-w-xs mx-auto space-y-3">
                     <h3 className="font-display font-black text-2xl sm:text-3xl md:text-4xl uppercase tracking-tight leading-[0.95] text-neutral-600">
                       Online cloud CMS earns national recognition
@@ -450,7 +495,7 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
               </div>
 
               {/* Box 6: Wide Dark/Black Card with Grayscale Photo Texture */}
-              <div className="relative overflow-hidden bg-neutral-950 text-white p-8 sm:p-12 flex flex-col justify-center items-center text-center rounded-none shadow-sm min-h-[200px] sm:min-h-[220px]">
+              <div className="relative overflow-hidden bg-neutral-950 text-white p-8 sm:p-12 flex flex-col justify-center items-center text-center rounded-none shadow-sm min-h-[200px] sm:min-h-[220px] fade-up fade-delay-3">
                 <Image
                   src="/images/evion-station-evening-travelers-hero-wide.jpg"
                   alt="EVION Sustainability Recognition"
@@ -480,10 +525,10 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
       {/* ========================================================================= */}
       {/* 5. SECTION: LIFE ON THE GRID / 4-VIDEO CAROUSEL (Exact Reference Design)   */}
       {/* ========================================================================= */}
-      <section id="stories" className="pt-20 sm:pt-28 pb-0 bg-[#7ec8e3] relative overflow-hidden">
+      <section id="stories" className="pt-20 sm:pt-28 pb-16 sm:pb-20 lg:pb-24 bg-[#7ec8e3] relative overflow-hidden">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-8 relative z-10">
           {/* Centered Header (Exact Reference Typography & Accent Bar) */}
-          <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 fade-up">
             <h2 className="font-display font-black text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight">
               Life on the Grid
             </h2>
@@ -497,7 +542,7 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
           {/* 4 Video Cards (Exact Reference Vertical Rhythm: 1st/3rd UPPER, 2nd/4th LOWER) */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 items-start">
             {/* Card 1 (Upper - Same as Card 3) */}
-            <div className="flex flex-col group cursor-pointer sm:translate-y-0 lg:translate-y-0 transition-transform duration-300" onClick={onOpenFranchiseModal}>
+            <div className="flex flex-col group cursor-pointer sm:translate-y-0 lg:translate-y-0 transition-transform duration-300 fade-up fade-delay-1" onClick={onOpenFranchiseModal}>
               {/* Top Accent Strip */}
               <div className="w-full h-1.5 bg-white" />
               
@@ -525,7 +570,7 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
             </div>
 
             {/* Card 2 (Lower - Same as Card 4) */}
-            <div className="flex flex-col group cursor-pointer sm:translate-y-8 lg:translate-y-16 transition-transform duration-300" onClick={onOpenFranchiseModal}>
+            <div className="flex flex-col group cursor-pointer sm:translate-y-8 lg:translate-y-16 transition-transform duration-300 fade-up fade-delay-2" onClick={onOpenFranchiseModal}>
               <div className="w-full h-1.5 bg-white" />
               <div className="relative aspect-[4/5] w-full bg-neutral-900 overflow-hidden shadow-lg">
                 <Image
@@ -549,7 +594,7 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
             </div>
 
             {/* Card 3 (Upper - Exact Same Position as Card 1) */}
-            <div className="flex flex-col group cursor-pointer sm:translate-y-0 lg:translate-y-0 transition-transform duration-300" onClick={onOpenFranchiseModal}>
+            <div className="flex flex-col group cursor-pointer sm:translate-y-0 lg:translate-y-0 transition-transform duration-300 fade-up fade-delay-3" onClick={onOpenFranchiseModal}>
               <div className="w-full h-1.5 bg-white" />
               <div className="relative aspect-[4/5] w-full bg-neutral-900 overflow-hidden shadow-lg">
                 <Image
@@ -573,7 +618,7 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
             </div>
 
             {/* Card 4 (Lower - Exact Same Position as Card 2) */}
-            <div className="flex flex-col group cursor-pointer sm:translate-y-8 lg:translate-y-16 transition-transform duration-300" onClick={onOpenFranchiseModal}>
+            <div className="flex flex-col group cursor-pointer sm:translate-y-8 lg:translate-y-16 transition-transform duration-300 fade-up fade-delay-4" onClick={onOpenFranchiseModal}>
               <div className="w-full h-1.5 bg-white" />
               <div className="relative aspect-[4/5] w-full bg-neutral-900 overflow-hidden shadow-lg">
                 <Image
@@ -597,11 +642,6 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
             </div>
           </div>
         </div>
-
-        {/* Authentic Sharp Vector Torn Paper Cut Edge Transition at Upper Border of BECOME A FRANCHISEE */}
-        <div className="w-full relative z-20 -mb-[1px] bg-[#7ec8e3] leading-none pointer-events-none mt-14 sm:mt-20 lg:mt-24">
-          <TornPaperEdge fillColor="#00b4d8" heightClass="h-10 sm:h-14 lg:h-18" />
-        </div>
       </section>
 
       {/* ========================================================================= */}
@@ -619,14 +659,19 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
             className="object-cover object-right md:object-center pointer-events-none"
           />
 
+          {/* Authentic Sharp Vector Torn Paper Cut Edge Transition at Upper Border of OUR FOUNDER (Cuts directly into artwork with zero straight seam line) */}
+          <div className="absolute top-0 left-0 right-0 z-20 leading-none pointer-events-none -mt-[1px]">
+            <TornPaperEdge fillColor="#7ec8e3" flipY={true} heightClass="h-10 sm:h-14 lg:h-18" />
+          </div>
+
           {/* Directional Softening on Small Screens (ensures text readability over artwork on mobile) */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#00b4d8] via-[#00b4d8]/85 to-transparent md:hidden pointer-events-none" />
 
           {/* Content Container Aligned to the Left & Founder Portrait on the Right (Green Area) */}
-          <div className="max-w-[1400px] w-full mx-auto px-6 sm:px-10 lg:px-16 pt-20 sm:pt-24 md:pt-28 pb-16 sm:pb-20 relative z-10">
+          <div className="max-w-[1400px] w-full mx-auto px-6 sm:px-10 lg:px-16 pt-20 sm:pt-24 md:pt-28 pb-20 sm:pb-24 md:pb-28 relative z-10">
             <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-16">
               {/* Left Column: Heading & Button */}
-              <div className="max-w-xl lg:max-w-xl space-y-6 sm:space-y-8 w-full">
+              <div className="max-w-xl lg:max-w-xl space-y-6 sm:space-y-8 w-full fade-up fade-delay-1">
                 <div>
                   <span className="text-xs sm:text-sm font-mono font-black tracking-widest text-neutral-700 uppercase block mb-3">
                     THE STATE&apos;S NETWORK • KERALA ARTERIAL CORRIDORS
@@ -636,6 +681,9 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
                     <br />
                     FOUNDER
                   </h2>
+                  <p className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg text-neutral-800 font-medium leading-relaxed max-w-lg">
+                    Pioneering Kerala&apos;s electric mobility revolution. Driven by a bold mission to build an uninterrupted high-speed charging spine connecting every highway, district, and community from Kasaragod to Kanyakumari.
+                  </p>
                 </div>
 
                 <div>
@@ -650,7 +698,7 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
               </div>
 
               {/* Right Column: Founder Portrait in the Green Area */}
-              <div className="relative w-full max-w-[280px] sm:max-w-[320px] md:max-w-[360px] lg:max-w-[380px] xl:max-w-[420px] shrink-0">
+              <div className="relative w-full max-w-[280px] sm:max-w-[320px] md:max-w-[360px] lg:max-w-[380px] xl:max-w-[420px] shrink-0 fade-up-slow fade-delay-2">
                 {/* Collegiate Editorial Frame with Crisp White Border & Deep Shadow */}
                 <div className="relative aspect-[3/4] w-full shadow-[0_20px_50px_rgba(0,0,0,0.35)] overflow-hidden border-4 sm:border-[6px] border-white group">
                   <Image
@@ -666,6 +714,11 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
               </div>
             </div>
           </div>
+
+          {/* Authentic Torn Paper Cutting Edge directly at the bottom of the banner artwork (no straight line) */}
+          <div className="absolute bottom-0 left-0 right-0 z-20 leading-none pointer-events-none -mb-[1px]">
+            <TornPaperEdge fillColor="#7ec8e3" heightClass="h-8 sm:h-12 lg:h-16" />
+          </div>
         </div>
       </section>
 
@@ -673,13 +726,8 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
       {/* 10. SECTION: WE ARE ALL CHARGING FORWARD (Collegiate Poster Finale)       */}
       {/* ========================================================================= */}
       <section className="w-full">
-        {/* Authentic Torn Paper Cutting Edge at Upper Border of EVERY DRIVER ANSWERS THE CALL */}
-        <div className="w-full bg-[#00b4d8] leading-none -mb-[1px] pointer-events-none">
-          <TornPaperEdge fillColor="#7ec8e3" heightClass="h-8 sm:h-12" />
-        </div>
-
         {/* Upper Sky-Blue Strip with Subtle Dry-Brush Scrambles */}
-        <div className="bg-[#7ec8e3] py-6 px-4 sm:px-8 relative overflow-hidden">
+        <div className="bg-[#7ec8e3] py-6 px-4 sm:px-8 relative overflow-hidden -mt-[1px]">
           {/* Subtle Painterly Chalk / Brush Scrambles in Upper Left (Echoing Reference Poster) */}
           <div className="absolute top-1 left-4 sm:left-12 pointer-events-none opacity-40">
             <svg viewBox="0 0 200 60" fill="none" stroke="currentColor" className="w-40 sm:w-56 h-12 text-white">
@@ -689,7 +737,7 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
             </svg>
           </div>
 
-          <div className="max-w-[1400px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left relative z-10">
+          <div className="max-w-[1400px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left relative z-10 fade-up">
             <div>
               <h4 className="font-display font-black text-2xl sm:text-3xl uppercase tracking-tight text-neutral-700">
                 EVERY DRIVER ANSWERS THE CALL
@@ -723,7 +771,7 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
           />
 
           <div className="max-w-[1400px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 relative z-10">
-            <div>
+            <div className="fade-up fade-delay-1">
               <h2 className="font-display font-black text-5xl sm:text-7xl md:text-8xl lg:text-9xl uppercase tracking-tighter leading-[0.88] text-white">
                 <span className="relative inline-block">
                   WE ARE ALL
@@ -751,7 +799,7 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
             </div>
 
             {/* EVION 180kW DC Dual Gun CCS Fast Charger Unit */}
-            <div className="relative w-72 sm:w-80 md:w-96 lg:w-[400px] xl:w-[440px] h-[360px] sm:h-[420px] md:h-[480px] lg:h-[520px] flex items-center justify-center shrink-0">
+            <div className="relative w-72 sm:w-80 md:w-96 lg:w-[400px] xl:w-[440px] h-[360px] sm:h-[420px] md:h-[480px] lg:h-[520px] flex items-center justify-center shrink-0 fade-up-slow fade-delay-2">
               {/* Subtle Stencil Accent Glow behind charger */}
               <div className="absolute inset-4 bg-white/15 rounded-full blur-2xl pointer-events-none" />
               <Image
@@ -779,11 +827,15 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
         <div className="max-w-[1400px] mx-auto px-4 sm:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-neutral-200">
             {/* Col 1: Brand & Headquarters */}
-            <div className="lg:col-span-4 space-y-4">
+            <div className="lg:col-span-4 space-y-4 fade-up fade-delay-1">
               <div className="flex items-center gap-2">
-                <span className="font-display font-black text-3xl tracking-tighter text-[#00b4d8]">
-                  EVION
-                </span>
+                <Image
+                  src="/images/evion-logo.png"
+                  alt="EVION"
+                  width={140}
+                  height={24}
+                  className="h-6 w-auto object-contain"
+                />
               </div>
               <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed max-w-sm">
                 Evion Power Solutions Pvt. Ltd. in strategic alliance with CHARGE+ZONE. Powering Kerala&apos;s highway EV charging revolution.
@@ -809,7 +861,7 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
             </div>
 
             {/* Col 2: Network & Solutions */}
-            <div className="lg:col-span-3 space-y-3">
+            <div className="lg:col-span-3 space-y-3 fade-up fade-delay-2">
               <h5 className="font-display font-black text-lg uppercase tracking-tight text-neutral-700 border-b border-neutral-200 pb-1.5">
                 Charging Network
               </h5>
@@ -823,7 +875,7 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
             </div>
 
             {/* Col 3: Franchise & Partnerships */}
-            <div className="lg:col-span-3 space-y-3">
+            <div className="lg:col-span-3 space-y-3 fade-up fade-delay-3">
               <h5 className="font-display font-black text-lg uppercase tracking-tight text-neutral-700 border-b border-neutral-200 pb-1.5">
                 Franchise Hubs
               </h5>
@@ -837,7 +889,7 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
             </div>
 
             {/* Col 4: Follow Us with Square Boxed Social Icons */}
-            <div className="lg:col-span-2 space-y-3">
+            <div className="lg:col-span-2 space-y-3 fade-up fade-delay-4">
               <h5 className="font-display font-black text-lg uppercase tracking-tight text-neutral-700 border-b border-neutral-200 pb-1.5">
                 Follow EVION
               </h5>
@@ -858,7 +910,7 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
           </div>
 
           {/* Bottom Copyright */}
-          <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500 font-mono">
+          <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500 font-mono fade-up fade-delay-2">
             <p>© 2026 EVION Power Solutions Pvt. Ltd. &amp; CHARGE+ZONE. All rights reserved.</p>
             <div className="flex items-center gap-4">
               <a href="#" className="hover:text-neutral-800 transition-colors">Privacy Policy</a>
