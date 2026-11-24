@@ -88,7 +88,7 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
 
   // Reusable Hero Media Collage (Exact Oklahoma State Reference Layout from media_1795465986497_32545f84.jpg & media_1795466006927_85dc8107.jpg)
   const heroMediaCollage = (
-    <div className="relative flex flex-col items-center w-full">
+    <div className="relative flex flex-col items-center w-full pt-8 sm:pt-12 lg:pt-16">
       {/* Primary Cutout Media Card (2:3 Portrait Sharp Rectangular Cut matching OSU Reference) */}
       <div className="relative w-full max-w-[330px] sm:max-w-[360px] md:max-w-[390px] lg:max-w-[420px] xl:max-w-[450px] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.45)] bg-neutral-900 group">
         {/* Retro 8-Point Geometric Starburst Emblem Centered at Top-Right Corner */}
@@ -190,7 +190,7 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
         />
 
         {/* Upper Turquoise Canvas: Bold Headline + Desktop Media Collage */}
-        <div className="max-w-[1480px] xl:max-w-[1520px] mx-auto px-4 sm:px-8 pt-0 pb-0 relative z-30">
+        <div className="max-w-[1480px] xl:max-w-[1520px] mx-auto px-4 sm:px-8 pt-4 sm:pt-6 lg:pt-8 pb-0 relative z-30">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start">
             {/* Left Column: Bold Collegiate Typography */}
             <div className="lg:col-span-5 text-white fade-up fade-delay-1">
@@ -224,14 +224,14 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
             </div>
 
             {/* Right Column (Desktop): Hero Media Collage Overhanging the Paper Cut matching OSU Reference */}
-            <div className="hidden lg:flex lg:col-span-7 relative flex-col items-center xl:items-end w-full translate-y-12 lg:translate-y-16 xl:translate-y-20 -mb-84 lg:-mb-[400px] xl:-mb-[430px] z-40 pr-0 lg:pr-2 xl:pr-6 fade-up-slow fade-delay-2">
+            <div className="hidden lg:flex lg:col-span-7 relative flex-col items-center xl:items-end w-full pt-8 lg:pt-16 xl:pt-24 -mb-[420px] lg:-mb-[450px] xl:-mb-[480px] z-40 pr-0 lg:pr-2 xl:pr-6 fade-up-slow fade-delay-2">
               {heroMediaCollage}
             </div>
           </div>
         </div>
 
         {/* Authentic Torn Paper Cutting Edge in the Middle of THE POWER CALLS and HOW WILL YOU CHARGE */}
-        <div className="w-full bg-[#00b4d8] leading-none -mb-[1px] pointer-events-none relative z-10">
+        <div className="w-full bg-[#00b4d8] leading-none -mb-[1px] pointer-events-none relative z-10 -mt-3 sm:-mt-5 lg:-mt-6">
           <TornPaperEdge fillColor="#f1f6fa" heightClass="h-10 sm:h-16" className="z-10" />
         </div>
 
@@ -282,7 +282,7 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
               </div>
 
               {/* Mobile Only: Hero Media Collage */}
-              <div className="lg:hidden relative flex flex-col items-center w-full mt-12 sm:mt-16 z-40 fade-up-slow">
+              <div className="lg:hidden relative flex flex-col items-center w-full mt-24 sm:mt-32 z-40 fade-up-slow">
                 {heroMediaCollage}
               </div>
 
