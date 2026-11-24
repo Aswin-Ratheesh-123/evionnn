@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   Search,
-  Play,
   ArrowRight,
   ExternalLink,
   MapPin,
@@ -21,13 +20,13 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import TornPaperEdge from "@/components/TornPaperEdge";
+import PaperCutBox from "@/components/PaperCutBox";
 
 interface ChargeZoneHomeProps {
   onOpenFranchiseModal: () => void;
 }
 
 export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeProps) {
-  const [activeStoryVideo, setActiveStoryVideo] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
 
   // Filtered charging hubs for search bar
@@ -69,15 +68,6 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none" />
-
-          {/* Circular White Play Button Positioned at 57% Height (Exact Reference Position just below Torn Edge) */}
-          <button
-            onClick={() => setActiveStoryVideo("hero-story")}
-            className="absolute top-[56%] sm:top-[57%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 sm:w-16 sm:h-16 lg:w-18 lg:h-18 rounded-full bg-white text-[#00b4d8] shadow-[0_12px_30px_rgba(0,0,0,0.35)] flex items-center justify-center hover:scale-110 active:scale-95 transition-all cursor-pointer z-30 border-2 border-white/80"
-            aria-label="Play charging showcase video"
-          >
-            <Play className="w-6 h-6 sm:w-7 sm:h-7 fill-current ml-0.5 text-[#00b4d8]" />
-          </button>
         </div>
       </div>
     </div>
@@ -206,24 +196,34 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start">
               {/* Left Column: High-Contrast Black Block Tags & Action Buttons */}
               <div className="lg:col-span-5 space-y-3 sm:space-y-3.5 -mt-1 sm:-mt-2 ml-1 sm:ml-4 lg:ml-6">
-                {/* High-Contrast Grey Block Tags */}
-                <div className="flex flex-wrap gap-2">
-                  <span className="px-3 py-1 bg-neutral-600 text-white font-poster text-lg sm:text-2xl uppercase tracking-tight">
+                {/* High-Contrast Grey Block Tags with Paper Cut Background Box */}
+                <div className="flex flex-wrap gap-2.5">
+                  <PaperCutBox
+                    as="span"
+                    fillColor="#525252"
+                    className="px-3.5 py-1.5 text-white font-poster text-lg sm:text-2xl uppercase tracking-tight"
+                  >
                     HOW WILL
-                  </span>
-                  <span className="px-3 py-1 bg-neutral-600 text-white font-poster text-lg sm:text-2xl uppercase tracking-tight">
+                  </PaperCutBox>
+                  <PaperCutBox
+                    as="span"
+                    fillColor="#525252"
+                    className="px-3.5 py-1.5 text-white font-poster text-lg sm:text-2xl uppercase tracking-tight"
+                  >
                     YOU CHARGE?
-                  </span>
+                  </PaperCutBox>
                 </div>
 
                 {/* Action Buttons & Quick Nav Links */}
                 <div className="pt-1.5 sm:pt-2 flex flex-wrap items-center gap-4 sm:gap-6">
-                  <button
+                  <PaperCutBox
+                    as="button"
                     onClick={onOpenFranchiseModal}
-                    className="px-8 py-3.5 bg-[#00b4d8] hover:bg-[#0096b7] text-white font-display font-black text-base uppercase tracking-wider transition-all shadow-xl hover:-translate-y-0.5 cursor-pointer"
+                    fillColor="#00b4d8"
+                    className="px-8 py-3.5 text-white font-display font-black text-base uppercase tracking-wider hover:-translate-y-0.5 hover:brightness-105 active:scale-95 cursor-pointer shadow-xl"
                   >
                     APPLY FOR FRANCHISE
-                  </button>
+                  </PaperCutBox>
 
                   <div className="flex items-center gap-4 text-xs sm:text-sm font-bold uppercase tracking-wider text-[#00b4d8]">
                     <a href="#network" className="hover:underline hover:text-[#0077b6] flex items-center gap-1">
@@ -265,6 +265,8 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
           {/* Directional protective watercolor wash: clear on left (55%+) to showcase India Gate, soft on far right so text never mixes */}
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent via-55% to-white/90 lg:to-white/95" />
           <div className="absolute inset-0 bg-gradient-to-t from-white/30 via-transparent to-transparent" />
+          {/* Upper Section Fade: Smooth gradient fade from upper paper surface into India Gate artwork */}
+          <div className="absolute inset-x-0 top-0 h-36 sm:h-48 md:h-60 bg-gradient-to-b from-[#f1f6fa] via-[#f1f6fa]/80 to-transparent pointer-events-none" />
         </div>
 
         <div className="max-w-[1400px] mx-auto px-4 sm:px-8 relative z-10">
@@ -495,7 +497,7 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
           {/* 4 Video Cards (Exact Reference Vertical Rhythm: 1st/3rd UPPER, 2nd/4th LOWER) */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 items-start">
             {/* Card 1 (Upper - Same as Card 3) */}
-            <div className="flex flex-col group cursor-pointer sm:translate-y-0 lg:translate-y-0 transition-transform duration-300" onClick={() => setActiveStoryVideo("story-1")}>
+            <div className="flex flex-col group cursor-pointer sm:translate-y-0 lg:translate-y-0 transition-transform duration-300" onClick={onOpenFranchiseModal}>
               {/* Top Accent Strip */}
               <div className="w-full h-1.5 bg-white" />
               
@@ -509,29 +511,21 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-black/15 group-hover:bg-black/5 transition-colors" />
-
-                {/* White Circular Play Button Positioned in Lower Third of Photo */}
-                <button
-                  className="absolute bottom-5 sm:bottom-6 left-1/2 -translate-x-1/2 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white text-[#00b4d8] shadow-[0_4px_15px_rgba(0,0,0,0.3)] flex items-center justify-center group-hover:scale-110 active:scale-95 transition-all cursor-pointer pointer-events-none"
-                  aria-label="Play video"
-                >
-                  <Play className="w-5 h-5 sm:w-6 sm:h-6 fill-current ml-0.5 text-[#00b4d8]" />
-                </button>
               </div>
 
               {/* Text Sits Directly on Section Background (No white card box, no border) */}
               <div className="mt-4">
-                <h4 className="font-display font-black text-lg sm:text-xl text-white leading-snug tracking-tight group-hover:text-white/80 transition-colors">
+                <h4 className="font-display font-black text-lg sm:text-xl text-neutral-700 leading-snug tracking-tight group-hover:text-neutral-900 transition-colors">
                   What&apos;s your charging speed?
                 </h4>
-                <p className="text-xs sm:text-sm text-white/90 mt-2 font-medium leading-relaxed">
-                  Curious about real highway charging times? Hear from daily commuters on the NH-66 corridor.
+                <p className="text-xs sm:text-sm text-white font-medium leading-relaxed mt-2">
+                  Curious about real highway charging times? Hear from daily commuters on Kerala&apos;s NH-66 corridor.
                 </p>
               </div>
             </div>
 
             {/* Card 2 (Lower - Same as Card 4) */}
-            <div className="flex flex-col group cursor-pointer sm:translate-y-8 lg:translate-y-16 transition-transform duration-300" onClick={() => setActiveStoryVideo("story-2")}>
+            <div className="flex flex-col group cursor-pointer sm:translate-y-8 lg:translate-y-16 transition-transform duration-300" onClick={onOpenFranchiseModal}>
               <div className="w-full h-1.5 bg-white" />
               <div className="relative aspect-[4/5] w-full bg-neutral-900 overflow-hidden shadow-lg">
                 <Image
@@ -542,27 +536,20 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-black/15 group-hover:bg-black/5 transition-colors" />
-
-                <button
-                  className="absolute bottom-5 sm:bottom-6 left-1/2 -translate-x-1/2 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white text-[#00b4d8] shadow-[0_4px_15px_rgba(0,0,0,0.3)] flex items-center justify-center group-hover:scale-110 active:scale-95 transition-all cursor-pointer pointer-events-none"
-                  aria-label="Play video"
-                >
-                  <Play className="w-5 h-5 sm:w-6 sm:h-6 fill-current ml-0.5 text-[#00b4d8]" />
-                </button>
               </div>
 
               <div className="mt-4">
-                <h4 className="font-display font-black text-lg sm:text-xl text-white leading-snug tracking-tight group-hover:text-white/80 transition-colors">
-                  Why was EVION right for your business?
+                <h4 className="font-display font-black text-lg sm:text-xl text-neutral-700 leading-snug tracking-tight group-hover:text-neutral-900 transition-colors">
+                  Why partner with EVION?
                 </h4>
-                <p className="text-xs sm:text-sm text-white/90 mt-2 font-medium leading-relaxed">
+                <p className="text-xs sm:text-sm text-white font-medium leading-relaxed mt-2">
                   Resort and retail hosts share how dual-gun fast chargers attracted premium travelers and recurring footfall.
                 </p>
               </div>
             </div>
 
             {/* Card 3 (Upper - Exact Same Position as Card 1) */}
-            <div className="flex flex-col group cursor-pointer sm:translate-y-0 lg:translate-y-0 transition-transform duration-300" onClick={() => setActiveStoryVideo("story-3")}>
+            <div className="flex flex-col group cursor-pointer sm:translate-y-0 lg:translate-y-0 transition-transform duration-300" onClick={onOpenFranchiseModal}>
               <div className="w-full h-1.5 bg-white" />
               <div className="relative aspect-[4/5] w-full bg-neutral-900 overflow-hidden shadow-lg">
                 <Image
@@ -573,27 +560,20 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-black/15 group-hover:bg-black/5 transition-colors" />
-
-                <button
-                  className="absolute bottom-5 sm:bottom-6 left-1/2 -translate-x-1/2 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white text-[#00b4d8] shadow-[0_4px_15px_rgba(0,0,0,0.3)] flex items-center justify-center group-hover:scale-110 active:scale-95 transition-all cursor-pointer pointer-events-none"
-                  aria-label="Play video"
-                >
-                  <Play className="w-5 h-5 sm:w-6 sm:h-6 fill-current ml-0.5 text-[#00b4d8]" />
-                </button>
               </div>
 
               <div className="mt-4">
-                <h4 className="font-display font-black text-lg sm:text-xl text-white leading-snug tracking-tight group-hover:text-white/80 transition-colors">
-                  What makes hill station trips so seamless?
+                <h4 className="font-display font-black text-lg sm:text-xl text-neutral-700 leading-snug tracking-tight group-hover:text-neutral-900 transition-colors">
+                  What makes hill trips seamless?
                 </h4>
-                <p className="text-xs sm:text-sm text-white/90 mt-2 font-medium leading-relaxed">
+                <p className="text-xs sm:text-sm text-white font-medium leading-relaxed mt-2">
                   We asked EV owners how strategic fast chargers turn long weekend drives from Kochi to Wayanad into effortless journeys.
                 </p>
               </div>
             </div>
 
             {/* Card 4 (Lower - Exact Same Position as Card 2) */}
-            <div className="flex flex-col group cursor-pointer sm:translate-y-8 lg:translate-y-16 transition-transform duration-300" onClick={() => setActiveStoryVideo("story-4")}>
+            <div className="flex flex-col group cursor-pointer sm:translate-y-8 lg:translate-y-16 transition-transform duration-300" onClick={onOpenFranchiseModal}>
               <div className="w-full h-1.5 bg-white" />
               <div className="relative aspect-[4/5] w-full bg-neutral-900 overflow-hidden shadow-lg">
                 <Image
@@ -604,20 +584,13 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-black/15 group-hover:bg-black/5 transition-colors" />
-
-                <button
-                  className="absolute bottom-5 sm:bottom-6 left-1/2 -translate-x-1/2 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white text-[#00b4d8] shadow-[0_4px_15px_rgba(0,0,0,0.3)] flex items-center justify-center group-hover:scale-110 active:scale-95 transition-all cursor-pointer pointer-events-none"
-                  aria-label="Play video"
-                >
-                  <Play className="w-5 h-5 sm:w-6 sm:h-6 fill-current ml-0.5 text-[#00b4d8]" />
-                </button>
               </div>
 
               <div className="mt-4">
-                <h4 className="font-display font-black text-lg sm:text-xl text-white leading-snug tracking-tight group-hover:text-white/80 transition-colors">
-                  How do franchise payouts make an impact?
+                <h4 className="font-display font-black text-lg sm:text-xl text-neutral-700 leading-snug tracking-tight group-hover:text-neutral-900 transition-colors">
+                  How do weekly payouts work?
                 </h4>
-                <p className="text-xs sm:text-sm text-white/90 mt-2 font-medium leading-relaxed">
+                <p className="text-xs sm:text-sm text-white font-medium leading-relaxed mt-2">
                   Hear directly from station partners on how automated weekly bank payouts give them complete financial transparency.
                 </p>
               </div>
@@ -625,7 +598,7 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
           </div>
         </div>
 
-        {/* Authentic Torn Paper Cutting Edge Transition at bottom of Life on the Grid (Exact Reference Image 3) */}
+        {/* Authentic Sharp Vector Torn Paper Cut Edge Transition at Upper Border of BECOME A FRANCHISEE */}
         <div className="w-full relative z-20 -mb-[1px] bg-[#7ec8e3] leading-none pointer-events-none mt-14 sm:mt-20 lg:mt-24">
           <TornPaperEdge fillColor="#00b4d8" heightClass="h-10 sm:h-14 lg:h-18" />
         </div>
@@ -638,7 +611,7 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
         {/* Full-Bleed Artwork Banner Image in Website Color Scheme */}
         <div className="relative w-full min-h-[500px] sm:min-h-[560px] md:min-h-[620px] lg:min-h-[700px] flex items-center">
           <Image
-            src="/images/the-states-network-banner-clean.jpg"
+            src="/images/the-states-network-banner-green.jpg"
             alt="The State's Network - Become a Franchisee"
             fill
             priority
@@ -649,28 +622,47 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
           {/* Directional Softening on Small Screens (ensures text readability over artwork on mobile) */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#00b4d8] via-[#00b4d8]/85 to-transparent md:hidden pointer-events-none" />
 
-          {/* Content Container Aligned to the Left (Matching Reference Layout) */}
-          <div className="max-w-[1400px] w-full mx-auto px-6 sm:px-10 lg:px-16 pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-20 relative z-10">
-            <div className="max-w-xl lg:max-w-2xl space-y-6 sm:space-y-8">
-              <div>
-                <span className="text-xs sm:text-sm font-mono font-black tracking-widest text-neutral-700 uppercase block mb-3">
-                  THE STATE&apos;S NETWORK • KERALA ARTERIAL CORRIDORS
-                </span>
-                <h2 className="font-display font-black text-6xl sm:text-7xl md:text-8xl lg:text-9xl uppercase tracking-tighter leading-[0.88] text-neutral-700">
-                  BECOME A
-                  <br />
-                  FRANCHISEE
-                </h2>
+          {/* Content Container Aligned to the Left & Founder Portrait on the Right (Green Area) */}
+          <div className="max-w-[1400px] w-full mx-auto px-6 sm:px-10 lg:px-16 pt-20 sm:pt-24 md:pt-28 pb-16 sm:pb-20 relative z-10">
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-16">
+              {/* Left Column: Heading & Button */}
+              <div className="max-w-xl lg:max-w-xl space-y-6 sm:space-y-8 w-full">
+                <div>
+                  <span className="text-xs sm:text-sm font-mono font-black tracking-widest text-neutral-700 uppercase block mb-3">
+                    THE STATE&apos;S NETWORK • KERALA ARTERIAL CORRIDORS
+                  </span>
+                  <h2 className="font-display font-black text-6xl sm:text-7xl md:text-8xl lg:text-9xl uppercase tracking-tighter leading-[0.88] text-neutral-700">
+                    OUR
+                    <br />
+                    FOUNDER
+                  </h2>
+                </div>
+
+                <div>
+                  <button
+                    onClick={onOpenFranchiseModal}
+                    className="inline-flex items-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 bg-white hover:bg-neutral-100 text-neutral-700 font-display font-black text-sm sm:text-base uppercase tracking-wider transition-all shadow-xl hover:shadow-2xl cursor-pointer"
+                  >
+                    <span>OUR FOUNDER</span>
+                    <ArrowRight className="w-5 h-5 text-neutral-700" />
+                  </button>
+                </div>
               </div>
 
-              <div>
-                <button
-                  onClick={onOpenFranchiseModal}
-                  className="inline-flex items-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 bg-white hover:bg-neutral-100 text-neutral-700 font-display font-black text-sm sm:text-base uppercase tracking-wider transition-all shadow-xl hover:shadow-2xl cursor-pointer"
-                >
-                  <span>BECOME A FRANCHISEE</span>
-                  <ArrowRight className="w-5 h-5 text-neutral-700" />
-                </button>
+              {/* Right Column: Founder Portrait in the Green Area */}
+              <div className="relative w-full max-w-[280px] sm:max-w-[320px] md:max-w-[360px] lg:max-w-[380px] xl:max-w-[420px] shrink-0">
+                {/* Collegiate Editorial Frame with Crisp White Border & Deep Shadow */}
+                <div className="relative aspect-[3/4] w-full shadow-[0_20px_50px_rgba(0,0,0,0.35)] overflow-hidden border-4 sm:border-[6px] border-white group">
+                  <Image
+                    src="/images/evion-founder-portrait.jpg"
+                    alt="EVION Founder & Leadership"
+                    fill
+                    sizes="(max-width: 768px) 320px, 420px"
+                    className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
+                </div>
               </div>
             </div>
           </div>
@@ -681,8 +673,13 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
       {/* 10. SECTION: WE ARE ALL CHARGING FORWARD (Collegiate Poster Finale)       */}
       {/* ========================================================================= */}
       <section className="w-full">
+        {/* Authentic Torn Paper Cutting Edge at Upper Border of EVERY DRIVER ANSWERS THE CALL */}
+        <div className="w-full bg-[#00b4d8] leading-none -mb-[1px] pointer-events-none">
+          <TornPaperEdge fillColor="#7ec8e3" heightClass="h-8 sm:h-12" />
+        </div>
+
         {/* Upper Sky-Blue Strip with Subtle Dry-Brush Scrambles */}
-        <div className="bg-[#7ec8e3] py-6 px-4 sm:px-8 border-t border-black/10 relative overflow-hidden">
+        <div className="bg-[#7ec8e3] py-6 px-4 sm:px-8 relative overflow-hidden">
           {/* Subtle Painterly Chalk / Brush Scrambles in Upper Left (Echoing Reference Poster) */}
           <div className="absolute top-1 left-4 sm:left-12 pointer-events-none opacity-40">
             <svg viewBox="0 0 200 60" fill="none" stroke="currentColor" className="w-40 sm:w-56 h-12 text-white">
@@ -753,35 +750,32 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
               </p>
             </div>
 
-            {/* Illustrated Graphic Element: Twin Gun CCS Fast Charging Plug with Localized Scramble Ring */}
-            <div className="relative w-64 h-64 sm:w-80 sm:h-80 flex items-center justify-center">
-              {/* Subtle Stencil & Sketched Scramble Outer Rings */}
-              <div className="absolute -inset-2 rounded-full border border-dashed border-white/20 pointer-events-none" />
-              <svg viewBox="0 0 120 120" className="absolute -inset-3 w-[calc(100%+24px)] h-[calc(100%+24px)] text-white/25 pointer-events-none">
-                <circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" strokeWidth="1.2" strokeDasharray="14 8 4 6 20 6" />
-                <circle cx="60" cy="60" r="59" fill="none" stroke="currentColor" strokeWidth="0.8" strokeDasharray="8 16 3 10" />
-              </svg>
-
-              <div className="w-full h-full rounded-full border-8 border-white/20 flex items-center justify-center p-6 bg-black/10">
-                <div className="text-center space-y-2">
-                  <Zap className="w-24 h-24 text-white mx-auto stroke-[2.5]" />
-                  <div className="font-display font-black text-3xl uppercase tracking-tight text-white">
-                    180kW DUAL GUN
-                  </div>
-                  <div className="text-xs font-mono font-bold text-white/80">
-                    CCS2 HIGH VOLTAGE
-                  </div>
-                </div>
-              </div>
+            {/* EVION 180kW DC Dual Gun CCS Fast Charger Unit */}
+            <div className="relative w-72 sm:w-80 md:w-96 lg:w-[400px] xl:w-[440px] h-[360px] sm:h-[420px] md:h-[480px] lg:h-[520px] flex items-center justify-center shrink-0">
+              {/* Subtle Stencil Accent Glow behind charger */}
+              <div className="absolute inset-4 bg-white/15 rounded-full blur-2xl pointer-events-none" />
+              <Image
+                src="/images/evion-dc-dual-gun-charger.png"
+                alt="EVION DC Dual Gun CCS 180kW Fast Charger"
+                fill
+                sizes="(max-width: 768px) 320px, 450px"
+                className="object-contain drop-shadow-[0_25px_40px_rgba(0,0,0,0.35)] relative z-10 hover:scale-105 transition-transform duration-500"
+                priority
+              />
             </div>
           </div>
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* 11. FOOTER (Clean White Background, ChargeZone Turquoise Accents)          */}
+      {/* 11. FOOTER (Clean White Background with Upper Torn Paper Cut Edge)         */}
       {/* ========================================================================= */}
-      <footer id="contact" className="bg-white text-neutral-700 pt-16 pb-12 border-t border-neutral-200">
+      {/* Authentic Torn Paper Cutting Edge Transition into White Footer */}
+      <div className="w-full bg-[#00b4d8] leading-none -mb-[1px] pointer-events-none relative z-10">
+        <TornPaperEdge fillColor="#ffffff" heightClass="h-10 sm:h-14 lg:h-16" />
+      </div>
+
+      <footer id="contact" className="bg-white text-neutral-700 pt-10 sm:pt-14 pb-12 relative z-20">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-neutral-200">
             {/* Col 1: Brand & Headquarters */}
@@ -876,63 +870,6 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
           </div>
         </div>
       </footer>
-
-      {/* Video Modal Player Popup */}
-      {activeStoryVideo && (
-        <div
-          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in duration-300"
-          onClick={() => setActiveStoryVideo(null)}
-        >
-          <div
-            className="relative w-full max-w-3xl bg-neutral-950 border border-neutral-800 rounded-2xl overflow-hidden shadow-2xl p-6"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex items-center justify-between pb-4 border-b border-neutral-800 mb-4">
-              <div className="flex items-center gap-2">
-                <span className="w-3 h-3 rounded-full bg-[#00b4d8] animate-ping" />
-                <h4 className="font-display font-black text-xl uppercase tracking-tight text-white">
-                  EVION Corridor Story Showcase
-                </h4>
-              </div>
-              <button
-                onClick={() => setActiveStoryVideo(null)}
-                className="w-8 h-8 rounded-full bg-neutral-800 text-white flex items-center justify-center hover:bg-neutral-700 cursor-pointer"
-              >
-                ✕
-              </button>
-            </div>
-
-            <div className="relative aspect-video w-full rounded-xl overflow-hidden bg-black flex items-center justify-center">
-              <Image
-                src="/images/evion-station-family-desktop-wide.jpg"
-                alt="Station Video Preview"
-                fill
-                className="object-cover opacity-60"
-              />
-              <div className="relative z-10 text-center space-y-3 p-6 bg-black/60 backdrop-blur-sm rounded-xl max-w-md mx-auto border border-white/10">
-                <div className="w-16 h-16 rounded-full bg-[#00b4d8] text-white flex items-center justify-center mx-auto shadow-2xl">
-                  <Play className="w-8 h-8 fill-current ml-1" />
-                </div>
-                <h5 className="font-display font-black text-2xl uppercase tracking-tight text-white">
-                  Fast Charging in Kerala
-                </h5>
-                <p className="text-xs text-neutral-300">
-                  Hear from EV owners and franchise hosts about 180kW charging and automated weekly returns.
-                </p>
-                <button
-                  onClick={() => {
-                    setActiveStoryVideo(null);
-                    onOpenFranchiseModal();
-                  }}
-                  className="px-6 py-2.5 bg-white text-neutral-700 font-display font-black text-xs uppercase tracking-wider hover:bg-[#00b4d8] hover:text-white transition-colors"
-                >
-                  SCHEDULE HUB SITE VISIT
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
