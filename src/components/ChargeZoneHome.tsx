@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import TornPaperEdge from "@/components/TornPaperEdge";
 import PaperCutBox from "@/components/PaperCutBox";
+import TornPaperCard from "@/components/TornPaperCard";
 
 interface ChargeZoneHomeProps {
   onOpenFranchiseModal: () => void;
@@ -86,11 +87,11 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
     return () => observer.disconnect();
   }, []);
 
-  // Reusable Hero Media Collage (Exact Oklahoma State Reference Layout from media_1795465986497_32545f84.jpg & media_1795466006927_85dc8107.jpg)
+  // Reusable Hero Media Collage with Authentic Paper Cut Border & Deckle Edge
   const heroMediaCollage = (
     <div className="relative flex flex-col items-center w-full pt-8 sm:pt-12 lg:pt-16">
-      {/* Primary Cutout Media Card (2:3 Portrait Sharp Rectangular Cut matching OSU Reference) */}
-      <div className="relative w-full max-w-[330px] sm:max-w-[360px] md:max-w-[390px] lg:max-w-[420px] xl:max-w-[450px] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.45)] bg-neutral-900 group">
+      {/* Primary Cutout Media Card with Hand-Torn Deckle Matte */}
+      <div className="relative w-full max-w-[330px] sm:max-w-[360px] md:max-w-[390px] lg:max-w-[420px] xl:max-w-[450px] group">
         {/* Retro 8-Point Geometric Starburst Emblem Centered at Top-Right Corner */}
         <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 text-amber-400 drop-shadow-xl z-30 pointer-events-none">
           <svg viewBox="0 0 100 100" fill="currentColor" className="w-full h-full drop-shadow-md">
@@ -98,8 +99,8 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
           </svg>
         </div>
 
-        {/* Clean Photographic Print (Sharp 90° Corners, 316/468 Aspect Ratio) */}
-        <div className="relative aspect-[316/468] w-full overflow-hidden">
+        {/* Hand-Torn Paper Cut Photographic Print Card with Authentic Deckle Matte */}
+        <TornPaperCard className="w-full aspect-[316/468]">
           <Image
             src="/images/hero-station-charger-mobile-v4.jpg"
             alt="EVION Highway Superhub Fast Charging with MG ZS EV in Kerala"
@@ -109,7 +110,7 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none" />
-        </div>
+        </TornPaperCard>
       </div>
     </div>
   );
@@ -130,6 +131,7 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
                 width={150}
                 height={26}
                 className="h-6 sm:h-7 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]"
+                style={{ width: "auto" }}
                 priority
               />
             </div>
@@ -539,15 +541,12 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
             <div className="w-14 sm:w-16 h-1 sm:h-1.5 bg-white mx-auto mt-4 sm:mt-5 shadow-sm" />
           </div>
 
-          {/* 4 Video Cards (Exact Reference Vertical Rhythm: 1st/3rd UPPER, 2nd/4th LOWER) */}
+          {/* 4 Video Cards with Authentic Hand-Torn Papercut Borders & Vertical Rhythm */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 items-start">
-            {/* Card 1 (Upper - Same as Card 3) */}
+            {/* Card 1 (Upper - Variant 1 Papercut) */}
             <div className="flex flex-col group cursor-pointer sm:translate-y-0 lg:translate-y-0 transition-transform duration-300 fade-up fade-delay-1" onClick={onOpenFranchiseModal}>
-              {/* Top Accent Strip */}
-              <div className="w-full h-1.5 bg-white" />
-              
-              {/* Video Photo Frame */}
-              <div className="relative aspect-[4/5] w-full bg-neutral-900 overflow-hidden shadow-lg">
+              {/* Hand-Torn Paper Cut Photo Frame */}
+              <TornPaperCard className="w-full aspect-[4/5]" variant={1} borderPadding="p-2 sm:p-2.5">
                 <Image
                   src="/images/evion-family-fast-charging-3.jpg"
                   alt="EV Driver Interview"
@@ -556,7 +555,7 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-black/15 group-hover:bg-black/5 transition-colors" />
-              </div>
+              </TornPaperCard>
 
               {/* Text Sits Directly on Section Background (No white card box, no border) */}
               <div className="mt-4">
@@ -569,10 +568,10 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
               </div>
             </div>
 
-            {/* Card 2 (Lower - Same as Card 4) */}
+            {/* Card 2 (Lower - Variant 2 Papercut) */}
             <div className="flex flex-col group cursor-pointer sm:translate-y-8 lg:translate-y-16 transition-transform duration-300 fade-up fade-delay-2" onClick={onOpenFranchiseModal}>
-              <div className="w-full h-1.5 bg-white" />
-              <div className="relative aspect-[4/5] w-full bg-neutral-900 overflow-hidden shadow-lg">
+              {/* Hand-Torn Paper Cut Photo Frame */}
+              <TornPaperCard className="w-full aspect-[4/5]" variant={2} borderPadding="p-2 sm:p-2.5">
                 <Image
                   src="/images/evion-family-plug-and-charge.jpg"
                   alt="Hotel and Resort EV Charger Host"
@@ -581,7 +580,7 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-black/15 group-hover:bg-black/5 transition-colors" />
-              </div>
+              </TornPaperCard>
 
               <div className="mt-4">
                 <h4 className="font-display font-black text-lg sm:text-xl text-neutral-700 leading-snug tracking-tight group-hover:text-neutral-900 transition-colors">
@@ -593,10 +592,10 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
               </div>
             </div>
 
-            {/* Card 3 (Upper - Exact Same Position as Card 1) */}
+            {/* Card 3 (Upper - Variant 3 Papercut) */}
             <div className="flex flex-col group cursor-pointer sm:translate-y-0 lg:translate-y-0 transition-transform duration-300 fade-up fade-delay-3" onClick={onOpenFranchiseModal}>
-              <div className="w-full h-1.5 bg-white" />
-              <div className="relative aspect-[4/5] w-full bg-neutral-900 overflow-hidden shadow-lg">
+              {/* Hand-Torn Paper Cut Photo Frame */}
+              <TornPaperCard className="w-full aspect-[4/5]" variant={3} borderPadding="p-2 sm:p-2.5">
                 <Image
                   src="/images/evion-station-young-travelers-hero-wide.jpg"
                   alt="Young Travelers Fast Charging"
@@ -605,7 +604,7 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-black/15 group-hover:bg-black/5 transition-colors" />
-              </div>
+              </TornPaperCard>
 
               <div className="mt-4">
                 <h4 className="font-display font-black text-lg sm:text-xl text-neutral-700 leading-snug tracking-tight group-hover:text-neutral-900 transition-colors">
@@ -617,10 +616,10 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
               </div>
             </div>
 
-            {/* Card 4 (Lower - Exact Same Position as Card 2) */}
+            {/* Card 4 (Lower - Variant 4 Papercut) */}
             <div className="flex flex-col group cursor-pointer sm:translate-y-8 lg:translate-y-16 transition-transform duration-300 fade-up fade-delay-4" onClick={onOpenFranchiseModal}>
-              <div className="w-full h-1.5 bg-white" />
-              <div className="relative aspect-[4/5] w-full bg-neutral-900 overflow-hidden shadow-lg">
+              {/* Hand-Torn Paper Cut Photo Frame */}
+              <TornPaperCard className="w-full aspect-[4/5]" variant={4} borderPadding="p-2 sm:p-2.5">
                 <Image
                   src="/images/evion-station-evening-travelers-hero-wide.jpg"
                   alt="Weekly automated franchise payouts"
@@ -629,7 +628,7 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-black/15 group-hover:bg-black/5 transition-colors" />
-              </div>
+              </TornPaperCard>
 
               <div className="mt-4">
                 <h4 className="font-display font-black text-lg sm:text-xl text-neutral-700 leading-snug tracking-tight group-hover:text-neutral-900 transition-colors">
@@ -651,7 +650,7 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
         {/* Full-Bleed Artwork Banner Image in Website Color Scheme */}
         <div className="relative w-full min-h-[500px] sm:min-h-[560px] md:min-h-[620px] lg:min-h-[700px] flex items-center">
           <Image
-            src="/images/the-states-network-banner-green.jpg"
+            src="/images/the-states-network-banner-blue.jpg"
             alt="The State's Network - Become a Franchisee"
             fill
             priority
@@ -667,7 +666,7 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
           {/* Directional Softening on Small Screens (ensures text readability over artwork on mobile) */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#00b4d8] via-[#00b4d8]/85 to-transparent md:hidden pointer-events-none" />
 
-          {/* Content Container Aligned to the Left & Founder Portrait on the Right (Green Area) */}
+          {/* Content Container Aligned to the Left & Founder Portrait on the Right (Light Blue Area) */}
           <div className="max-w-[1400px] w-full mx-auto px-6 sm:px-10 lg:px-16 pt-20 sm:pt-24 md:pt-28 pb-20 sm:pb-24 md:pb-28 relative z-10">
             <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-16">
               {/* Left Column: Heading & Button */}
@@ -676,10 +675,12 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
                   <span className="text-xs sm:text-sm font-mono font-black tracking-widest text-neutral-700 uppercase block mb-3">
                     THE STATE&apos;S NETWORK • KERALA ARTERIAL CORRIDORS
                   </span>
-                  <h2 className="font-display font-black text-6xl sm:text-7xl md:text-8xl lg:text-9xl uppercase tracking-tighter leading-[0.88] text-neutral-700">
-                    OUR
+                  <h2 className="font-display font-black text-5xl sm:text-6xl md:text-7xl lg:text-8xl uppercase tracking-tighter leading-[0.9] text-neutral-700">
+                    THE MINDS
                     <br />
-                    FOUNDER
+                    WHO KEEP US
+                    <br />
+                    CHARGED
                   </h2>
                   <p className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg text-neutral-800 font-medium leading-relaxed max-w-lg">
                     Pioneering Kerala&apos;s electric mobility revolution. Driven by a bold mission to build an uninterrupted high-speed charging spine connecting every highway, district, and community from Kasaragod to Kanyakumari.
@@ -691,16 +692,16 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
                     onClick={onOpenFranchiseModal}
                     className="inline-flex items-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 bg-white hover:bg-neutral-100 text-neutral-700 font-display font-black text-sm sm:text-base uppercase tracking-wider transition-all shadow-xl hover:shadow-2xl cursor-pointer"
                   >
-                    <span>OUR FOUNDER</span>
+                    <span>MEET OUR FOUNDER</span>
                     <ArrowRight className="w-5 h-5 text-neutral-700" />
                   </button>
                 </div>
               </div>
 
-              {/* Right Column: Founder Portrait in the Green Area */}
-              <div className="relative w-full max-w-[280px] sm:max-w-[320px] md:max-w-[360px] lg:max-w-[380px] xl:max-w-[420px] shrink-0 fade-up-slow fade-delay-2">
-                {/* Collegiate Editorial Frame with Crisp White Border & Deep Shadow */}
-                <div className="relative aspect-[3/4] w-full shadow-[0_20px_50px_rgba(0,0,0,0.35)] overflow-hidden border-4 sm:border-[6px] border-white group">
+              {/* Right Column: Founder Portrait in the Light Blue Area */}
+              <div className="relative w-full max-w-[280px] sm:max-w-[320px] md:max-w-[360px] lg:max-w-[380px] xl:max-w-[420px] shrink-0 fade-up-slow fade-delay-2 group">
+                {/* Collegiate Editorial Hand-Torn Paper Cut Frame with Deckle Edge & Shadow */}
+                <TornPaperCard className="w-full aspect-[3/4]">
                   <Image
                     src="/images/evion-founder-portrait.jpg"
                     alt="EVION Founder & Leadership"
@@ -710,7 +711,7 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
                     priority
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
-                </div>
+                </TornPaperCard>
               </div>
             </div>
           </div>
@@ -835,6 +836,7 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
                   width={140}
                   height={24}
                   className="h-6 w-auto object-contain"
+                  style={{ width: "auto" }}
                 />
               </div>
               <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed max-w-sm">
