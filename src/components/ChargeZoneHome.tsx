@@ -89,20 +89,13 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
 
   // Reusable Hero Media Collage with Authentic Paper Cut Border & Deckle Edge
   const heroMediaCollage = (
-    <div className="relative flex flex-col items-center w-full pt-8 sm:pt-12 lg:pt-16">
-      {/* Primary Cutout Media Card with Hand-Torn Deckle Matte */}
-      <div className="relative w-full max-w-[330px] sm:max-w-[360px] md:max-w-[390px] lg:max-w-[420px] xl:max-w-[450px] group">
-        {/* Retro 8-Point Geometric Starburst Emblem Centered at Top-Right Corner */}
-        <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 text-amber-400 drop-shadow-xl z-30 pointer-events-none">
-          <svg viewBox="0 0 100 100" fill="currentColor" className="w-full h-full drop-shadow-md">
-            <polygon points="50,0 62,38 100,50 62,62 50,100 38,62 0,50 38,38" />
-          </svg>
-        </div>
-
+    <div className="relative flex flex-col items-center lg:items-end w-full pt-8 sm:pt-12 lg:pt-16">
+      {/* Primary Cutout Media Card with Hand-Torn Deckle Matte Aligned to Right on Desktop */}
+      <div className="relative w-full max-w-[330px] sm:max-w-[360px] md:max-w-[390px] lg:max-w-[420px] xl:max-w-[450px] group lg:mr-24 xl:mr-36">
         {/* Hand-Torn Paper Cut Photographic Print Card with Authentic Deckle Matte */}
         <TornPaperCard className="w-full aspect-[316/468]">
           <Image
-            src="/images/hero-station-charger-mobile-v4.jpg"
+            src="/images/hero-station-charger-family-v5.jpg"
             alt="EVION Highway Superhub Fast Charging with MG ZS EV in Kerala"
             fill
             sizes="(max-width: 768px) 100vw, 450px"
@@ -191,49 +184,41 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
           }}
         />
 
-        {/* Upper Turquoise Canvas: Bold Headline + Desktop Media Collage */}
-        <div className="max-w-[1480px] xl:max-w-[1520px] mx-auto px-4 sm:px-8 pt-4 sm:pt-6 lg:pt-8 pb-0 relative z-30">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start">
-            {/* Left Column: Bold Collegiate Typography */}
-            <div className="lg:col-span-5 text-white fade-up fade-delay-1">
-              <div className="relative inline-block ml-1 sm:ml-4 lg:ml-6 -mt-1 sm:-mt-2 lg:-mt-3">
-                {/* Diagonal Paper Fold Crease Line (Matching Reference Image "THE CODE CALLS.") */}
-                <div
-                  className="absolute -inset-x-8 top-[34%] h-[2px] pointer-events-none z-10 opacity-70"
-                  style={{
-                    background: "linear-gradient(90deg, transparent, rgba(0,0,0,0.3) 15%, rgba(255,255,255,0.6) 45%, rgba(0,0,0,0.2) 80%, transparent)",
-                    transform: "rotate(-11deg)",
-                    transformOrigin: "left center",
-                  }}
-                />
-                <div
-                  className="absolute -inset-x-6 top-[72%] h-[1.5px] pointer-events-none z-10 opacity-50"
-                  style={{
-                    background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.45) 25%, rgba(0,0,0,0.25) 75%, transparent)",
-                    transform: "rotate(7deg)",
-                    transformOrigin: "right center",
-                  }}
-                />
+        {/* Authentic Kerala Cultural Heritage Line Art Motif Overlay */}
+        <div className="absolute top-0 inset-x-0 h-[380px] sm:h-[460px] md:h-[520px] lg:h-[580px] xl:h-[640px] pointer-events-none z-0 overflow-hidden opacity-30 sm:opacity-35 select-none">
+          <Image
+            src="/images/kerala-cultural-overlay.png"
+            alt="Kerala Cultural Heritage Line Art and Map Motif"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+        </div>
 
-                <h1 className="font-poster text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[8.75rem] leading-[0.83] uppercase text-white drop-shadow-sm select-none relative z-0">
-                  <span className="text-[0.76em] sm:text-[0.78em] inline-block">THE</span>
-                  <br />
-                  POWER
-                  <br />
-                  CALLS.
+        {/* Upper Turquoise Canvas: Bold Headline + Desktop Media Collage */}
+        <div className="max-w-[1480px] xl:max-w-[1520px] mx-auto px-4 sm:px-8 pt-7 sm:pt-9 lg:pt-12 pb-8 sm:pb-10 lg:pb-14 relative z-30">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start">
+            {/* Left Column: Bold Headline Typography matching User Reference */}
+            <div className="lg:col-span-6 text-white fade-up fade-delay-1">
+              <div className="relative inline-block ml-4 sm:ml-8 md:ml-12 lg:ml-14 xl:ml-16 mt-11 sm:mt-14 md:mt-16 lg:mt-24 xl:mt-28">
+                <h1 className="font-montserrat font-extrabold tracking-tight text-2xl sm:text-3xl md:text-4xl lg:text-[2.65rem] xl:text-[3.25rem] leading-[1.08] sm:leading-[1.05] select-none relative z-0 pb-4 sm:pb-6 lg:pb-8">
+                  <span className="block text-white">Be a part of India&apos;s</span>
+                  <span className="block text-white mt-1.5 sm:mt-2 lg:mt-2.5">fast-growing</span>
+                  <span className="block text-[#7ee3ce] drop-shadow-sm whitespace-nowrap mt-2 sm:mt-2.5 lg:mt-3.5">EV Charging Network</span>
                 </h1>
               </div>
             </div>
 
             {/* Right Column (Desktop): Hero Media Collage Overhanging the Paper Cut matching OSU Reference */}
-            <div className="hidden lg:flex lg:col-span-7 relative flex-col items-center xl:items-end w-full pt-8 lg:pt-16 xl:pt-24 -mb-[420px] lg:-mb-[450px] xl:-mb-[480px] z-40 pr-0 lg:pr-2 xl:pr-6 fade-up-slow fade-delay-2">
+            <div className="hidden lg:flex lg:col-span-6 relative flex-col items-center lg:items-end w-full pt-8 lg:pt-16 xl:pt-24 -mb-[420px] lg:-mb-[450px] xl:-mb-[480px] z-40 pr-0 lg:pr-0 xl:pr-2 fade-up-slow fade-delay-2">
               {heroMediaCollage}
             </div>
           </div>
         </div>
 
         {/* Authentic Torn Paper Cutting Edge in the Middle of THE POWER CALLS and HOW WILL YOU CHARGE */}
-        <div className="w-full bg-[#00b4d8] leading-none -mb-[1px] pointer-events-none relative z-10 -mt-3 sm:-mt-5 lg:-mt-6">
+        <div className="w-full bg-[#00b4d8] leading-none -mb-[1px] pointer-events-none relative z-10 -mt-1 sm:-mt-2 lg:-mt-2.5">
           <TornPaperEdge fillColor="#f1f6fa" heightClass="h-10 sm:h-16" className="z-10" />
         </div>
 
@@ -242,7 +227,7 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
           <div className="max-w-[1480px] xl:max-w-[1520px] mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start">
               {/* Left Column: High-Contrast Black Block Tags & Action Buttons */}
-              <div className="lg:col-span-5 space-y-3 sm:space-y-3.5 -mt-1 sm:-mt-2 ml-1 sm:ml-4 lg:ml-6 fade-up fade-delay-2">
+              <div className="lg:col-span-6 space-y-3 sm:space-y-3.5 -mt-1 sm:-mt-2 ml-4 sm:ml-8 md:ml-12 lg:ml-14 xl:ml-16 fade-up fade-delay-2">
                 {/* High-Contrast Grey Block Tags with Paper Cut Background Box */}
                 <div className="flex flex-wrap gap-2.5">
                   <PaperCutBox
@@ -288,8 +273,8 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
                 {heroMediaCollage}
               </div>
 
-              {/* Desktop Spacer (7 columns) */}
-              <div className="hidden lg:block lg:col-span-7 pointer-events-none" />
+              {/* Desktop Spacer (6 columns) */}
+              <div className="hidden lg:block lg:col-span-6 pointer-events-none" />
             </div>
           </div>
         </div>
@@ -840,7 +825,7 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
                 />
               </div>
               <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed max-w-sm">
-                Evion Power Solutions Pvt. Ltd. in strategic alliance with CHARGE+ZONE. Powering Kerala&apos;s highway EV charging revolution.
+                Evion Power Solutions Pvt. Ltd. Powering Kerala&apos;s highway EV charging revolution.
               </p>
               <div className="space-y-2 text-xs text-neutral-600 font-mono pt-2">
                 <div className="flex items-center gap-2">
@@ -906,14 +891,14 @@ export default function ChargeZoneHome({ onOpenFranchiseModal }: ChargeZoneHomeP
                 ))}
               </div>
               <p className="text-[11px] text-neutral-500 font-mono pt-2">
-                ChargeZone EV Partner Network
+                EVION EV Partner Network
               </p>
             </div>
           </div>
 
           {/* Bottom Copyright */}
           <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500 font-mono fade-up fade-delay-2">
-            <p>© 2026 EVION Power Solutions Pvt. Ltd. &amp; CHARGE+ZONE. All rights reserved.</p>
+            <p>© 2026 EVION Power Solutions Pvt. Ltd. All rights reserved.</p>
             <div className="flex items-center gap-4">
               <a href="#" className="hover:text-neutral-800 transition-colors">Privacy Policy</a>
               <span>•</span>
